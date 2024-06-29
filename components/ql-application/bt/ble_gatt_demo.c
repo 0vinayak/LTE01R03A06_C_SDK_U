@@ -630,10 +630,12 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_chara(int idx)
 {
      ql_errcode_bt_e ret = QL_BT_SUCCESS;
     ql_ble_gatt_uuid_s uuid;
+    ql_ble_gatt_uuid_s uuidlive;
+
     switch (idx)
     {
     case 0:
-        uuid =
+        uuidlive =
             (ql_ble_gatt_uuid_s){
                 .uuid_type = 1,
                 .uuid_l = {0x00},
@@ -674,11 +676,11 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_chara(int idx)
         // ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
         // ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
 
-        ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
-        ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
-        ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
-        ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
-        ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
+        ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidlive);
+        // ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
+        // ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
+        // ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
+        // ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
 
         break;
 
@@ -778,53 +780,55 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_chara(int idx)
 ql_errcode_bt_e ql_ble_gatt_demo_add_chara_value(int idx)
 {
      ql_errcode_bt_e ret = QL_BT_SUCCESS;
-    ql_ble_gatt_uuid_s uuid;
+    //ql_ble_gatt_uuid_s uuid;
+    ql_ble_gatt_uuid_s uuidlive;
+
 
     switch (idx)
     {
 
     /********************Data of all the first service characteristics go here in case 0*/
     case 0:
-        uuid =
+        uuidlive =
             (ql_ble_gatt_uuid_s){
                 .uuid_type = 1,
                 .uuid_l = {0x00},
                 .uuid_s = 0xFA00,
             };
 
-        uuid =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1,
-                .uuid_l = {0x00},
-                .uuid_s = 0xFA01,
-            };
+        // uuid =
+        //     (ql_ble_gatt_uuid_s){
+        //         .uuid_type = 1,
+        //         .uuid_l = {0x00},
+        //         .uuid_s = 0xFA01,
+        //     };
 
-        uuid =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1,
-                .uuid_l = {0x00},
-                .uuid_s = 0xFA02,
-            };
+        // uuid =
+        //     (ql_ble_gatt_uuid_s){
+        //         .uuid_type = 1,
+        //         .uuid_l = {0x00},
+        //         .uuid_s = 0xFA02,
+        //     };
 
-        uuid =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1,
-                .uuid_l = {0x00},
-                .uuid_s = 0xFA03,
-            };
+        // uuid =
+        //     (ql_ble_gatt_uuid_s){
+        //         .uuid_type = 1,
+        //         .uuid_l = {0x00},
+        //         .uuid_s = 0xFA03,
+        //     };
 
-        uuid =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1,
-                .uuid_l = {0x00},
-                .uuid_s = 0xFA04,
-            };
+        // uuid =
+        //     (ql_ble_gatt_uuid_s){
+        //         .uuid_type = 1,
+        //         .uuid_l = {0x00},
+        //         .uuid_s = 0xFA04,
+        //     };
 
         // ret = ql_ble_gatt_add_chara_value(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuid, sizeof(Live_Data.lds), (unsigned char *)Live_Data.lds);
         // ret = ql_ble_gatt_add_chara_value(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuid, sizeof(error_data.error), (unsigned char *)error_data.error);
 
-        ret = ql_ble_gatt_add_chara_value(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuid, sizeof(Live_Data.lds), (unsigned char *)Live_Data.lds);
-        ql_ble_gatt_add_chara_value(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuid, sizeof(error_data.error), (unsigned char *)error_data.error);
+        ql_ble_gatt_add_chara_value(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidlive, sizeof(Live_Data.lds), (unsigned char *)Live_Data.lds);
+        //ql_ble_gatt_add_chara_value(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuid, sizeof(error_data.error), (unsigned char *)error_data.error);
         break;
 
     default:
@@ -992,13 +996,13 @@ ql_errcode_bt_e ql_ble_demo_send_data()
 
     // ql_rtos_task_sleep_ms(1000);
 
-    ret = ql_ble_send_notification_data(0, ble_server_hanle + 2, sizeof(error_data.error), error_data.error);
+    //ret = ql_ble_send_notification_data(0, ble_server_hanle + 2, sizeof(error_data.error), error_data.error);
 
     ql_rtos_task_sleep_ms(1000);
 
     if (ret == QL_BT_SUCCESS)
     {
-        QL_BLE_GATT_LOG("sucess");
+        QL_BLE_GATT_LOG("data sent sucess");
     }
     else
     {
