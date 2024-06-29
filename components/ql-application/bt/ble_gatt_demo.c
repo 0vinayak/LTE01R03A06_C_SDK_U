@@ -524,26 +524,29 @@ ql_errcode_bt_e ql_bleadv_demo_set_scan_rsp_data()
 ql_errcode_bt_e ql_ble_gatt_demo_add_service(int idx)
 {
     ql_errcode_bt_e ret;
+    ql_ble_gatt_uuid_s uuid ;
 
     switch (idx)
     {
     
     /*************************Characteristic for service no 1******************************/
-
     case 0:
-          ql_ble_gatt_uuid_s uuid = 
-    {
+
+         
+            uuid =  {
         .uuid_type = 1, // short id with 16 bits
         .uuid_l = {0x00},
         .uuid_s = 0x00FA,
     };
+   
     
-    ret = ql_ble_gatt_add_service(0x01, uuid, 1);
+    ql_ble_gatt_add_service(0x01, uuid, 1);
+         
 
     break;
 
     case 1:
-                 ql_ble_gatt_uuid_s uuid = 
+                 uuid = 
     {
         .uuid_type = 1, // short id with 16 bits
         .uuid_l = {0x00},
@@ -555,7 +558,7 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_service(int idx)
     break; 
 
     case 2:
-                 ql_ble_gatt_uuid_s uuid = 
+                 uuid = 
     {
         .uuid_type = 1, // short id with 16 bits
         .uuid_l = {0x00},
@@ -682,6 +685,7 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_chara(int idx)
     ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid2);
     ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid3);
     ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid4);
+    ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid5);
 
     break;
 
@@ -991,7 +995,12 @@ ql_errcode_bt_e ql_ble_demo_send_data()
     QL_BLE_GATT_LOG("Error data%s", error_data.error);
 
     ret = ql_ble_send_notification_data(0, ble_server_hanle+2, sizeof(Live_Data.lds), Live_Data.lds);
+
+    // ql_rtos_task_sleep_ms(1000); 
+
     ret = ql_ble_send_notification_data(0, ble_server_hanle+2, sizeof(error_data.error), error_data.error);
+
+    ql_rtos_task_sleep_ms(1000); 
 
     // if (ret == QL_BT_SUCCESS)
     // {
