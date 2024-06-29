@@ -42,11 +42,14 @@ extern ql_errcode_bt_e ql_bt_demo_get_state();
 
 extern ql_errcode_dev_e ql_cfun_comm_set(uint8_t at_dst_cfun, uint8_t nSim);
 
+union LDSUnion Live_Data;
+union ErrorUnion error_data;
+
 ql_task_t ble_demo_task = NULL;
 
 ql_bt_ble_local_name_s ble_name =
     {
-        .name = "SMART AMIGO",
+        .name = "EmotoRad Amigo",
         .code_type = QL_BT_BLE_NAME_CODE_UTF8,
 };
 
@@ -512,7 +515,7 @@ ql_errcode_bt_e ql_bleadv_demo_set_scan_rsp_data()
 
 ql_errcode_bt_e ql_ble_gatt_demo_add_service(int idx)
 {
-    // ql_errcode_bt_e ret;
+    ql_errcode_bt_e ret = QL_BT_SUCCESS;
     ql_ble_gatt_uuid_s uuid;
 
     switch (idx)
@@ -527,7 +530,7 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_service(int idx)
             .uuid_s = 0x00FA,
         };
         // ret = ql_ble_gatt_add_service(0x01, uuid, 1);
-        ql_ble_gatt_add_service(0x01, uuid, 1);
+        ret = ql_ble_gatt_add_service(0x01, uuid, 1);
         break;
 
     case 1:
@@ -600,6 +603,7 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_service(int idx)
 
     default:
         break;
+
     }
 
     // ql_ble_gatt_uuid_s uuid =
@@ -619,12 +623,12 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_service(int idx)
     //     QL_BLE_GATT_LOG("error=%x", ret);
     // }
 
-    // return ret;
+    return ret;
 }
 
 ql_errcode_bt_e ql_ble_gatt_demo_add_chara(int idx)
 {
-    // ql_errcode_bt_e ret;
+     ql_errcode_bt_e ret = QL_BT_SUCCESS;
     ql_ble_gatt_uuid_s uuid;
     switch (idx)
     {
@@ -670,7 +674,7 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_chara(int idx)
         // ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
         // ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
 
-        ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
+        ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
         ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
         ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
         ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
@@ -697,7 +701,7 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_chara(int idx)
         // ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
         // ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
 
-        ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
+        ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
         ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
         break;
 
@@ -759,6 +763,7 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_chara(int idx)
     default:
         break;
     }
+    
     // ql_ble_gatt_uuid_s uuid =
     // {
     //     .uuid_type = 1,
@@ -767,11 +772,12 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_chara(int idx)
     // };
 
     // ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE, uuid);
+    return ret;
 }
 
 ql_errcode_bt_e ql_ble_gatt_demo_add_chara_value(int idx)
 {
-    // ql_errcode_bt_e ret;
+     ql_errcode_bt_e ret = QL_BT_SUCCESS;
     ql_ble_gatt_uuid_s uuid;
 
     switch (idx)
@@ -817,7 +823,7 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_chara_value(int idx)
         // ret = ql_ble_gatt_add_chara_value(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuid, sizeof(Live_Data.lds), (unsigned char *)Live_Data.lds);
         // ret = ql_ble_gatt_add_chara_value(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuid, sizeof(error_data.error), (unsigned char *)error_data.error);
 
-        ql_ble_gatt_add_chara_value(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuid, sizeof(Live_Data.lds), (unsigned char *)Live_Data.lds);
+        ret = ql_ble_gatt_add_chara_value(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuid, sizeof(Live_Data.lds), (unsigned char *)Live_Data.lds);
         ql_ble_gatt_add_chara_value(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuid, sizeof(error_data.error), (unsigned char *)error_data.error);
         break;
 
@@ -836,7 +842,7 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_chara_value(int idx)
     //      QL_BLE_GATT_LOG("error=%x", ret);
     //  }
 
-    // return ret;
+    return ret;
 }
 
 ql_errcode_bt_e ql_ble_gatt_demo_change_chara_value()
