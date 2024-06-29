@@ -771,7 +771,7 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_chara(int idx)
 
 ql_errcode_bt_e ql_ble_gatt_demo_add_chara_value(int idx)
 {
-    ql_errcode_bt_e ret;
+    // ql_errcode_bt_e ret;
     ql_ble_gatt_uuid_s uuid;
 
     switch (idx)
@@ -990,16 +990,16 @@ ql_errcode_bt_e ql_ble_demo_send_data()
 
     ql_rtos_task_sleep_ms(1000);
 
-    // if (ret == QL_BT_SUCCESS)
-    // {
-    //     QL_BLE_GATT_LOG("sucess");
-    // }
-    // else
-    // {
-    //     QL_BLE_GATT_LOG("error=%x", ret);
-    // }
+    if (ret == QL_BT_SUCCESS)
+    {
+        QL_BLE_GATT_LOG("sucess");
+    }
+    else
+    {
+        QL_BLE_GATT_LOG("error=%x", ret);
+    }
 
-    // return ret;
+    return ret;
 }
 
 ql_errcode_bt_e ql_ble_demo_disconect_device()
@@ -1031,7 +1031,7 @@ void setServiceCharacteristics()
 {
 
     static uint8_t SeqNumber = 0;
-    unsigned char service_id[7] = {0};
+    // unsigned char service_id[7] = {0};
 
     switch (SeqNumber)
     {
