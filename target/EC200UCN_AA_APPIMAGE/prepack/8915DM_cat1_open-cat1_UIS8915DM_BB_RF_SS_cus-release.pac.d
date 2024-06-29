@@ -1,0 +1,1 @@
+hex\8915DM_cat1_open-cat1_UIS8915DM_BB_RF_SS_cus-release.pac: hex\fdl1.sign.img hex\fdl2.sign.img hex\8915DM_cat1_open.sign.img hex\cat1_UIS8915DM_BB_RF_SS_cus.img hex\cat1_UIS8915DM_BB_RF_SS_cus_nvitem.bin hex\boot.sign.img ..\..\tools\pacgen.py
