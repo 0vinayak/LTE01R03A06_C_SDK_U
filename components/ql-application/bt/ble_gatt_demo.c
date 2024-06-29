@@ -49,7 +49,7 @@ ql_task_t ble_demo_task = NULL;
 
 ql_bt_ble_local_name_s ble_name =
     {
-        .name = "EmotoRad Amigo",
+        .name = "EMOTORAD Amigo",
         .code_type = QL_BT_BLE_NAME_CODE_UTF8,
 };
 
