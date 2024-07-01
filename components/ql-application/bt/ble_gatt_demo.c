@@ -1196,27 +1196,29 @@ void setServiceCharacteristics()
 
     //     break;
 
-    // for (size_t i = 0; i < NUM_SERVICES; i++)
-    // {
-    //     ql_ble_gatt_demo_add_service(i);
-    //     ql_ble_gatt_demo_add_chara(i);
-    //     ql_ble_gatt_demo_add_chara_value(i);
-    //     if (i == 7){
-    //     }
-    //     {
-    //         ql_ble_gatt_add_or_clear_service_complete(QL_BLE_SERVICE_ADD_COMPLETE, ql_ble_gatt_sys_service);
-    //     }
+    for (size_t i = 0; i < NUM_SERVICES; i++)
+    {
+        ql_ble_gatt_demo_add_service(i);
+        ql_ble_gatt_demo_add_chara(i);
+        ql_ble_gatt_demo_add_chara_value(i);
+        // if (i == 7){
+        // }
+        // {
+        //     ql_ble_gatt_add_or_clear_service_complete(QL_BLE_SERVICE_ADD_COMPLETE, ql_ble_gatt_sys_service);
+        // }
         
-    //     //
-    // }
+        //
+    }
+    ql_ble_gatt_add_or_clear_service_complete(QL_BLE_SERVICE_ADD_COMPLETE, ql_ble_gatt_sys_service);
 
-    ql_ble_gatt_demo_add_service(0);
-    ql_ble_gatt_demo_add_chara(0);
-    ql_ble_gatt_demo_add_chara_value(0);
 
-    ql_ble_gatt_demo_add_service(1);
-    ql_ble_gatt_demo_add_chara(1);
-    ql_ble_gatt_demo_add_chara_value(1);
+    // ql_ble_gatt_demo_add_service(0);
+    // ql_ble_gatt_demo_add_chara(0);
+    // ql_ble_gatt_demo_add_chara_value(0);
+
+    // ql_ble_gatt_demo_add_service(1);
+    // ql_ble_gatt_demo_add_chara(1);
+    // ql_ble_gatt_demo_add_chara_value(1);
     
 
     //  case 6:
