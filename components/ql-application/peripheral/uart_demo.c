@@ -112,7 +112,7 @@ static void ql_uart_demo_thread(void *param)
     uart_cfg.baudrate = QL_UART_BAUD_115200;
     uart_cfg.flow_ctrl = QL_FC_NONE;
     uart_cfg.data_bit = QL_UART_DATABIT_8;
-    uart_cfg.stop_bit = QL_UART_STOP_1;
+    uart_cfg.stop_bit = QL_UART_STOP_1; // 8N1
     uart_cfg.parity_bit = QL_UART_PARITY_NONE;
 
     ret = ql_uart_set_dcbconfig(QL_UART_PORT_1, &uart_cfg);
@@ -175,15 +175,6 @@ void ql_uart_app_init(void)
 {
     QlOSStatus err = 0;
     ql_task_t uart_task = NULL;
-
-#if QL_USB_PRINTER_ENABLE
-    /*
-        1. 重启生效,使能USB打印功能后,USB NMEA口将会被枚举为usb打印设备,用户可在重启后使用ql_uart_open, ql_uart_register_cb,
-        ql_uart_write等函数,以QL_USB_PORT_PRINTER为参数来从usb打印设备中读取和写入数据;使能后usb NMEA口将不会被枚举
-        2. 如果开启了UAC功能,则不能使用usb打印设备
-    */
-    ql_usb_set_enum_mode(QL_USB_ENUM_USBNET_COM_PRINTER);
-#endif
 
     err = ql_rtos_task_create(&uart_task, QL_UART_TASK_STACK_SIZE, QL_UART_TASK_PRIO, "QUARTDEMO", ql_uart_demo_thread, NULL, QL_UART_TASK_EVENT_CNT);
     if (err != QL_OSI_SUCCESS)

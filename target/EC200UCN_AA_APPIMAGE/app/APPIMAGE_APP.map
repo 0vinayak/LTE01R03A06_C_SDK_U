@@ -2397,11 +2397,11 @@ OUTPUT(hex\examples\APPIMAGE_APP.elf elf32-littlearm)
  .debug_ranges  0x00000060       0x20 lib/libql_app_peripheral.a(gpio_demo.c.obj)
  .debug_ranges  0x00000080       0x20 lib/libql_app_peripheral.a(uart_demo.c.obj)
 
-.debug_line     0x00000000      0xd7e
+.debug_line     0x00000000      0xd78
  .debug_line    0x00000000      0x508 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
  .debug_line    0x00000508      0x350 lib/libql_app_peripheral.a(gpio_demo.c.obj)
- .debug_line    0x00000858      0x33b lib/libql_app_peripheral.a(uart_demo.c.obj)
- .debug_line    0x00000b93      0x1eb lib/libql_app_peripheral.a(ql_pin_cfg.c.obj)
+ .debug_line    0x00000858      0x335 lib/libql_app_peripheral.a(uart_demo.c.obj)
+ .debug_line    0x00000b8d      0x1eb lib/libql_app_peripheral.a(ql_pin_cfg.c.obj)
 
 .debug_str      0x00000000     0x3edf
  .debug_str     0x00000000     0x269d components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
