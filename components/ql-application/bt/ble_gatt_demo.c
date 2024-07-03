@@ -144,7 +144,7 @@ ql_blegatt_prime_service_s ql_ble_gatt_target_service =
 ql_ble_gatt_chara_s ql_ble_gatt_characteristic[QL_BLE_CHARA_NUM_MAX] =
     {
         {
-            .uuid = 0x2A19, //
+            .uuid = 0xFB02, //
         },
 };
 
@@ -167,31 +167,31 @@ ql_ble_sys_service_mode_e ql_ble_gatt_sys_service = QL_RESERVED_SERVICE_KEEP; //
 
 ql_ble_gatt_uuid_s uuidCore;
 ql_ble_gatt_uuid_s uuidError;
-ql_ble_gatt_uuid_s uuidDebug;             /**SERVICE 1 CHARACTERISTICS */
+ql_ble_gatt_uuid_s uuidDebug; /**SERVICE 1 CHARACTERISTICS */
 ql_ble_gatt_uuid_s uuidMCUFeedback;
 ql_ble_gatt_uuid_s uuidBLEFeedback;
 
-ql_ble_gatt_uuid_s uuidTP1;                 /**SERVICE 2 CHARACTERISTICS */
+ql_ble_gatt_uuid_s uuidTP1; /**SERVICE 2 CHARACTERISTICS */
 ql_ble_gatt_uuid_s uuidTP2;
 
 ql_ble_gatt_uuid_s uuidVin;
-ql_ble_gatt_uuid_s uuidBatteryNumber;               /**SERVICE 3 CHARACTERISTICS */
+ql_ble_gatt_uuid_s uuidBatteryNumber; /**SERVICE 3 CHARACTERISTICS */
 ql_ble_gatt_uuid_s VehicleSWVersions;
 ql_ble_gatt_uuid_s uuidODOWrite;
 ql_ble_gatt_uuid_s uuidHeadlamp;
 ql_ble_gatt_uuid_s uuidChildMode;
-ql_ble_gatt_uuid_s uuidControl;           /**SERVICE 4 CHARACTERISTICS */
+ql_ble_gatt_uuid_s uuidControl; /**SERVICE 4 CHARACTERISTICS */
 ql_ble_gatt_uuid_s uuidAltitude;
 ql_ble_gatt_uuid_s uuidMcuOTA;
-ql_ble_gatt_uuid_s uuidOTAControl;                /**SERVICE 8 CHARACTERISTICS */
+ql_ble_gatt_uuid_s uuidOTAControl; /**SERVICE 8 CHARACTERISTICS */
 ql_ble_gatt_uuid_s uuidOTAData;
 
-unsigned char send_data[20] = {1,2, 3, 4, 5, 6, 7,8,9,1,2,3,4,5,6,7,8,9,9,5};
-//int i;
-// for (int i=0; i<sizeof(send_data)-1; i++)
-// {
-//     send_data[i] = '3';
-// }
+unsigned char send_data[20] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 5};
+// int i;
+//  for (int i=0; i<sizeof(send_data)-1; i++)
+//  {
+//      send_data[i] = '3';
+//  }
 
 #if QL_BLE_DEMO_LOW_POWER_USE
 int bt_ble_power_lock = 0;
@@ -556,7 +556,7 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_service(int idx)
     ql_ble_gatt_uuid_s uuidKeyResponse;
     ql_ble_gatt_uuid_s uuidKeyResponseMain;
     ql_ble_gatt_uuid_s uuidOTA;
-   
+
     switch (idx)
     {
 
@@ -654,7 +654,6 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_service(int idx)
 
     default:
         break;
-
     }
 
     // ql_ble_gatt_uuid_s uuid =
@@ -680,29 +679,29 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_service(int idx)
 ql_errcode_bt_e ql_ble_gatt_demo_add_chara(int idx)
 {
     ql_errcode_bt_e ret = QL_BT_SUCCESS;
-    //ql_ble_gatt_uuid_s uuid;
+    // ql_ble_gatt_uuid_s uuid;
 
     ql_ble_gatt_uuid_s uuidCore;
     ql_ble_gatt_uuid_s uuidError;
-    ql_ble_gatt_uuid_s uuidDebug;             /**SERVICE 1 CHARACTERISTICS */
+    ql_ble_gatt_uuid_s uuidDebug; /**SERVICE 1 CHARACTERISTICS */
     ql_ble_gatt_uuid_s uuidMCUFeedback;
     ql_ble_gatt_uuid_s uuidBLEFeedback;
 
-    ql_ble_gatt_uuid_s uuidTP1;                 /**SERVICE 2 CHARACTERISTICS */
+    ql_ble_gatt_uuid_s uuidTP1; /**SERVICE 2 CHARACTERISTICS */
     ql_ble_gatt_uuid_s uuidTP2;
 
     ql_ble_gatt_uuid_s uuidVin;
-    ql_ble_gatt_uuid_s uuidBatteryNumber;               /**SERVICE 3 CHARACTERISTICS */
+    ql_ble_gatt_uuid_s uuidBatteryNumber; /**SERVICE 3 CHARACTERISTICS */
     ql_ble_gatt_uuid_s VehicleSWVersions;
 
     ql_ble_gatt_uuid_s uuidODOWrite;
     ql_ble_gatt_uuid_s uuidHeadlamp;
     ql_ble_gatt_uuid_s uuidChildMode;
-    ql_ble_gatt_uuid_s uuidControl;           /**SERVICE 4 CHARACTERISTICS */
+    ql_ble_gatt_uuid_s uuidControl; /**SERVICE 4 CHARACTERISTICS */
     ql_ble_gatt_uuid_s uuidAltitude;
     ql_ble_gatt_uuid_s uuidMcuOTA;
 
-    ql_ble_gatt_uuid_s uuidOTAControl;                /**SERVICE 8 CHARACTERISTICS */
+    ql_ble_gatt_uuid_s uuidOTAControl; /**SERVICE 8 CHARACTERISTICS */
     ql_ble_gatt_uuid_s uuidOTAData;
 
     switch (idx)
@@ -756,7 +755,6 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_chara(int idx)
         ql_ble_gatt_add_chara(0x01, 0x04, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidMCUFeedback);
         ql_ble_gatt_add_chara(0x01, 0x05, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidBLEFeedback);
 
-
         break;
 
         /*************************Characteristic for service no 2******************************/
@@ -792,14 +790,14 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_chara(int idx)
                 .uuid_type = 1,
                 .uuid_l = {0x00},
                 .uuid_s = 0xFE02,
-            }; 
+            };
 
         VehicleSWVersions =
             (ql_ble_gatt_uuid_s){
                 .uuid_type = 1,
                 .uuid_l = {0x00},
                 .uuid_s = 0xFE03,
-            }; 
+            };
 
         ql_ble_gatt_add_chara(0x03, 0x08, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidVin);
         ql_ble_gatt_add_chara(0x03, 0x09, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidBatteryNumber);
@@ -821,7 +819,7 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_chara(int idx)
                 .uuid_l = {0x00},
                 .uuid_s = 0xFB01,
             };
-        
+
         uuidChildMode =
             (ql_ble_gatt_uuid_s){
                 .uuid_type = 1,
@@ -835,7 +833,7 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_chara(int idx)
                 .uuid_l = {0x00},
                 .uuid_s = 0xFB03,
             };
-        
+
         uuidAltitude =
             (ql_ble_gatt_uuid_s){
                 .uuid_type = 1,
@@ -857,7 +855,7 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_chara(int idx)
         ql_ble_gatt_add_chara(0x04, 0x15, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidAltitude);
         ql_ble_gatt_add_chara(0x04, 0x16, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidMcuOTA);
         break;
-    
+
     case 7:
         uuidOTAControl =
             (ql_ble_gatt_uuid_s){
@@ -886,9 +884,9 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_chara(int idx)
 
 ql_errcode_bt_e ql_ble_gatt_demo_add_chara_value(int idx)
 {
-     ql_errcode_bt_e ret = QL_BT_SUCCESS;
-    //ql_ble_gatt_uuid_s uuid;
-    //ql_ble_gatt_uuid_s uuidlive;
+    ql_errcode_bt_e ret = QL_BT_SUCCESS;
+    // ql_ble_gatt_uuid_s uuid;
+    // ql_ble_gatt_uuid_s uuidlive;
 
     ql_ble_gatt_add_chara_value(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidCore, sizeof(send_data), (unsigned char *)send_data);
     ql_ble_gatt_add_chara_value(0x01, 0x02, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidError, sizeof(send_data), (unsigned char *)send_data);
@@ -1057,16 +1055,16 @@ ql_errcode_bt_e ql_ble_demo_send_data()
     // ret = ql_ble_gatt_add_chara_value(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuid2, sizeof(error_data.error), (unsigned char *)error_data.error);
 
     QL_BLE_GATT_LOG("Live data%s", send_data);
-    //QL_BLE_GATT_LOG("Error data%s", error_data.error);
+    // QL_BLE_GATT_LOG("Error data%s", error_data.error);
 
     // for (size_t i = 0; i < 20; i++)
     // {
     //     QL_BLE_GATT_LOG("Live data info value%s", Live_Data.lds[i]);
     // }
-    
-    //QL_BLE_GATT_LOG("Live data info value%s", Live_Data.lds[0]);
 
-    //ret = ql_ble_send_notification_data(0, ble_server_hanle + 2, sizeof(Live_Data.lds), (unsigned char *)&Live_Data.lds[0]);
+    // QL_BLE_GATT_LOG("Live data info value%s", Live_Data.lds[0]);
+
+    // ret = ql_ble_send_notification_data(0, ble_server_hanle + 2, sizeof(Live_Data.lds), (unsigned char *)&Live_Data.lds[0]);
     ret = ql_ble_send_notification_data(0, ble_server_hanle + 2, sizeof(send_data), (unsigned char *)send_data);
 
     // for (size_t i = 0; i < 20; i++)
@@ -1075,7 +1073,7 @@ ql_errcode_bt_e ql_ble_demo_send_data()
     // }
     // ql_rtos_task_sleep_ms(1000);
 
-    //ret = ql_ble_send_notification_data(0, ble_server_hanle + 2, sizeof(error_data.error), error_data.error);
+    // ret = ql_ble_send_notification_data(0, ble_server_hanle + 2, sizeof(error_data.error), error_data.error);
 
     ql_rtos_task_sleep_ms(1000);
 
@@ -1121,8 +1119,8 @@ void setServiceCharacteristics()
 
 {
 
-    //static uint8_t SeqNumber = 0;
-    // unsigned char service_id[7] = {0};
+    // static uint8_t SeqNumber = 0;
+    //  unsigned char service_id[7] = {0};
 
     // switch (SeqNumber)
     // {
@@ -1203,11 +1201,10 @@ void setServiceCharacteristics()
         // {
         //     ql_ble_gatt_add_or_clear_service_complete(QL_BLE_SERVICE_ADD_COMPLETE, ql_ble_gatt_sys_service);
         // }
-        
+
         //
     }
     ql_ble_gatt_add_or_clear_service_complete(QL_BLE_SERVICE_ADD_COMPLETE, ql_ble_gatt_sys_service);
-
 
     // ql_ble_gatt_demo_add_service(0);
     // ql_ble_gatt_demo_add_chara(0);
@@ -1216,7 +1213,6 @@ void setServiceCharacteristics()
     // ql_ble_gatt_demo_add_service(1);
     // ql_ble_gatt_demo_add_chara(1);
     // ql_ble_gatt_demo_add_chara_value(1);
-    
 
     //  case 6:
     //     ql_ble_gatt_demo_add_service(6);
@@ -1225,17 +1221,16 @@ void setServiceCharacteristics()
     //     ql_ble_gatt_add_or_clear_service_complete(QL_BLE_SERVICE_ADD_COMPLETE, ql_ble_gatt_sys_service);
 
     //     break;
-        
+
     // default:
     //     break;
-    }
+}
 
-    // SeqNumber++;
-    // if (SeqNumber > 7)
-    // {
-    //     return ;//SeqNumber = 0;
-    // }
-
+// SeqNumber++;
+// if (SeqNumber > 7)
+// {
+//     return ;//SeqNumber = 0;
+// }
 
 ql_errcode_bt_e ql_ble_gatt_server_handle_event()
 {
@@ -1370,23 +1365,22 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
 
                 for (size_t i = 0; i < NUM_SERVICES; i++)
                 {
-                     ql_ble_gatt_demo_add_service(i);
+                    ql_ble_gatt_demo_add_service(i);
                 }
 
-                 for (size_t i = 0; i < NUM_SERVICES; i++)
+                for (size_t i = 0; i < NUM_SERVICES; i++)
                 {
-                     ql_ble_gatt_demo_add_chara(i);
+                    ql_ble_gatt_demo_add_chara(i);
                 }
 
-                 for (size_t i = 0; i < NUM_SERVICES; i++)
+                for (size_t i = 0; i < NUM_SERVICES; i++)
                 {
-                     ql_ble_gatt_demo_add_chara_value(i);
+                    ql_ble_gatt_demo_add_chara_value(i);
                 }
-                
 
                 ql_ble_gatt_add_or_clear_service_complete(QL_BLE_SERVICE_ADD_COMPLETE, ql_ble_gatt_sys_service);
 
-                //setServiceCharacteristics();
+                // setServiceCharacteristics();
 
                 if (ql_ble_gatt_sys_service == QL_RESERVED_SERVICE_DEL)
                 {
@@ -1667,6 +1661,7 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
 
         /*********************************START SENDING DATA HERE WITH DELAY*****************************/
         ql_ble_demo_send_data();
+
         return ret;
     QL_BLE_ADV_DEMO_STOP:
 #if QL_BLE_DEMO_LOW_POWER_USE
@@ -2105,7 +2100,7 @@ ql_errcode_bt_e ql_ble_gatt_demo_read_chara_value_by_uuid()
         {
             .uuid_type = 1,
             .uuid_l = {0x00},
-            .uuid_s = 0,
+            .uuid_s = 0xFB02,
         };
 #if 0
     QL_BT_LOG("uuid=%x,start_handle=%x,end_handle=%x", ql_ble_gatt_characteristic[ql_ble_gatt_cur_chara].uuid, ql_ble_gatt_target_service.start_handle, 
