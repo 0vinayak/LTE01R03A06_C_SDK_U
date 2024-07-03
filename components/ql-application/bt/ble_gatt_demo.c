@@ -162,12 +162,12 @@ ql_ble_sys_service_mode_e ql_ble_gatt_sys_service = QL_RESERVED_SERVICE_KEEP; //
 // union LDSUnion Live_Data;
 // union ErrorUnion error_data;
 
-unsigned char send_data[20] = {1,2, 3, 4, 5, 6, 7,8,9,10,11,12,13,14,15,16,17,18,19,20};
-//int i;
-// for (int i=0; i<sizeof(send_data)-1; i++)
-// {
-//     send_data[i] = '3';
-// }
+unsigned char send_data[20] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+// int i;
+//  for (int i=0; i<sizeof(send_data)-1; i++)
+//  {
+//      send_data[i] = '3';
+//  }
 
 #if QL_BLE_DEMO_LOW_POWER_USE
 int bt_ble_power_lock = 0;
@@ -610,7 +610,6 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_service(int idx)
 
     default:
         break;
-
     }
 
     // ql_ble_gatt_uuid_s uuid =
@@ -635,7 +634,7 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_service(int idx)
 
 ql_errcode_bt_e ql_ble_gatt_demo_add_chara(int idx)
 {
-     ql_errcode_bt_e ret = QL_BT_SUCCESS;
+    ql_errcode_bt_e ret = QL_BT_SUCCESS;
     ql_ble_gatt_uuid_s uuid;
     ql_ble_gatt_uuid_s uuidlive;
 
@@ -772,7 +771,7 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_chara(int idx)
     default:
         break;
     }
-    
+
     // ql_ble_gatt_uuid_s uuid =
     // {
     //     .uuid_type = 1,
@@ -786,10 +785,9 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_chara(int idx)
 
 ql_errcode_bt_e ql_ble_gatt_demo_add_chara_value(int idx)
 {
-     ql_errcode_bt_e ret = QL_BT_SUCCESS;
-    //ql_ble_gatt_uuid_s uuid;
+    ql_errcode_bt_e ret = QL_BT_SUCCESS;
+    // ql_ble_gatt_uuid_s uuid;
     ql_ble_gatt_uuid_s uuidlive;
-
 
     switch (idx)
     {
@@ -834,10 +832,10 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_chara_value(int idx)
         // ret = ql_ble_gatt_add_chara_value(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuid, sizeof(Live_Data.lds), (unsigned char *)Live_Data.lds);
         // ret = ql_ble_gatt_add_chara_value(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuid, sizeof(error_data.error), (unsigned char *)error_data.error);
 
-        //ql_ble_gatt_add_chara_value(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidlive, sizeof(Live_Data.lds), (unsigned char *)Live_Data.lds);
+        // ql_ble_gatt_add_chara_value(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidlive, sizeof(Live_Data.lds), (unsigned char *)Live_Data.lds);
         ql_ble_gatt_add_chara_value(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidlive, sizeof(send_data), (unsigned char *)send_data);
 
-        //ql_ble_gatt_add_chara_value(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuid, sizeof(error_data.error), (unsigned char *)error_data.error);
+        // ql_ble_gatt_add_chara_value(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuid, sizeof(error_data.error), (unsigned char *)error_data.error);
         break;
 
     default:
@@ -999,18 +997,17 @@ ql_errcode_bt_e ql_ble_demo_send_data()
     // ret = ql_ble_gatt_add_chara_value(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuid2, sizeof(error_data.error), (unsigned char *)error_data.error);
 
     QL_BLE_GATT_LOG("Live data%s", send_data);
-    //QL_BLE_GATT_LOG("Error data%s", error_data.error);
+    // QL_BLE_GATT_LOG("Error data%s", error_data.error);
 
     // for (size_t i = 0; i < 20; i++)
     // {
     //     QL_BLE_GATT_LOG("Live data info value%s", Live_Data.lds[i]);
     // }
-    
-    //QL_BLE_GATT_LOG("Live data info value%s", Live_Data.lds[0]);
 
-    //ret = ql_ble_send_notification_data(0, ble_server_hanle + 2, sizeof(Live_Data.lds), (unsigned char *)&Live_Data.lds[0]);
+    // QL_BLE_GATT_LOG("Live data info value%s", Live_Data.lds[0]);
+
+    // ret = ql_ble_send_notification_data(0, ble_server_hanle + 2, sizeof(Live_Data.lds), (unsigned char *)&Live_Data.lds[0]);
     ret = ql_ble_send_notification_data(0, ble_server_hanle + 2, sizeof(send_data), (unsigned char *)send_data);
-
 
     for (size_t i = 0; i < 20; i++)
     {
@@ -1018,7 +1015,7 @@ ql_errcode_bt_e ql_ble_demo_send_data()
     }
     // ql_rtos_task_sleep_ms(1000);
 
-    //ret = ql_ble_send_notification_data(0, ble_server_hanle + 2, sizeof(error_data.error), error_data.error);
+    // ret = ql_ble_send_notification_data(0, ble_server_hanle + 2, sizeof(error_data.error), error_data.error);
 
     ql_rtos_task_sleep_ms(1000);
 
