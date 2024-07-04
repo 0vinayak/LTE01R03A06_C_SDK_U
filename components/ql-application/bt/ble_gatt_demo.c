@@ -189,6 +189,8 @@ ql_ble_gatt_uuid_s uuidOTAControl; /**SERVICE 8 CHARACTERISTICS */
 ql_ble_gatt_uuid_s uuidOTAData;
 
 unsigned char send_data[20] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+unsigned char childLockFlag = 7;
 // int i;
 //  for (int i=0; i<sizeof(send_data)-1; i++)
 //  {
@@ -1598,9 +1600,10 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
             {
                 QL_BLE_GATT_LOG("ble recv sucess");
 
-                // QL_BLE_GATT_LOG("test_event->id=%d,param1=%s, param2=%s, param3=%s ", test_event.id, test_event.param1, test_event.param2, test_event.param3);
+                QL_BLE_GATT_LOG("test_event->id=%d,param1=%s, param2=%s, param3=%s ", test_event.id, test_event.param1, test_event.param2, test_event.param3);
                 ql_ble_gatt_data_s *ble_data = (ql_ble_gatt_data_s *)test_event.param2;
-                QL_BLE_GATT_LOG("ble_data->len=%d,data=%s, uuid_s=%s, att_handle=%s ", ble_data->len, &ble_data->data, ble_data->uuid_s, ble_data->att_handle);
+
+                // QL_BLE_GATT_LOG("ble_data->len=%d,data=%c, uuid_s=%hu, att_handle=%hu", ble_data->len, &ble_data->data, ble_data->uuid_s, ble_data->att_handle);
 
                 if (ble_data && ble_data->data)
                 {
@@ -1608,7 +1611,32 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                     if (data)
                     {
                         memcpy(data, ble_data->data, ble_data->len);
-                        QL_BLE_GATT_LOG("ble_data->len=%d,data=%s", ble_data->len, data);
+                        for (size_t i = 0; i < ble_data->len; i++)
+                        {
+                            QL_BLE_GATT_LOG("ble_data->len=%d,data=%02x, uuid_s=%u", ble_data->len, data[i], ble_data->uuid_s);
+                        }
+                        for (size_t i = 0; i < ble_data->len; i++)
+                        {
+                            QL_BLE_GATT_LOG("data=%02x\n", data[i]);
+                        }
+                        if (data[0] > 0x00)
+                        {
+                            childLockFlag = 1;
+                        }
+                        else
+                        {
+                            childLockFlag = 0;
+                        }
+
+                        // if (ble_data->uuid_s == 33435)
+                        // {
+                        //     childLockFlag = data[7];
+                        // }
+                        QL_BLE_GATT_LOG("child lock flag=%i", childLockFlag);
+                        childLockFlag = 0;
+
+                        // QL_BLE_GATT_LOG("ble_data->len=%d,data=%02x, uuid_s=%u", ble_data->len, data[i], ble_data->uuid_s);
+                        // QL_BLE_GATT_LOG("ble_data->len=%d,data=%s, uuid_s=%hu", ble_data->len, data, ble_data->uuid_s);
                         free(data);
                     }
                     free(ble_data->data);
