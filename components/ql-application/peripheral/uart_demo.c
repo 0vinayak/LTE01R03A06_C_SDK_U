@@ -30,6 +30,8 @@ WHEN			  WHO		  WHAT, WHERE, WHY
 #include "ql_pin_cfg.h"
 #include "ql_usb.h"
 
+#include "ble_defs.h"
+
 /*===========================================================================
  *Definition
  ===========================================================================*/
@@ -102,7 +104,7 @@ static void ql_uart_demo_thread(void *param)
     ql_uart_config_s uart_cfg = {0};
     int write_len = 0;
     ql_uart_tx_status_e tx_status;
-    unsigned char data[] = "childLockFlag\r\n";
+    // unsigned char  unsigned char data[] = "childLockFlag\r\n";
 
     /***********************************************************
     Note start:
@@ -155,7 +157,7 @@ static void ql_uart_demo_thread(void *param)
 
         while (1)
         {
-            write_len = ql_uart_write(QL_UART_PORT_1, data, strlen((char *)data));
+            write_len = ql_uart_write(QL_UART_PORT_1, &childLockFlag, 1);
             QL_UART_DEMO_LOG("write_len:%d", write_len);
             ql_uart_get_tx_fifo_status(QL_UART_PORT_1, &tx_status);
             QL_UART_DEMO_LOG("tx_status:%d", tx_status);
