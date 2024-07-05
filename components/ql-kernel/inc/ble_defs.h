@@ -28,7 +28,7 @@
 #define VIS_NUMBER_OF_DATA 25
 #define VCS_NUMBER_OF_DATA 7
 
-extern unsigned char childLockFlag;
+// extern unsigned char childLockFlag;
 
 #pragma pack(1)
 typedef struct Live_data_st

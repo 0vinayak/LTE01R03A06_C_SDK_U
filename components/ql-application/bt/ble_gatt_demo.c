@@ -190,7 +190,7 @@ ql_ble_gatt_uuid_s uuidOTAData;
 
 unsigned char send_data[20] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-unsigned char childLockFlag = 7;
+unsigned char childLockFlag[1] = {'1'};
 // int i;
 //  for (int i=0; i<sizeof(send_data)-1; i++)
 //  {
@@ -1621,19 +1621,24 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                         }
                         if (data[0] > 0x00)
                         {
-                            childLockFlag = 1;
+                            childLockFlag[0] = '1';
                         }
                         else
                         {
-                            childLockFlag = 0;
+                            childLockFlag[0] = '0';
                         }
 
                         // if (ble_data->uuid_s == 33435)
                         // {
                         //     childLockFlag = data[7];
                         // }
-                        QL_BLE_GATT_LOG("child lock flag=%i", childLockFlag);
-                        childLockFlag = 0;
+                        for (size_t i = 0; i < ble_data->len; i++)
+                        {
+                            QL_BLE_GATT_LOG("child lock flag address=%02x\n", &childLockFlag[0]);
+                        }
+
+                        QL_BLE_GATT_LOG("child lock flag=%i", childLockFlag[0]);
+                        // childLockFlag[0] = '0';
 
                         // QL_BLE_GATT_LOG("ble_data->len=%d,data=%02x, uuid_s=%u", ble_data->len, data[i], ble_data->uuid_s);
                         // QL_BLE_GATT_LOG("ble_data->len=%d,data=%s, uuid_s=%hu", ble_data->len, data, ble_data->uuid_s);

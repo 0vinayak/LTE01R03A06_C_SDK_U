@@ -97,14 +97,19 @@ void ql_uart_notify_cb(uint32 ind_type, ql_uart_port_number_e port, uint32 size)
     recv_buff = NULL;
 }
 
-static void ql_uart_demo_thread(void *param)
+extern unsigned char childLockFlag[1];
+
+static void
+ql_uart_demo_thread(void *param)
 {
     int ret = 0;
     QlOSStatus err = 0;
     ql_uart_config_s uart_cfg = {0};
-    int write_len = 0;
+    // int write_len;
     ql_uart_tx_status_e tx_status;
-    unsigned char data[] = "child lock flag\r\n";
+    // unsigned char testdata = 'c';
+
+    // unsigned char childLock = 0;
 
     /***********************************************************
     Note start:
@@ -157,11 +162,15 @@ static void ql_uart_demo_thread(void *param)
 
         while (1)
         {
-            write_len = ql_uart_write(QL_UART_PORT_1, data, strlen((char *)data));
-            QL_UART_DEMO_LOG("write_len:%d", write_len);
+            static int count = 0;
+            // childLock = childLockFlag[0];
+            ql_uart_write(QL_UART_PORT_1, (unsigned char *)0x80FA021D, 1); // 0x80FA021D,   strlen((unsigned char *)childLockFlag)
+            // QL_UART_DEMO_LOG("times uart write is called:%d", count);
+            //  QL_UART_DEMO_LOG("write_len:%d, childLock:%d,childLockFlag:%d", write_len, childLock, childLockFlag[0]);
             ql_uart_get_tx_fifo_status(QL_UART_PORT_1, &tx_status);
             QL_UART_DEMO_LOG("tx_status:%d", tx_status);
             ql_rtos_task_sleep_ms(2000); // decide this
+            count++;
         }
     }
 
