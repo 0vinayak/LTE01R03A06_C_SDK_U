@@ -466,7 +466,7 @@ static void ql_init_demo_thread(void *param)
 
 #ifdef QL_APP_FEATURE_UART
     ql_uart_app_init();
-    // ql_uart_rb_app_init();
+    //  ql_uart_rb_app_init();
 #endif
 
 #ifdef QL_APP_FEATURE_RS485
