@@ -35,8 +35,8 @@ WHEN              WHO         WHAT, WHERE, WHY
 static ql_task_t mqtt_task = NULL;
 
 #define MQTT_CLIENT_IDENTITY        "quectel_01"
-#define MQTT_CLIENT_USER            ""
-#define MQTT_CLIENT_PASS            ""
+#define MQTT_CLIENT_USER "test"
+#define MQTT_CLIENT_PASS "3Motorad"
 
 
 #define MQTT_CLIENT_ONENET_PRODUCTID             "417661"
@@ -46,15 +46,15 @@ static ql_task_t mqtt_task = NULL;
 
 #define USE_CRT_BUFFER 0
 
-#define MQTT_CLIENT_QUECTEL_URL                  "mqtt://220.180.239.212:8306"
-#define MQTT_CLIENT_ONENET_URL                   "mqtt://mqtts.heclouds.com:1883" //onenet 的ip地址
+#define MQTT_CLIENT_QUECTEL_URL "mqtts://mqtt.emotorad.com:8883"
+#define MQTT_CLIENT_ONENET_URL "mqtts://mqtt.emotorad.com:8883" // onenet 的ip地址
 
 #if USE_CRT_BUFFER
 #define MQTT_CLIENT_QUECTEL_SSL_URL              "mqtts://112.31.84.164:8308"
 #else
-#define MQTT_CLIENT_QUECTEL_SSL_URL              "mqtts://220.180.239.212:8307"
+#define MQTT_CLIENT_QUECTEL_SSL_URL "mqtts://mqtt.emotorad.com:8883"
 #endif
-#define MQTT_CLIENT_ONENET_SSL_URL               "mqtts://mqttstls.heclouds.com:8883"//onenet 的ip地址
+#define MQTT_CLIENT_ONENET_SSL_URL "mqtts://mqtt.emotorad.com:8883" // onenet 的ip地址
 
 // publist 的内容
 #define MQTT_PUB_MSG0 "{\"id\": 000000,\"dp\": {\"temperatrue\": [{\"v\": 0.001,}],\"power\": [{\"v\": 0.001,}]}}"
@@ -190,7 +190,8 @@ static void mqtt_inpub_data_cb(mqtt_client_t *client, void *arg, int pkt_id, con
 	QL_MQTT_LOG("payload: %s", payload);
 }
 
-static void mqtt_disconnect_result_cb(mqtt_client_t *client, void *arg,int err){
+static void mqtt_disconnect_result_cb(mqtt_client_t *client, void *arg, int err)
+{
 	QL_MQTT_LOG("err: %d", err);
 	
 	ql_rtos_semaphore_release(mqtt_semp);
@@ -205,9 +206,9 @@ static void mqtt_app_thread(void * arg)
 	mqtt_client_t  mqtt_cli;
 	uint8_t nSim = 0;
 	uint16_t sim_cid;
-    struct mqtt_connect_client_info_t  client_info = {0};
-    char *token = NULL;
-    int is_user_onenet = 1;
+	struct mqtt_connect_client_info_t client_info = {0};
+	char *token = NULL;
+	int is_user_onenet = 0;
 	ql_rtos_semaphore_create(&mqtt_semp, 0);
 	ql_rtos_task_sleep_s(10);
 
@@ -233,7 +234,7 @@ static void mqtt_app_thread(void * arg)
 	ql_set_data_call_asyn_mode(nSim, profile_idx, 0);
 
 	QL_MQTT_LOG("===start data call====");
-	ret=ql_start_data_call(nSim, profile_idx, QL_PDP_TYPE_IP, "uninet", NULL, NULL, 0); 
+	ret = ql_start_data_call(nSim, profile_idx, QL_PDP_TYPE_IP, "airtelgprs.com", NULL, NULL, 0);
 	QL_MQTT_LOG("===data call result:%d", ret);
 	if(ret != 0){
 		QL_MQTT_LOG("====data call failure!!!!=====");
@@ -412,64 +413,76 @@ static void mqtt_app_thread(void * arg)
 
 		ql_mqtt_set_inpub_callback(&mqtt_cli, mqtt_inpub_data_cb, NULL);
 
-        if(is_user_onenet == 1)
-        {
-            if(is_user_onenet == 1)
-            {
-                if(ql_mqtt_sub_unsub(&mqtt_cli, "$sys/417661/test_led/dp/post/json/+", 1, mqtt_requst_result_cb,NULL, 1) == MQTTCLIENT_WOUNDBLOCK){
-                	QL_MQTT_LOG("======wait subscrible result");
-                	ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
-                }
-                if(ql_mqtt_publish(&mqtt_cli, "$sys/417661/test_led/dp/post/json",MQTT_PUB_MSG0, strlen(MQTT_PUB_MSG0), 0, 0, mqtt_requst_result_cb,NULL) == MQTTCLIENT_WOUNDBLOCK){
-                	QL_MQTT_LOG("======wait publish result");
-                	ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
-                }
-                if(ql_mqtt_publish(&mqtt_cli, "$sys/417661/test_led/dp/post/json", MQTT_PUB_MSG1, strlen(MQTT_PUB_MSG1), 1, 0, mqtt_requst_result_cb,NULL) == MQTTCLIENT_WOUNDBLOCK){
-                	QL_MQTT_LOG("======wait publish result");
-                	ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
-                }
-                //  onenet 平台不支持qos2
-                if(ql_mqtt_sub_unsub(&mqtt_cli,"$sys/417661/test_led/dp/post/json/+", 1, mqtt_requst_result_cb,NULL, 0) == MQTTCLIENT_WOUNDBLOCK){
-                	QL_MQTT_LOG("=====wait unsubscrible result");
-                	ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
-                }
-            }
-        }
-        else{
-    		while(test_num < 10 && mqtt_connected == 1){
-    			if(ql_mqtt_sub_unsub(&mqtt_cli, "test", 1, mqtt_requst_result_cb,NULL, 1) == MQTTCLIENT_WOUNDBLOCK){
-    				QL_MQTT_LOG("======wait subscrible result");
-    				ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
-    			}
+		if (is_user_onenet == 1)
+		{
+			if (is_user_onenet == 1)
+			{
+				if (ql_mqtt_sub_unsub(&mqtt_cli, "topic/telemetry/gps/live", 1, mqtt_requst_result_cb, NULL, 1) == MQTTCLIENT_WOUNDBLOCK)
+				{
+					QL_MQTT_LOG("======wait subscrible result");
+					ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
+				}
+				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/gps/live", MQTT_PUB_MSG0, strlen(MQTT_PUB_MSG0), 0, 1, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
+				{
+					QL_MQTT_LOG("======wait publish result");
+					ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
+				}
+				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/gps/live", MQTT_PUB_MSG1, strlen(MQTT_PUB_MSG1), 0, 1, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
+				{
+					QL_MQTT_LOG("======wait publish result");
+					ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
+				}
+				//  onenet 平台不支持qos2
+				if (ql_mqtt_sub_unsub(&mqtt_cli, "topic/telemetry/gps/live", 1, mqtt_requst_result_cb, NULL, 0) == MQTTCLIENT_WOUNDBLOCK)
+				{
+					QL_MQTT_LOG("=====wait unsubscrible result");
+					ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
+				}
+			}
+		}
+		else
+		{
+			while (test_num < 10 && mqtt_connected == 1)
+			{
+				if (ql_mqtt_sub_unsub(&mqtt_cli, "topic/telemetry/gps/live", 1, mqtt_requst_result_cb, NULL, 1) == MQTTCLIENT_WOUNDBLOCK)
+				{
+					QL_MQTT_LOG("======wait subscrible result");
+					ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
+				}
 
-    			if(ql_mqtt_publish(&mqtt_cli, "test", "hi, mqtt qos 0", strlen("hi, mqtt qos 0"), 0, 0, mqtt_requst_result_cb,NULL) == MQTTCLIENT_WOUNDBLOCK){
-    				QL_MQTT_LOG("======wait publish result");
-    				ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
-    			}
+				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/gps/live", "hi, mqtt qos 0", strlen("hi, mqtt qos 0"), 0, 0, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
+				{
+					QL_MQTT_LOG("======wait publish result");
+					ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
+				}
 
-    			if(ql_mqtt_publish(&mqtt_cli, "test", "hi, mqtt qos 1", strlen("hi, mqtt qos 1"), 1, 0, mqtt_requst_result_cb,NULL) == MQTTCLIENT_WOUNDBLOCK){
-    				QL_MQTT_LOG("======wait publish result");
-    				ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
-    			}
+				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/gps/live", "hi, mqtt qos 1", strlen("hi, mqtt qos 1"), 1, 0, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
+				{
+					QL_MQTT_LOG("======wait publish result");
+					ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
+				}
 
-    			if(ql_mqtt_publish(&mqtt_cli, "test", "hi, mqtt qos 2", strlen("hi, mqtt qos 2"), 2, 0, mqtt_requst_result_cb,NULL) == MQTTCLIENT_WOUNDBLOCK){
-    				QL_MQTT_LOG("======wait publish result");
-    				ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
-    			}
-    			
-    			if(ql_mqtt_sub_unsub(&mqtt_cli, "test", 1, mqtt_requst_result_cb,NULL, 0) == MQTTCLIENT_WOUNDBLOCK){
-    				QL_MQTT_LOG("=====wait unsubscrible result");
-    				ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
-    			}
-    			test_num++;
-    			ql_rtos_task_sleep_ms(500);
-    		}
-        }
-        if(mqtt_connected == 1 && ql_mqtt_disconnect(&mqtt_cli, mqtt_disconnect_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK){
-            QL_MQTT_LOG("=====wait disconnect result");
-            ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
-        }
-		QL_MQTT_LOG("==============mqtt_client_test[%d] end=======%x=========\n",run_num,&mqtt_cli);
+				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/gps/live", "hi, mqtt qos 2", strlen("hi, mqtt qos 2"), 2, 0, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
+				{
+					QL_MQTT_LOG("======wait publish result");
+					ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
+				}
+
+				if (ql_mqtt_sub_unsub(&mqtt_cli, "topic/telemetry/gps/live", 1, mqtt_requst_result_cb, NULL, 0) == MQTTCLIENT_WOUNDBLOCK)
+				{
+					QL_MQTT_LOG("=====wait unsubscrible result");
+					ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
+				}
+				test_num++;
+				ql_rtos_task_sleep_ms(500);
+			}
+		}
+		if (mqtt_connected == 1 && ql_mqtt_disconnect(&mqtt_cli, mqtt_disconnect_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
+		{
+			QL_MQTT_LOG("=====wait disconnect result");
+			ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
+		}
+		QL_MQTT_LOG("==============mqtt_client_test[%d] end=======%x=========\n", run_num, &mqtt_cli);
 		ql_mqtt_client_deinit(&mqtt_cli);
 		mqtt_connected = 0;
 		run_num++;
