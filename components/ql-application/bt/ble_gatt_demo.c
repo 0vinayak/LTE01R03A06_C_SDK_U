@@ -190,7 +190,18 @@ ql_ble_gatt_uuid_s uuidOTAData;
 
 unsigned char send_data[20] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
+unsigned char childMode[1] = {1};
 unsigned char childLockFlag[1] = {'1'};
+
+AppReceive characteristicInd = CHILDMODE;
+struct AppReceiveInfo AppReceiveInfo;
+// = {
+
+//     .odo_data = 100;
+// }
+// ;
+
+// unsigned char childLockFlag[1] = {'1'};
 // int i;
 //  for (int i=0; i<sizeof(send_data)-1; i++)
 //  {
@@ -1611,6 +1622,7 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                     if (data)
                     {
                         memcpy(data, ble_data->data, ble_data->len);
+
                         for (size_t i = 0; i < ble_data->len; i++)
                         {
                             QL_BLE_GATT_LOG("ble_data->len=%d,data=%02x, uuid_s=%u", ble_data->len, data[i], ble_data->uuid_s);
@@ -1619,14 +1631,58 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                         {
                             QL_BLE_GATT_LOG("data=%02x\n", data[i]);
                         }
-                        if (data[0] > 0x00)
+
+                        switch (ble_data->uuid_s)
                         {
-                            childLockFlag[0] = '1';
+                        case 33435:
+                            characteristicInd = ODOWRITE;
+                            AppReceiveInfo.odo_data = (uint32_t)*data;
+                            break;
+
+                        case 33547:
+                            characteristicInd = HEADLAMP;
+                            AppReceiveInfo.headLamp = (bool)*data;
+                            break;
+
+                        case 33659:
+
+                            characteristicInd = CHILDMODE;
+                            AppReceiveInfo.childMode = (uint8_t)*data;
+                            break;
+
+                        case 33771:
+                            characteristicInd = CONTROL;
+                            for (size_t i = 0; i < sizeof(data); i++)
+                            {
+                                AppReceiveInfo.controlVars[i] = data[i];
+                            }
+                            break;
+
+                        case 33883:
+                            characteristicInd = ALTITUDE;
+                            AppReceiveInfo.Altitude = (uint16_t)*data;
+                            break;
+
+                        case 33995:
+                            characteristicInd = MCU_OTA_RX;
+                            for (size_t i = 0; i < sizeof(data); i++)
+                            {
+                                AppReceiveInfo.McuOta[i] = data[i];
+                            }
+                            break;
+
+                        default:
+                            break;
                         }
-                        else
-                        {
-                            childLockFlag[0] = '0';
-                        }
+
+                        // if (data[0] > 0x00)
+                        // {
+                        //     childLockFlag[0] = '1';
+                        // }
+                        // else
+                        // {
+                        //     childLockFlag[0] = '0';
+                        // }
 
                         // if (ble_data->uuid_s == 33435)
                         // {

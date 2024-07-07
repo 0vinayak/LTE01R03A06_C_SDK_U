@@ -31,6 +31,32 @@
 // extern unsigned char childLockFlag;
 
 #pragma pack(1)
+// childLockFlag
+
+typedef enum AppReceive
+{
+    ODOWRITE = 0,
+    HEADLAMP,
+    CHILDMODE,
+    CONTROL,
+    ALTITUDE,
+    MCU_OTA_RX
+} AppReceive;
+
+extern AppReceive characteristicInd;
+
+struct AppReceiveInfo
+{
+    uint32_t odo_data;
+    bool headLamp;
+    uint8_t childMode;
+    uint8_t controlVars[10];
+    uint16_t Altitude;
+    uint8_t McuOta[20];
+} AppReceiveInfo;
+
+extern struct AppReceiveInfo AppReceiveInfo;
+
 typedef struct Live_data_st
 {
     uint8_t vehicle_speed_value;

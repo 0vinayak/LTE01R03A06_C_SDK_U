@@ -164,9 +164,38 @@ ql_uart_demo_thread(void *param)
         {
             static int count = 0;
             // childLock = childLockFlag[0];
-            ql_uart_write(QL_UART_PORT_1, (unsigned char *)0x80FA021D, 1); // 0x80FA021D,   strlen((unsigned char *)childLockFlag)
-            // QL_UART_DEMO_LOG("times uart write is called:%d", count);
-            //  QL_UART_DEMO_LOG("write_len:%d, childLock:%d,childLockFlag:%d", write_len, childLock, childLockFlag[0]);
+            switch (characteristicInd)
+            {
+            case ODOWRITE:
+                ql_uart_write(QL_UART_PORT_1, (unsigned char *)&AppReceiveInfo.odo_data, sizeof(AppReceiveInfo.odo_data)); // 0x80FA021D,   strlen((unsigned char *)childLockFlag)
+                break;
+
+            case HEADLAMP:
+                ql_uart_write(QL_UART_PORT_1, (unsigned char *)&AppReceiveInfo.headLamp, sizeof(AppReceiveInfo.headLamp));
+                break;
+
+            case CHILDMODE:
+                ql_uart_write(QL_UART_PORT_1, (unsigned char *)&AppReceiveInfo.childMode, sizeof(AppReceiveInfo.childMode));
+                break;
+
+            case CONTROL:
+                ql_uart_write(QL_UART_PORT_1, (unsigned char *)AppReceiveInfo.controlVars, sizeof(AppReceiveInfo.controlVars));
+                break;
+
+            case ALTITUDE:
+                ql_uart_write(QL_UART_PORT_1, (unsigned char *)&AppReceiveInfo.Altitude, sizeof(AppReceiveInfo.Altitude));
+                break;
+
+            case MCU_OTA_RX:
+                ql_uart_write(QL_UART_PORT_1, (unsigned char *)AppReceiveInfo.McuOta, sizeof(AppReceiveInfo.McuOta));
+                break;
+
+            default:
+                break;
+            }
+            // ql_uart_write(QL_UART_PORT_1, (unsigned char *)0x80FA021D, 1); // 0x80FA021D,   strlen((unsigned char *)childLockFlag)
+            //  QL_UART_DEMO_LOG("times uart write is called:%d", count);
+            //   QL_UART_DEMO_LOG("write_len:%d, childLock:%d,childLockFlag:%d", write_len, childLock, childLockFlag[0]);
             ql_uart_get_tx_fifo_status(QL_UART_PORT_1, &tx_status);
             QL_UART_DEMO_LOG("tx_status:%d", tx_status);
             ql_rtos_task_sleep_ms(2000); // decide this
