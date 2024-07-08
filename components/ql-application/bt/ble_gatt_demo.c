@@ -1656,8 +1656,31 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
             {
                 QL_BLE_GATT_LOG("ble recv sucess");
 
-                QL_BLE_GATT_LOG("test_event->id=%d,param1=%s, ble data param2 on receive=%u,param3=%s ", test_event.id, test_event.param1, test_event.param2, test_event.param3);
+                QL_BLE_GATT_LOG("test_event->id=%u,param1=%s, ble data param2 on receive=%u,param3=%s ", test_event.id, test_event.param1, test_event.param2, test_event.param3);
                 ql_ble_gatt_data_s *ble_data = (ql_ble_gatt_data_s *)test_event.param2;
+                // ql_ble_gatt_data_s *raw_data = 0; //(ql_ble_gatt_data_s *)test_event.param2;
+                uint8_t DataSize = 2 + (ble_data->len) + 2 + QL_BLE_LONG_UUID_SIZE + 2;
+
+                ql_ble_gatt_data_s *mem_data = calloc(1, ble_data->len + 1);
+                // memcpy(raw_data, (ql_ble_gatt_data_s *)test_event.param2, sizeof(ql_ble_gatt_data_s));
+
+                // typedef struct
+                // {
+                //     unsigned short len; // max 244
+                //     unsigned char *data;
+                //     unsigned short uuid_s;
+                //     unsigned char uuid_l[QL_BLE_LONG_UUID_SIZE];
+                //     unsigned short att_handle;
+                // } ql_ble_gatt_data_s;
+
+                // uint8_t *DataPtr = (uint8_t *)ble_data;
+
+                for (size_t idx = 0; idx < DataSize; idx++)
+                {
+                    QL_BLE_GATT_LOG("DataByte is = %d, and Value is =%x", idx, *(uint8_t *)(ble_data + idx));
+                }
+
+                // free(mem_data);
 
                 QL_BLE_GATT_LOG("ble_data->length=%d,data=%c, uuid_s=%hu, att_handle=%hu", ble_data->len, &ble_data->data, ble_data->uuid_s, ble_data->att_handle);
 
@@ -1676,6 +1699,12 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                         {
                             QL_BLE_GATT_LOG("data=%02x\n", data[i]);
                         }
+                        for (size_t i = 0; i < QL_BLE_LONG_UUID_SIZE; i++)
+                        {
+                            QL_BLE_GATT_LOG("uuid data=%u\n", ble_data->uuid_l[i]);
+                        }
+
+                        free(mem_data);
 
                         switch (ble_data->uuid_s)
                         {
@@ -1781,7 +1810,7 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
             {
                 QL_BLE_GATT_LOG("ble recv sucess");
                 ql_ble_gatt_data_s *ble_data = (ql_ble_gatt_data_s *)test_event.param2;
-                QL_BLE_GATT_LOG("ble_data->length02=%d,data02=%c, uuid_s02=%hu, att_handle02=%hu", ble_data->len, &ble_data->data, ble_data->uuid_s, ble_data->att_handle);
+                // QL_BLE_GATT_LOG("ble_data->length02=%d,data02=%c, uuid_s02=%hu, att_handle02=%hu", ble_data->len, &ble_data->data, ble_data->uuid_s, ble_data->att_handle);
 
                 if (ble_data && ble_data->data)
                 {
