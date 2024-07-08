@@ -1306,6 +1306,9 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
         }
 
         status = (QL_BT_STATUS)(test_event.param1);
+
+        QL_BLE_GATT_LOG("test_event-> initial id=%u,initial param1=%u, initial param2=%u,initial param3=%u ", test_event.id, test_event.param1, test_event.param2, test_event.param3);
+
         switch (test_event.id)
         {
         case QUEC_BT_START_STATUS_IND:
@@ -1653,10 +1656,10 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
             {
                 QL_BLE_GATT_LOG("ble recv sucess");
 
-                QL_BLE_GATT_LOG("test_event->id=%d,param1=%s, ble data param2=%u,param3=%s ", test_event.id, test_event.param1, test_event.param2, test_event.param3);
+                QL_BLE_GATT_LOG("test_event->id=%d,param1=%s, ble data param2 on receive=%u,param3=%s ", test_event.id, test_event.param1, test_event.param2, test_event.param3);
                 ql_ble_gatt_data_s *ble_data = (ql_ble_gatt_data_s *)test_event.param2;
 
-                // QL_BLE_GATT_LOG("ble_data->len=%d,data=%c, uuid_s=%hu, att_handle=%hu", ble_data->len, &ble_data->data, ble_data->uuid_s, ble_data->att_handle);
+                QL_BLE_GATT_LOG("ble_data->length=%d,data=%c, uuid_s=%hu, att_handle=%hu", ble_data->len, &ble_data->data, ble_data->uuid_s, ble_data->att_handle);
 
                 if (ble_data && ble_data->data)
                 {
@@ -1772,11 +1775,14 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
 
         case QUEC_BLE_GATT_RECV_READ_IND:
         {
+
             // client read characterisc
             if (QL_BT_STATUS_SUCCESS == status)
             {
                 QL_BLE_GATT_LOG("ble recv sucess");
                 ql_ble_gatt_data_s *ble_data = (ql_ble_gatt_data_s *)test_event.param2;
+                QL_BLE_GATT_LOG("ble_data->length02=%d,data02=%c, uuid_s02=%hu, att_handle02=%hu", ble_data->len, &ble_data->data, ble_data->uuid_s, ble_data->att_handle);
+
                 if (ble_data && ble_data->data)
                 {
                     unsigned char *data = calloc(1, ble_data->len + 1);
@@ -1848,6 +1854,7 @@ static void ql_ble_notify_cb(void *ind_msg_buf, void *ctx)
             test_event.id = event_temp->id;
             test_event.param2 = (uint32)ql_addr;
             test_event.param3 = event_temp->param3;
+            QL_BLE_GATT_LOG("ble data param2, line 1840=%u", test_event.param2);
         }
     }
     break;
@@ -1866,6 +1873,7 @@ static void ql_ble_notify_cb(void *ind_msg_buf, void *ctx)
 
             test_event.id = event_temp->id;
             test_event.param2 = (uint32)ql_conn_param;
+            QL_BLE_GATT_LOG("ble data param2, line 1855=%u", test_event.param2);
         }
     }
     break;
@@ -1892,6 +1900,7 @@ static void ql_ble_notify_cb(void *ind_msg_buf, void *ctx)
 
             test_event.id = event_temp->id;
             test_event.param2 = (uint32)gatt;
+            QL_BLE_GATT_LOG("ble data param2, line 1875=%u", test_event.param2);
         }
     }
     break;
@@ -1916,6 +1925,7 @@ static void ql_ble_notify_cb(void *ind_msg_buf, void *ctx)
 
             test_event.id = event_temp->id;
             test_event.param2 = (uint32)ql_scan_report;
+            QL_BLE_GATT_LOG("ble data param2, line 1901=%u", test_event.param2);
         }
     }
     break;
@@ -1930,11 +1940,13 @@ static void ql_ble_notify_cb(void *ind_msg_buf, void *ctx)
 
             test_event.id = event_temp->id;
             test_event.param2 = (uint32)ql_param;
+            QL_BLE_GATT_LOG("ble data param2, line 1926=%u", test_event.param2);
         }
     }
     break;
     case QUEC_BLE_GATT_DISCOVER_CHARACTERISTIC_DATA_IND:
     case QUEC_BLE_GATT_CHARA_READ_BY_UUID_IND:
+
     case QUEC_BLE_GATT_DISCOVER_CHARA_DESC_IND:
     case QUEC_BLE_GATT_CHARA_READ_IND:
     case QUEC_BLE_GATT_DESC_READ_IND:
@@ -1958,6 +1970,7 @@ static void ql_ble_notify_cb(void *ind_msg_buf, void *ctx)
 
             test_event.id = event_temp->id;
             test_event.param2 = (uint32)ql_server;
+            QL_BLE_GATT_LOG("ble data param2, line 1948=%u", test_event.param2);
         }
     }
     break;
