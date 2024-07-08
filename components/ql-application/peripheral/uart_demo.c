@@ -194,8 +194,10 @@ ql_uart_demo_thread(void *param)
                 break;
             }
             // ql_uart_write(QL_UART_PORT_1, (unsigned char *)0x80FA021D, 1); // 0x80FA021D,   strlen((unsigned char *)childLockFlag)
-            //  QL_UART_DEMO_LOG("times uart write is called:%d", count);
-            //   QL_UART_DEMO_LOG("write_len:%d, childLock:%d,childLockFlag:%d", write_len, childLock, childLockFlag[0]);
+            QL_UART_DEMO_LOG("times uart write is called:%d", count);
+
+            // QL_UART_DEMO_LOG("write_len:%d, odo data check:%d", sizeof(AppReceiveInfo.odo_data), AppReceiveInfo.odo_data);
+
             ql_uart_get_tx_fifo_status(QL_UART_PORT_1, &tx_status);
             QL_UART_DEMO_LOG("tx_status:%d", tx_status);
             ql_rtos_task_sleep_ms(2000); // decide this

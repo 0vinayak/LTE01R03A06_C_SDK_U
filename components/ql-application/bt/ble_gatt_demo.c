@@ -212,6 +212,48 @@ struct AppReceiveInfo AppReceiveInfo;
 int bt_ble_power_lock = 0;
 #endif
 
+int hexDigitToDecimal(char hexDigit)
+{
+    if (hexDigit >= '0' && hexDigit <= '9')
+    {
+        return hexDigit - '0'; // For digits '0'-'9'
+    }
+    else if (hexDigit >= 'A' && hexDigit <= 'F')
+    {
+        return hexDigit - 'A' + 10; // For uppercase letters 'A'-'F'
+    }
+    else if (hexDigit >= 'a' && hexDigit <= 'f')
+    {
+        return hexDigit - 'a' + 10; // For lowercase letters 'a'-'f'
+    }
+    else
+    {
+        return -1; // Invalid hexadecimal digit
+    }
+}
+
+// Function to convert a hexadecimal string to a decimal number
+long hexToDecimal(const char *hex)
+{
+    long decimal = 0;
+    int length = strlen(hex);
+
+    for (int i = 0; i < length; i++)
+    {
+        int decimalValue = hexDigitToDecimal(hex[i]);
+
+        if (decimalValue == -1)
+        {
+            printf("Invalid hexadecimal digit: %c\n", hex[i]);
+            return -1; // Return -1 to indicate an error
+        }
+
+        decimal = decimal * 16 + decimalValue;
+    }
+
+    return decimal;
+}
+
 static ql_errcode_bt_e ql_ble_demo_get_state()
 {
     ql_errcode_bt_e ret;
@@ -1602,7 +1644,7 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
         }
         break;
 
-            /*****************************UPDATECHARACTERISTIC VALUE AFTER CONNECTION CONDITION**************************/
+            /*****************************UPDATE CHARACTERISTIC VALUE AFTER CONNECTION CONDITION**************************/
 
         case QUEC_BLE_GATT_RECV_IND:
         {
@@ -1611,7 +1653,7 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
             {
                 QL_BLE_GATT_LOG("ble recv sucess");
 
-                QL_BLE_GATT_LOG("test_event->id=%d,param1=%s, param2=%s, param3=%s ", test_event.id, test_event.param1, test_event.param2, test_event.param3);
+                QL_BLE_GATT_LOG("test_event->id=%d,param1=%s, ble data param2=%u,param3=%s ", test_event.id, test_event.param1, test_event.param2, test_event.param3);
                 ql_ble_gatt_data_s *ble_data = (ql_ble_gatt_data_s *)test_event.param2;
 
                 // QL_BLE_GATT_LOG("ble_data->len=%d,data=%c, uuid_s=%hu, att_handle=%hu", ble_data->len, &ble_data->data, ble_data->uuid_s, ble_data->att_handle);
@@ -1625,7 +1667,7 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
 
                         for (size_t i = 0; i < ble_data->len; i++)
                         {
-                            QL_BLE_GATT_LOG("ble_data->len=%d,data=%02x, uuid_s=%u", ble_data->len, data[i], ble_data->uuid_s);
+                            QL_BLE_GATT_LOG("ble_data->len=%d,App received data=%02x, uuid_s=%u", ble_data->len, data[i], ble_data->uuid_s);
                         }
                         for (size_t i = 0; i < ble_data->len; i++)
                         {
@@ -1634,20 +1676,23 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
 
                         switch (ble_data->uuid_s)
                         {
-                        case 33435:
+                        case 53995:
                             characteristicInd = ODOWRITE;
                             AppReceiveInfo.odo_data = (uint32_t)*data;
+                            AppReceiveInfo.odo_data = hexToDecimal((const char *)&AppReceiveInfo.odo_data);
                             break;
 
                         case 33547:
                             characteristicInd = HEADLAMP;
                             AppReceiveInfo.headLamp = (bool)*data;
+                            AppReceiveInfo.headLamp = hexToDecimal((const char *)&AppReceiveInfo.headLamp);
                             break;
 
                         case 33659:
 
                             characteristicInd = CHILDMODE;
                             AppReceiveInfo.childMode = (uint8_t)*data;
+                            AppReceiveInfo.childMode = hexToDecimal((const char *)&AppReceiveInfo.childMode);
                             break;
 
                         case 33771:
@@ -1655,12 +1700,14 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                             for (size_t i = 0; i < sizeof(data); i++)
                             {
                                 AppReceiveInfo.controlVars[i] = data[i];
+                                AppReceiveInfo.controlVars[i] = hexToDecimal((const char *)&AppReceiveInfo.controlVars[i]);
                             }
                             break;
 
                         case 33883:
                             characteristicInd = ALTITUDE;
                             AppReceiveInfo.Altitude = (uint16_t)*data;
+                            AppReceiveInfo.Altitude = hexToDecimal((const char *)&AppReceiveInfo.Altitude);
                             break;
 
                         case 33995:
@@ -1668,12 +1715,15 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                             for (size_t i = 0; i < sizeof(data); i++)
                             {
                                 AppReceiveInfo.McuOta[i] = data[i];
+                                AppReceiveInfo.McuOta[i] = hexToDecimal((const char *)&AppReceiveInfo.McuOta[i]);
                             }
                             break;
 
                         default:
                             break;
                         }
+
+                        QL_BLE_GATT_LOG("write_len:%d, odo data check:%d", sizeof(AppReceiveInfo.odo_data), AppReceiveInfo.odo_data);
 
                         // if (data[0] > 0x00)
                         // {
