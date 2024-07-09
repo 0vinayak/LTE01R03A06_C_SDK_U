@@ -785,6 +785,8 @@ int appimg_enter(void *param)
     ql_pin_cfg_init();
 
     err = ql_rtos_task_create(&ql_init_task, 1024 * 4, APP_PRIORITY_NORMAL, "ql_init", ql_init_demo_thread, NULL, 1);
+    //
+
     // blerr = ql_rtos_task_create(&ble_init_task, 1024*4, APP_PRIORITY_NORMAL, "ble_init", ql_ble_gatt_client_demo_init, NULL, 1);
 
     if (err != QL_OSI_SUCCESS)

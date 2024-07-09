@@ -2895,18 +2895,18 @@ LOAD ../../prebuilts/win32/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/7.2.1/
  .rodata.ql_ble_gatt_server_demo_task_pthread.str1.1
                 0x60252fdc       0x2a lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.ql_ble_gatt_server_handle_event.str1.1
-                0x60253006      0x6e2 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x60253006      0x6e3 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.ql_ble_notify_cb.str1.1
-                0x602536e8      0x138 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x602536e9      0x138 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.ql_bleadv_demo_set_data.str1.1
-                0x60253820       0x5e lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x60253821       0x5e lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.ql_bleadv_demo_set_param.str1.1
-                0x6025387e       0x51 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x6025387f       0x51 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.ql_bleadv_demo_set_scan_rsp_data.str1.1
-                0x602538cf       0x6a lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x602538d0       0x6a lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.ql_blescan_demo_stop.str1.1
-                0x60253939       0x1d lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
- *fill*         0x60253956        0x2 
+                0x6025393a       0x1d lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+ *fill*         0x60253957        0x1 
  .text.memcpy   0x60253958       0xc8 ..\..\components\newlib\armca5\libc.a(lib_a-memcpy-stub.o)
                 0x60253958                memcpy
  .text.memset   0x60253a20       0xa8 ..\..\components\newlib\armca5\libc.a(lib_a-memset.o)
