@@ -188,25 +188,12 @@ ql_ble_gatt_uuid_s uuidMcuOTA;
 ql_ble_gatt_uuid_s uuidOTAControl; /**SERVICE 8 CHARACTERISTICS */
 ql_ble_gatt_uuid_s uuidOTAData;
 
-unsigned char send_data[20] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-
-unsigned char childMode[1] = {1};
-unsigned char childLockFlag[1] = {'1'};
-
-AppReceive characteristicInd = CHILDMODE;
-struct AppReceiveInfo AppReceiveInfo;
-// = {
-
-//     .odo_data = 100;
+unsigned char send_data[20] = {1,2, 3, 4, 5, 6, 7,8,9,1,2,3,4,5,6,7,8,9,9,5};
+//int i;
+// for (int i=0; i<sizeof(send_data)-1; i++)
+// {
+//     send_data[i] = '3';
 // }
-// ;
-
-// unsigned char childLockFlag[1] = {'1'};
-// int i;
-//  for (int i=0; i<sizeof(send_data)-1; i++)
-//  {
-//      send_data[i] = '3';
-//  }
 
 #if QL_BLE_DEMO_LOW_POWER_USE
 int bt_ble_power_lock = 0;
@@ -959,7 +946,7 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_chara_value(int idx)
 
     ql_ble_gatt_add_chara_value(0x04, 0x11, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidODOWrite, sizeof(send_data), (unsigned char *)send_data);
     ql_ble_gatt_add_chara_value(0x04, 0x12, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidHeadlamp, sizeof(send_data), (unsigned char *)send_data);
-    ql_ble_gatt_add_chara_value(0x04, 0x13, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidChildMode, sizeof(childModeBuffer), (unsigned char *)childModeBuffer);
+    ql_ble_gatt_add_chara_value(0x04, 0x13, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidChildMode, sizeof(send_data), (unsigned char *)send_data);
     ql_ble_gatt_add_chara_value(0x04, 0x14, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidControl, sizeof(send_data), (unsigned char *)send_data);
     ql_ble_gatt_add_chara_value(0x04, 0x15, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidAltitude, sizeof(send_data), (unsigned char *)send_data);
     ql_ble_gatt_add_chara_value(0x04, 0x16, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidMcuOTA, sizeof(send_data), (unsigned char *)send_data);
@@ -974,11 +961,8 @@ ql_errcode_bt_e ql_ble_gatt_demo_change_chara_value()
 {
     ql_errcode_bt_e ret;
 
-    // memset(ql_ble_gatt_chara_value, 0x55, sizeof(ql_ble_gatt_chara_value));
-    ret = ql_ble_gatt_change_chara_value(0x04, 0x13, sizeof(childModeBuffer), (unsigned char *)childModeBuffer);
-
-    QL_BLE_GATT_LOG("Changed child buffer data%s", childModeBuffer);
-
+    memset(ql_ble_gatt_chara_value, 0x55, sizeof(ql_ble_gatt_chara_value));
+    ret = ql_ble_gatt_change_chara_value(0x01, 0x01, sizeof(ql_ble_gatt_chara_value), (unsigned char *)ql_ble_gatt_chara_value);
     if (ret == QL_BT_SUCCESS)
     {
         QL_BLE_GATT_LOG("sucess");
@@ -1867,9 +1851,7 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
         }
 
         /*********************************START SENDING DATA HERE WITH DELAY*****************************/
-
-        // ql_ble_demo_send_data();
-
+        ql_ble_demo_send_data();
         return ret;
     QL_BLE_ADV_DEMO_STOP:
 #if QL_BLE_DEMO_LOW_POWER_USE
