@@ -1690,10 +1690,12 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                     {
                         memcpy(data, ble_data->data, ble_data->len);
 
+                        QL_BLE_GATT_LOG("ble_data->len=%d,App received data unsigned=%u, uuid_s=%hu", ble_data->len, *(data), ble_data->uuid_s);
+
                         for (size_t i = 0; i < ble_data->len; i++)
                         {
                             QL_BLE_GATT_LOG("ble_data->len=%d,App received data in hex=%02x, uuid_s=%hu", ble_data->len, data[i], ble_data->uuid_s);
-                            QL_BLE_GATT_LOG("ble_data->len=%d,App received data unsigned=%u, uuid_s=%hu", ble_data->len, *data, ble_data->uuid_s);
+                            QL_BLE_GATT_LOG("ble_data->len=%d,App received data unsigned=%u, uuid_s=%hu", ble_data->len, *(data + i), ble_data->uuid_s);
 
                             // QL_BLE_GATT_LOG("ble_data->len=%d,App received data in no loop hex=%x, uuid_s=%hu", ble_data->len, *data, ble_data->uuid_s);
                         }
