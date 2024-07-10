@@ -1685,7 +1685,7 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
 
                 if (ble_data && ble_data->data)
                 {
-                    unsigned int *data = calloc(1, ble_data->len + 1);
+                    unsigned char *data = calloc(1, ble_data->len + 1);
                     if (data)
                     {
                         memcpy(data, ble_data->data, ble_data->len);
@@ -1715,20 +1715,20 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                         {
                         case 4:
                             characteristicInd = ODOWRITE;
-                            AppReceiveInfo.odo_data = (uint32_t)*data;
+                            AppReceiveInfo.odo_data = *(uint32_t *)data;
                             // AppReceiveInfo.odo_data = hexToDecimal((const char *)&AppReceiveInfo.odo_data);
                             break;
 
                         case 0:
                             characteristicInd = HEADLAMP;
-                            AppReceiveInfo.headLamp = (bool)*data;
-                            AppReceiveInfo.headLamp = hexToDecimal((const char *)&AppReceiveInfo.headLamp);
+                            AppReceiveInfo.headLamp = *(bool *)data;
+                            // AppReceiveInfo.headLamp = hexToDecimal((const char *)&AppReceiveInfo.headLamp);
                             break;
 
                         case 1:
 
                             characteristicInd = CHILDMODE;
-                            AppReceiveInfo.childMode = (uint8_t)*data;
+                            AppReceiveInfo.childMode = *(uint8_t *)data;
                             // AppReceiveInfo.childMode = hexToDecimal((const char *)&AppReceiveInfo.childMode);
                             break;
 
@@ -1736,23 +1736,23 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                             characteristicInd = CONTROL;
                             for (size_t i = 0; i < sizeof(data); i++)
                             {
-                                AppReceiveInfo.controlVars[i] = data[i];
-                                AppReceiveInfo.controlVars[i] = hexToDecimal((const char *)&AppReceiveInfo.controlVars[i]);
+                                AppReceiveInfo.controlVars[i] = *(uint8_t *)data + i;
+                                // AppReceiveInfo.controlVars[i] = hexToDecimal((const char *)&AppReceiveInfo.controlVars[i]);
                             }
                             break;
 
                         case 2:
                             characteristicInd = ALTITUDE;
-                            AppReceiveInfo.Altitude = (uint16_t)*data;
-                            AppReceiveInfo.Altitude = hexToDecimal((const char *)&AppReceiveInfo.Altitude);
+                            AppReceiveInfo.Altitude = *(uint16_t *)data;
+                            // AppReceiveInfo.Altitude = hexToDecimal((const char *)&AppReceiveInfo.Altitude);
                             break;
 
                         case 20:
                             characteristicInd = MCU_OTA_RX;
                             for (size_t i = 0; i < sizeof(data); i++)
                             {
-                                AppReceiveInfo.McuOta[i] = data[i];
-                                AppReceiveInfo.McuOta[i] = hexToDecimal((const char *)&AppReceiveInfo.McuOta[i]);
+                                AppReceiveInfo.McuOta[i] = *(uint8_t *)data + i;
+                                // AppReceiveInfo.McuOta[i] = hexToDecimal((const char *)&AppReceiveInfo.McuOta[i]);
                             }
                             break;
 
@@ -1762,6 +1762,16 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
 
                         QL_BLE_GATT_LOG("write_len:%d, odo data check:%u", sizeof(AppReceiveInfo.odo_data), AppReceiveInfo.odo_data);
                         QL_BLE_GATT_LOG("write_len:%d, child mode data check:%u", sizeof(AppReceiveInfo.childMode), AppReceiveInfo.childMode);
+
+                        for (size_t i = 0; i < sizeof(data); i++)
+                        {
+                            QL_BLE_GATT_LOG("write_len:%d, control variables data check:%u", sizeof(AppReceiveInfo.controlVars), AppReceiveInfo.controlVars[i]);
+                            // AppReceiveInfo.controlVars[i] = hexToDecimal((const char *)&AppReceiveInfo.controlVars[i]);
+                        }
+
+                        // for (size_t idx = 0; idx < DataSize; idx++)
+                        // {
+                        // }
 
                         // if (data[0] > 0x00)
                         // {

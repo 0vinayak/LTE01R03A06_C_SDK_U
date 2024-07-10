@@ -48,7 +48,7 @@ typedef struct
 typedef struct
 {
     unsigned short len; // max 244
-    unsigned int *data;
+    unsigned char *data;
     unsigned short uuid_s;
     unsigned char uuid_l[QL_BLE_LONG_UUID_SIZE];
     unsigned short att_handle;
