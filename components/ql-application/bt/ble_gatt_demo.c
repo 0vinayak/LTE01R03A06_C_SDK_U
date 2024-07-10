@@ -1739,7 +1739,13 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                             //     AppReceiveInfo.controlVars[i] = *(uint8_t *)data + i;
                             //     // AppReceiveInfo.controlVars[i] = hexToDecimal((const char *)&AppReceiveInfo.controlVars[i]);
                             // }
-                            AppReceiveInfo.controlVars = *(uint64_t *)data;
+                            //(AppReceiveInfo.controlVars) = *(uint64_t *)data;
+                            for (size_t i = 0; i < sizeof(data); i++)
+                            {
+                                AppReceiveInfo.controlVars[i] = *((uint8_t *)data + i);
+                                // AppReceiveInfo.controlVars[i] = hexToDecimal((const char *)&AppReceiveInfo.controlVars[i]);
+                            }
+
                             break;
 
                         case 2:
@@ -1763,7 +1769,7 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
 
                         QL_BLE_GATT_LOG("write_len:%d, odo data check:%u", sizeof(AppReceiveInfo.odo_data), AppReceiveInfo.odo_data);
                         QL_BLE_GATT_LOG("write_len:%d, child mode data check:%u", sizeof(AppReceiveInfo.childMode), AppReceiveInfo.childMode);
-                        QL_BLE_GATT_LOG("write_len:%d, control variables data check:%u", sizeof(AppReceiveInfo.controlVars), AppReceiveInfo.controlVars);
+                        QL_BLE_GATT_LOG("write_len:%d, control variables data check:%u", sizeof(AppReceiveInfo.controlVars), *(AppReceiveInfo.controlVars));
 
                         // for (size_t i = 0; i < sizeof(data); i++)
                         // {
