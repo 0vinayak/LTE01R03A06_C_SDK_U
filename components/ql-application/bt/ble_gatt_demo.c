@@ -617,7 +617,6 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_service(int idx)
     switch (idx)
     {
 
-    /*************************Characteristic for service no 1******************************/
     case 0:
 
         uuidLive = (ql_ble_gatt_uuid_s){
@@ -1706,28 +1705,28 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
 
                         free(mem_data);
 
-                        switch (ble_data->uuid_s)
+                        switch (ble_data->len)
                         {
-                        case 53995:
+                        case 4:
                             characteristicInd = ODOWRITE;
                             AppReceiveInfo.odo_data = (uint32_t)*data;
                             AppReceiveInfo.odo_data = hexToDecimal((const char *)&AppReceiveInfo.odo_data);
                             break;
 
-                        case 33547:
+                        case 0:
                             characteristicInd = HEADLAMP;
                             AppReceiveInfo.headLamp = (bool)*data;
                             AppReceiveInfo.headLamp = hexToDecimal((const char *)&AppReceiveInfo.headLamp);
                             break;
 
-                        case 33659:
+                        case 1:
 
                             characteristicInd = CHILDMODE;
                             AppReceiveInfo.childMode = (uint8_t)*data;
                             AppReceiveInfo.childMode = hexToDecimal((const char *)&AppReceiveInfo.childMode);
                             break;
 
-                        case 33771:
+                        case 7:
                             characteristicInd = CONTROL;
                             for (size_t i = 0; i < sizeof(data); i++)
                             {
@@ -1736,13 +1735,13 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                             }
                             break;
 
-                        case 33883:
+                        case 2:
                             characteristicInd = ALTITUDE;
                             AppReceiveInfo.Altitude = (uint16_t)*data;
                             AppReceiveInfo.Altitude = hexToDecimal((const char *)&AppReceiveInfo.Altitude);
                             break;
 
-                        case 33995:
+                        case 20:
                             characteristicInd = MCU_OTA_RX;
                             for (size_t i = 0; i < sizeof(data); i++)
                             {
