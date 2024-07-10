@@ -1685,20 +1685,20 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
 
                 if (ble_data && ble_data->data)
                 {
-                    unsigned char *data = calloc(1, ble_data->len + 1);
+                    unsigned int *data = calloc(1, ble_data->len + 1);
                     if (data)
                     {
                         memcpy(data, ble_data->data, ble_data->len);
 
                         QL_BLE_GATT_LOG("ble_data->len=%d,App received data unsigned=%u, uuid_s=%hu", ble_data->len, *(data), ble_data->uuid_s);
 
-                        for (size_t i = 0; i < ble_data->len; i++)
-                        {
-                            QL_BLE_GATT_LOG("ble_data->len=%d,App received data in hex=%02x, uuid_s=%hu", ble_data->len, data[i], ble_data->uuid_s);
-                            QL_BLE_GATT_LOG("ble_data->len=%d,App received data unsigned=%u, uuid_s=%hu", ble_data->len, *(data + i), ble_data->uuid_s);
+                        // for (size_t i = 0; i < ble_data->len; i++)
+                        // {
+                        //     QL_BLE_GATT_LOG("ble_data->len=%d,App received data in hex=%02x, uuid_s=%hu", ble_data->len, data[i], ble_data->uuid_s);
+                        //     // QL_BLE_GATT_LOG("ble_data->len=%d,App received data unsigned=%u, uuid_s=%hu", ble_data->len, *(data + i), ble_data->uuid_s);
 
-                            // QL_BLE_GATT_LOG("ble_data->len=%d,App received data in no loop hex=%x, uuid_s=%hu", ble_data->len, *data, ble_data->uuid_s);
-                        }
+                        //     // QL_BLE_GATT_LOG("ble_data->len=%d,App received data in no loop hex=%x, uuid_s=%hu", ble_data->len, *data, ble_data->uuid_s);
+                        // }
 
                         for (size_t i = 0; i < ble_data->len; i++)
                         {
@@ -1761,6 +1761,7 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                         }
 
                         QL_BLE_GATT_LOG("write_len:%d, odo data check:%u", sizeof(AppReceiveInfo.odo_data), AppReceiveInfo.odo_data);
+                        // QL_BLE_GATT_LOG("write_len:%d, odo data check:%u", sizeof(AppReceiveInfo.odo_data), AppReceiveInfo.odo_data);
 
                         // if (data[0] > 0x00)
                         // {
