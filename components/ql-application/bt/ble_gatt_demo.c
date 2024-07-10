@@ -1729,7 +1729,7 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
 
                             characteristicInd = CHILDMODE;
                             AppReceiveInfo.childMode = (uint8_t)*data;
-                            AppReceiveInfo.childMode = hexToDecimal((const char *)&AppReceiveInfo.childMode);
+                            // AppReceiveInfo.childMode = hexToDecimal((const char *)&AppReceiveInfo.childMode);
                             break;
 
                         case 7:
@@ -1761,7 +1761,7 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                         }
 
                         QL_BLE_GATT_LOG("write_len:%d, odo data check:%u", sizeof(AppReceiveInfo.odo_data), AppReceiveInfo.odo_data);
-                        // QL_BLE_GATT_LOG("write_len:%d, odo data check:%u", sizeof(AppReceiveInfo.odo_data), AppReceiveInfo.odo_data);
+                        QL_BLE_GATT_LOG("write_len:%d, child mode data check:%u", sizeof(AppReceiveInfo.childMode), AppReceiveInfo.childMode);
 
                         // if (data[0] > 0x00)
                         // {
