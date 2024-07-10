@@ -179,7 +179,7 @@ ql_uart_demo_thread(void *param)
                 break;
 
             case CONTROL:
-                ql_uart_write(QL_UART_PORT_1, (unsigned char *)AppReceiveInfo.controlVars, sizeof(AppReceiveInfo.controlVars));
+                ql_uart_write(QL_UART_PORT_1, (unsigned char *)&AppReceiveInfo.controlVars, sizeof(AppReceiveInfo.controlVars));
                 break;
 
             case ALTITUDE:
