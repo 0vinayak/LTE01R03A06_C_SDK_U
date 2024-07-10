@@ -2279,7 +2279,7 @@ LOAD lib/libdriver_lcd.a
 LOAD lib/liboql_core_boot_virt_func.a
 LOAD lib/libdriver_camera.a
 
-.text           0x00800100     0xaec0
+.text           0x00800100     0xaee0
                 0x00800100                __text_start = .
  *(BOOT_ENTRY)
  BOOT_ENTRY     0x00800100      0x25c lib/libbootloader.a(boot_entry_v7a.S.obj)
@@ -2307,140 +2307,140 @@ LOAD lib/libdriver_camera.a
                 0x00800428                __aeabi_uidiv
                 0x00800428                __udivsi3
                 0x00800684                __aeabi_uidivmod
- .text          0x008006a0     0xa310 components/bootloader/CMakeFiles/boot.dir/boot2.img.lzmar.S.obj
+ .text          0x008006a0     0xa320 components/bootloader/CMakeFiles/boot.dir/boot2.img.lzmar.S.obj
                 0x008006a0                gBoot2CompData
  .text.bootIrqHandler
-                0x0080a9b0        0x2 components/bootloader/CMakeFiles/boot.dir/boot/boot_start_8910.c.obj
-                0x0080a9b0                bootIrqHandler
+                0x0080a9c0        0x2 components/bootloader/CMakeFiles/boot.dir/boot/boot_start_8910.c.obj
+                0x0080a9c0                bootIrqHandler
  .text.bootBlueScreen
-                0x0080a9b2        0x2 components/bootloader/CMakeFiles/boot.dir/boot/boot_start_8910.c.obj
-                0x0080a9b2                bootBlueScreen
+                0x0080a9c2        0x2 components/bootloader/CMakeFiles/boot.dir/boot/boot_start_8910.c.obj
+                0x0080a9c2                bootBlueScreen
  .text.bootStart
-                0x0080a9b4       0x4c components/bootloader/CMakeFiles/boot.dir/boot/boot_start_8910.c.obj
-                0x0080a9b4                bootStart
+                0x0080a9c4       0x4c components/bootloader/CMakeFiles/boot.dir/boot/boot_start_8910.c.obj
+                0x0080a9c4                bootStart
  .text.bootAdiBusInit
-                0x0080aa00       0x28 lib/libbootloader.a(boot_adi_bus.c.obj)
-                0x0080aa00                bootAdiBusInit
-                0x0080aa00                halAdiBusInit
+                0x0080aa10       0x28 lib/libbootloader.a(boot_adi_bus.c.obj)
+                0x0080aa10                bootAdiBusInit
+                0x0080aa10                halAdiBusInit
  .text.bootAdiBusRead
-                0x0080aa28       0x2c lib/libbootloader.a(boot_adi_bus.c.obj)
-                0x0080aa28                halAdiBusRead
-                0x0080aa28                bootAdiBusRead
+                0x0080aa38       0x2c lib/libbootloader.a(boot_adi_bus.c.obj)
+                0x0080aa38                halAdiBusRead
+                0x0080aa38                bootAdiBusRead
  .text.bootAdiBusWrite
-                0x0080aa54       0x1c lib/libbootloader.a(boot_adi_bus.c.obj)
-                0x0080aa54                halAdiBusWrite
-                0x0080aa54                bootAdiBusWrite
+                0x0080aa64       0x1c lib/libbootloader.a(boot_adi_bus.c.obj)
+                0x0080aa64                halAdiBusWrite
+                0x0080aa64                bootAdiBusWrite
  .text.quec_bootAdiBusBatchChange
-                0x0080aa70       0x50 lib/libbootloader.a(boot_adi_bus.c.obj)
-                0x0080aa70                quec_bootAdiBusBatchChange
+                0x0080aa80       0x50 lib/libbootloader.a(boot_adi_bus.c.obj)
+                0x0080aa80                quec_bootAdiBusBatchChange
  .text.bootAdiBusChange
-                0x0080aac0        0x4 lib/libbootloader.a(boot_adi_bus.c.obj)
-                0x0080aac0                halAdiBusChange
-                0x0080aac0                bootAdiBusChange
- .rodata        0x0080aac4        0x4 lib/libbootloader.a(boot_adi_bus.c.obj)
+                0x0080aad0        0x4 lib/libbootloader.a(boot_adi_bus.c.obj)
+                0x0080aad0                halAdiBusChange
+                0x0080aad0                bootAdiBusChange
+ .rodata        0x0080aad4        0x4 lib/libbootloader.a(boot_adi_bus.c.obj)
  .text.bootPanic
-                0x0080aac8        0x2 lib/libbootloader.a(boot_delay.c.obj)
-                0x0080aac8                osiPanic
-                0x0080aac8                bootPanic
- *fill*         0x0080aaca        0x2 
+                0x0080aad8        0x2 lib/libbootloader.a(boot_delay.c.obj)
+                0x0080aad8                osiPanic
+                0x0080aad8                bootPanic
+ *fill*         0x0080aada        0x2 
  .text.bootResetPinEnable
-                0x0080aacc       0x44 lib/libbootloader.a(boot_platform_8910.c.obj)
-                0x0080aacc                bootResetPinEnable
+                0x0080aadc       0x44 lib/libbootloader.a(boot_platform_8910.c.obj)
+                0x0080aadc                bootResetPinEnable
  .text.bootUimageEntry
-                0x0080ab10        0xc lib/libbootloader.a(boot_uimage.c.obj)
-                0x0080ab10                bootUimageEntry
+                0x0080ab20        0xc lib/libbootloader.a(boot_uimage.c.obj)
+                0x0080ab20                bootUimageEntry
  .text.osiDCacheClean
-                0x0080ab1c       0x1c lib/libhal.a(hal_chip_8910.c.obj)
-                0x0080ab1c                osiDCacheClean
+                0x0080ab2c       0x1c lib/libhal.a(hal_chip_8910.c.obj)
+                0x0080ab2c                osiDCacheClean
  .text.osiDCacheInvalidate
-                0x0080ab38       0x18 lib/libhal.a(hal_chip_8910.c.obj)
-                0x0080ab38                osiDCacheInvalidate
+                0x0080ab48       0x18 lib/libhal.a(hal_chip_8910.c.obj)
+                0x0080ab48                osiDCacheInvalidate
  .text.prvDelayUS
-                0x0080ab50       0x14 lib/libhal.a(hal_clock_init.c.obj)
+                0x0080ab60       0x14 lib/libhal.a(hal_clock_init.c.obj)
  .text.halClockInit
-                0x0080ab64      0x23c lib/libhal.a(hal_clock_init.c.obj)
-                0x0080ab64                halClockInit
+                0x0080ab74      0x23c lib/libhal.a(hal_clock_init.c.obj)
+                0x0080ab74                halClockInit
  .text.halHwspinlockReleaseInCritical
-                0x0080ada0       0x14 lib/libhal.a(hal_hwspinlock.c.obj)
-                0x0080ada0                halHwspinlockReleaseInCritical
+                0x0080adb0       0x14 lib/libhal.a(hal_hwspinlock.c.obj)
+                0x0080adb0                halHwspinlockReleaseInCritical
  .text.halLzmaReset
-                0x0080adb4       0x30 lib/libhal.a(hal_lzma.c.obj)
-                0x0080adb4                halLzmaReset
+                0x0080adc4       0x30 lib/libhal.a(hal_lzma.c.obj)
+                0x0080adc4                halLzmaReset
  .text.halLzmaEnable
-                0x0080ade4       0x18 lib/libhal.a(hal_lzma.c.obj)
-                0x0080ade4                halLzmaEnable
+                0x0080adf4       0x18 lib/libhal.a(hal_lzma.c.obj)
+                0x0080adf4                halLzmaEnable
  .text.halLzmaDisable
-                0x0080adfc       0x18 lib/libhal.a(hal_lzma.c.obj)
-                0x0080adfc                halLzmaDisable
+                0x0080ae0c       0x18 lib/libhal.a(hal_lzma.c.obj)
+                0x0080ae0c                halLzmaDisable
  .text.halLzmaDecompressBlock
-                0x0080ae14       0xd0 lib/libhal.a(hal_lzma.c.obj)
-                0x0080ae14                halLzmaDecompressBlock
+                0x0080ae24       0xd0 lib/libhal.a(hal_lzma.c.obj)
+                0x0080ae24                halLzmaDecompressBlock
  .text.halLzmaDecompressFile
-                0x0080aee4       0xc0 lib/libhal.a(hal_lzma.c.obj)
-                0x0080aee4                halLzmaDecompressFile
+                0x0080aef4       0xc0 lib/libhal.a(hal_lzma.c.obj)
+                0x0080aef4                halLzmaDecompressFile
  .text.quec_mipi_lcd_clk_set
-                0x0080afa4       0x14 lib/libhal_prop.a(ql_hal_spi_flash_prop.c.obj)
-                0x0080afa4                quec_mipi_lcd_clk_set
+                0x0080afb4       0x14 lib/libhal_prop.a(ql_hal_spi_flash_prop.c.obj)
+                0x0080afb4                quec_mipi_lcd_clk_set
  *(.rokeep)
-                0x0080afb8                __text_end = .
-                0x0080afc0                . = ALIGN (0x20)
- *fill*         0x0080afb8        0x8 
-
-.data           0x0080afc0       0x20
-                0x0080afc0                __data_start = .
- SORT_BY_NAME(*)(.sramdata .sramdata.*)
- SORT_BY_NAME(*)(.data .data.* .sdata .sdata.* .data1 .gnu.linkonce.d.*)
- *(.rwkeep)
- .rwkeep        0x0080afc0        0x8 lib/libhal.a(hal_chip_armv7a.c.obj)
-                0x0080afc0                gGdbRegAddress
-                0x0080afc4                gGdbCtxType
-                0x0080afc8                __data_end = .
+                0x0080afc8                __text_end = .
                 0x0080afe0                . = ALIGN (0x20)
  *fill*         0x0080afc8       0x18 
 
-.lastflash      0x0080afe0        0x0
-                0x0080afe0                . = ALIGN (0x20)
+.data           0x0080afe0       0x20
+                0x0080afe0                __data_start = .
+ SORT_BY_NAME(*)(.sramdata .sramdata.*)
+ SORT_BY_NAME(*)(.data .data.* .sdata .sdata.* .data1 .gnu.linkonce.d.*)
+ *(.rwkeep)
+ .rwkeep        0x0080afe0        0x8 lib/libhal.a(hal_chip_armv7a.c.obj)
+                0x0080afe0                gGdbRegAddress
+                0x0080afe4                gGdbCtxType
+                0x0080afe8                __data_end = .
+                0x0080b000                . = ALIGN (0x20)
+ *fill*         0x0080afe8       0x18 
 
-.bss            0x0080afe0      0x2a0
-                0x0080afe0                __bss_start = .
+.lastflash      0x0080b000        0x0
+                0x0080b000                . = ALIGN (0x20)
+
+.bss            0x0080b000      0x2a0
+                0x0080b000                __bss_start = .
  *(.srambss .srambss.*)
  *(.bss .bss.* COMMON .scommon .sbss .sbss.* .sbss2 .sbss2.* .gnu.linkonce.b.*)
- COMMON         0x0080afe0      0x290 lib/libhal.a(hal_chip_armv7a.c.obj)
-                0x0080afe0                gBlueScreenCp15
-                0x0080b0b4                gBlueScreenRegs
-                0x0080b270                __bss_end = .
-                0x0080b280                . = ALIGN (0x20)
- *fill*         0x0080b270       0x10 
+ COMMON         0x0080b000      0x290 lib/libhal.a(hal_chip_armv7a.c.obj)
+                0x0080b000                gBlueScreenCp15
+                0x0080b0d4                gBlueScreenRegs
+                0x0080b290                __bss_end = .
+                0x0080b2a0                . = ALIGN (0x20)
+ *fill*         0x0080b290       0x10 
 
-.sys_stack      0x0080b280     0x1800
-                0x0080b280                __sys_stack_start = .
-                0x0080ca80                . = (. + 0x1800)
- *fill*         0x0080b280     0x1800 
-                0x0080ca80                __sys_stack_end = .
-                0x0080ca80                . = ALIGN (0x20)
+.sys_stack      0x0080b2a0     0x1800
+                0x0080b2a0                __sys_stack_start = .
+                0x0080caa0                . = (. + 0x1800)
+ *fill*         0x0080b2a0     0x1800 
+                0x0080caa0                __sys_stack_end = .
+                0x0080caa0                . = ALIGN (0x20)
 
-.irq_stack      0x0080ca80      0x800
-                0x0080ca80                __irq_stack_start = .
-                0x0080d280                . = (. + 0x800)
- *fill*         0x0080ca80      0x800 
-                0x0080d280                __irq_stack_end = .
-                0x0080d280                . = ALIGN (0x20)
+.irq_stack      0x0080caa0      0x800
+                0x0080caa0                __irq_stack_start = .
+                0x0080d2a0                . = (. + 0x800)
+ *fill*         0x0080caa0      0x800 
+                0x0080d2a0                __irq_stack_end = .
+                0x0080d2a0                . = ALIGN (0x20)
 
-.blue_screen    0x0080d280      0x600
-                0x0080d280                __blue_screen_start = .
-                0x0080d880                . = (. + 0x600)
- *fill*         0x0080d280      0x600 
-                0x0080d880                __blue_screen_end = .
-                0x0080d880                . = ALIGN (0x20)
+.blue_screen    0x0080d2a0      0x600
+                0x0080d2a0                __blue_screen_start = .
+                0x0080d8a0                . = (. + 0x600)
+ *fill*         0x0080d2a0      0x600 
+                0x0080d8a0                __blue_screen_end = .
+                0x0080d8a0                . = ALIGN (0x20)
 
-.sram_heap      0x0080d880     0x2780
-                0x0080d880                __sram_heap_start = .
+.sram_heap      0x0080d8a0     0x2760
+                0x0080d8a0                __sram_heap_start = .
                 0x00810000                . = (ORIGIN (sram) + LENGTH (sram))
- *fill*         0x0080d880     0x2780 
+ *fill*         0x0080d8a0     0x2760 
                 0x00810000                __sram_heap_end = .
                 0x00810000                . = ALIGN (0x20)
                 0x00800100                __flash_start = LOADADDR (.text)
-                0x0080afe0                __flash_end = ADDR (.lastflash)
+                0x0080b000                __flash_end = ADDR (.lastflash)
                 0x00000001                ASSERT (((__flash_end - 0x8000c0) <= 0xbae0), flash overflow)
 
 .comment        0x00000000       0x7e

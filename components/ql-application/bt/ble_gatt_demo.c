@@ -188,12 +188,18 @@ ql_ble_gatt_uuid_s uuidMcuOTA;
 ql_ble_gatt_uuid_s uuidOTAControl; /**SERVICE 8 CHARACTERISTICS */
 ql_ble_gatt_uuid_s uuidOTAData;
 
-unsigned char send_data[20] = {1,2, 3, 4, 5, 6, 7,8,9,1,2,3,4,5,6,7,8,9,9,5};
-//int i;
-// for (int i=0; i<sizeof(send_data)-1; i++)
-// {
-//     send_data[i] = '3';
-// }
+unsigned char send_data[20] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 5};
+
+unsigned char childMode[1] = {1};
+unsigned char childLockFlag[1] = {'1'};
+
+AppReceive characteristicInd = CHILDMODE;
+struct AppReceiveInfo AppReceiveInfo;
+// int i;
+//  for (int i=0; i<sizeof(send_data)-1; i++)
+//  {
+//      send_data[i] = '3';
+//  }
 
 #if QL_BLE_DEMO_LOW_POWER_USE
 int bt_ble_power_lock = 0;
