@@ -1660,8 +1660,8 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                 // ql_ble_gatt_data_s *raw_data = 0; //(ql_ble_gatt_data_s *)test_event.param2;
                 uint8_t DataSize = 2 + (ble_data->len) + 2 + QL_BLE_LONG_UUID_SIZE + 2;
 
-                ql_ble_gatt_data_s *mem_data = calloc(1, ble_data->len + 1);
-                // memcpy(raw_data, (ql_ble_gatt_data_s *)test_event.param2, sizeof(ql_ble_gatt_data_s));
+                // ql_ble_gatt_data_s *mem_data = calloc(1, ble_data->len + 1);
+                //  memcpy(raw_data, (ql_ble_gatt_data_s *)test_event.param2, sizeof(ql_ble_gatt_data_s));
 
                 // typedef struct
                 // {
@@ -1692,8 +1692,12 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
 
                         for (size_t i = 0; i < ble_data->len; i++)
                         {
-                            QL_BLE_GATT_LOG("ble_data->len=%d,App received data=%02x, uuid_s=%hu", ble_data->len, data[i], ble_data->uuid_s);
+                            QL_BLE_GATT_LOG("ble_data->len=%d,App received data in hex=%02x, uuid_s=%hu", ble_data->len, data[i], ble_data->uuid_s);
+                            QL_BLE_GATT_LOG("ble_data->len=%d,App received data unsigned=%u, uuid_s=%hu", ble_data->len, *data, ble_data->uuid_s);
+
+                            // QL_BLE_GATT_LOG("ble_data->len=%d,App received data in no loop hex=%x, uuid_s=%hu", ble_data->len, *data, ble_data->uuid_s);
                         }
+
                         for (size_t i = 0; i < ble_data->len; i++)
                         {
                             QL_BLE_GATT_LOG("data=%02x\n", data[i]);
@@ -1703,14 +1707,14 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                             QL_BLE_GATT_LOG("uuid data=%u\n", ble_data->uuid_l[i]);
                         }
 
-                        free(mem_data);
+                        // free(mem_data);
 
                         switch (ble_data->len)
                         {
                         case 4:
                             characteristicInd = ODOWRITE;
                             AppReceiveInfo.odo_data = (uint32_t)*data;
-                            AppReceiveInfo.odo_data = hexToDecimal((const char *)&AppReceiveInfo.odo_data);
+                            // AppReceiveInfo.odo_data = hexToDecimal((const char *)&AppReceiveInfo.odo_data);
                             break;
 
                         case 0:
@@ -1754,7 +1758,7 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                             break;
                         }
 
-                        QL_BLE_GATT_LOG("write_len:%d, odo data check:%d", sizeof(AppReceiveInfo.odo_data), AppReceiveInfo.odo_data);
+                        QL_BLE_GATT_LOG("write_len:%d, odo data check:%u", sizeof(AppReceiveInfo.odo_data), AppReceiveInfo.odo_data);
 
                         // if (data[0] > 0x00)
                         // {
