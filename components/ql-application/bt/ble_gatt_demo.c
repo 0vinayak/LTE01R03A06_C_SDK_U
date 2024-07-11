@@ -1771,6 +1771,8 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                         QL_BLE_GATT_LOG("write_len:%d, child mode data check:%u", sizeof(AppReceiveInfo.childMode), AppReceiveInfo.childMode);
                         QL_BLE_GATT_LOG("write_len:%d, control variables data check:%u", sizeof(AppReceiveInfo.controlVars), *(AppReceiveInfo.controlVars));
 
+                        QL_BLE_GATT_LOG("characteristic indicator:%d", characteristicInd);
+
                         // for (size_t i = 0; i < sizeof(data); i++)
                         // {
                         //     QL_BLE_GATT_LOG("write_len:%d, control variables data check:%u", sizeof(AppReceiveInfo.controlVars), AppReceiveInfo.controlVars[i]);
