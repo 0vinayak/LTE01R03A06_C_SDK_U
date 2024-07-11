@@ -195,6 +195,13 @@ unsigned char childLockFlag[1] = {'1'};
 
 AppReceive characteristicInd = CHILDMODE;
 struct AppReceiveInfo AppReceiveInfo;
+// = {
+
+//     .odo_data = 100;
+// }
+// ;
+
+// unsigned char childLockFlag[1] = {'1'};
 // int i;
 //  for (int i=0; i<sizeof(send_data)-1; i++)
 //  {
@@ -967,8 +974,11 @@ ql_errcode_bt_e ql_ble_gatt_demo_change_chara_value()
 {
     ql_errcode_bt_e ret;
 
-    memset(ql_ble_gatt_chara_value, 0x55, sizeof(ql_ble_gatt_chara_value));
-    ret = ql_ble_gatt_change_chara_value(0x01, 0x01, sizeof(ql_ble_gatt_chara_value), (unsigned char *)ql_ble_gatt_chara_value);
+    // memset(ql_ble_gatt_chara_value, 0x55, sizeof(ql_ble_gatt_chara_value));
+    ret = ql_ble_gatt_change_chara_value(0x04, 0x13, sizeof(childModeBuffer), (unsigned char *)childModeBuffer);
+
+    QL_BLE_GATT_LOG("Changed child buffer data%s", childModeBuffer);
+
     if (ret == QL_BT_SUCCESS)
     {
         QL_BLE_GATT_LOG("sucess");
@@ -1857,7 +1867,9 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
         }
 
         /*********************************START SENDING DATA HERE WITH DELAY*****************************/
-        ql_ble_demo_send_data();
+
+        // ql_ble_demo_send_data();
+
         return ret;
     QL_BLE_ADV_DEMO_STOP:
 #if QL_BLE_DEMO_LOW_POWER_USE
