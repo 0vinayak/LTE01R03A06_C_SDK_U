@@ -86,6 +86,10 @@ void ql_uart_notify_cb(uint32 ind_type, ql_uart_port_number_e port, uint32 size)
             }
         }
         break;
+        for (size_t i = 0; i < LDS_NUMBER_OF_DATA; i++)
+        {
+            Live_Data.lds[i] = recv_buff[i];
+        }
     }
     case QUEC_UART_TX_FIFO_COMPLETE_IND:
     {

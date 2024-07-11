@@ -465,8 +465,8 @@ static void ql_init_demo_thread(void *param)
     // ql_adc_app_init();
 
 #ifdef QL_APP_FEATURE_UART
-    //ql_uart_app_init();
-    //ql_uart_rb_app_init();
+    // ql_uart_app_init();
+    // ql_uart_rb_app_init();
 #endif
 
 #ifdef QL_APP_FEATURE_RS485
@@ -784,7 +784,7 @@ int appimg_enter(void *param)
     /*Caution: GPIO pin must be initialized here, otherwise the pin status cannot be determined*/
     ql_pin_cfg_init();
 
-    err = ql_rtos_task_create(&ql_init_task, 1024 * 4, APP_PRIORITY_NORMAL, "ql_init", ql_init_demo_thread, NULL, 1);
+    err = ql_rtos_task_create(&ql_init_task, 1024 * 4, APP_PRIORITY_NORMAL, "ql_init", ql_init_demo_thread, NULL, 5);
     //
 
     // blerr = ql_rtos_task_create(&ble_init_task, 1024*4, APP_PRIORITY_NORMAL, "ble_init", ql_ble_gatt_client_demo_init, NULL, 1);
