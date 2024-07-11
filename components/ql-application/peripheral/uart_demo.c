@@ -91,10 +91,12 @@ void ql_uart_notify_cb(uint32 ind_type, ql_uart_port_number_e port, uint32 size)
             }
         }
         break;
-        // for (size_t i = 0; i < LDS_NUMBER_OF_DATA; i++)
-        // {
-        //     Live_Data.lds[i] = recv_buff[i];
-        // }
+        for (size_t i = 0; i < LDS_NUMBER_OF_DATA; i++)
+        {
+            Live_Data.lds[i] = recv_buff[i];
+            QL_UART_DEMO_LOG("Buffer updated data=%u", Live_Data.lds[i]);
+        }
+        // QL_UART_DEMO_LOG("Buffer updated data=%u", Live_Data.lds);
     }
     case QUEC_UART_TX_FIFO_COMPLETE_IND:
     {
@@ -108,8 +110,7 @@ void ql_uart_notify_cb(uint32 ind_type, ql_uart_port_number_e port, uint32 size)
 
 extern unsigned char childLockFlag[1];
 
-static void
-ql_uart_demo_thread(void *param)
+static void ql_uart_demo_thread(void *param)
 {
     int ret = 0;
     QlOSStatus err = 0;
