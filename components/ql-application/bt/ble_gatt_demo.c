@@ -974,11 +974,8 @@ ql_errcode_bt_e ql_ble_gatt_demo_change_chara_value()
 {
     ql_errcode_bt_e ret;
 
-    // memset(ql_ble_gatt_chara_value, 0x55, sizeof(ql_ble_gatt_chara_value));
-    ret = ql_ble_gatt_change_chara_value(0x04, 0x13, sizeof(childModeBuffer), (unsigned char *)childModeBuffer);
-
-    QL_BLE_GATT_LOG("Changed child buffer data%s", childModeBuffer);
-
+    memset(ql_ble_gatt_chara_value, 0x55, sizeof(ql_ble_gatt_chara_value));
+    ret = ql_ble_gatt_change_chara_value(0x01, 0x01, sizeof(ql_ble_gatt_chara_value), (unsigned char *)ql_ble_gatt_chara_value);
     if (ret == QL_BT_SUCCESS)
     {
         QL_BLE_GATT_LOG("sucess");
