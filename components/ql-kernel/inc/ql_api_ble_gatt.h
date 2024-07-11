@@ -484,7 +484,7 @@ ql_errcode_bt_e ql_ble_gatt_add_or_clear_service_complete(unsigned short type, q
  *
  * Return:ql_errcode_bt_e
  ******************************************************************/
-ql_errcode_bt_e ql_ble_send_notification_data(unsigned short conn_id, unsigned short att_handle, unsigned short length, unsigned char *value);
+extern ql_errcode_bt_e ql_ble_send_notification_data(unsigned short conn_id, unsigned short att_handle, unsigned short length, unsigned char *value);
 
 /*****************************************************************
  * Function: ql_ble_send_indication_data

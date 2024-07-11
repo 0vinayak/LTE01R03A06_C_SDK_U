@@ -29,7 +29,8 @@ WHEN			  WHO		  WHAT, WHERE, WHY
 #include "ql_gpio.h"
 #include "ql_pin_cfg.h"
 #include "ql_usb.h"
-
+#include "ql_pin_cfg.h"
+#include "ql_api_ble_gatt.h"
 #include "ble_defs.h"
 
 /*===========================================================================
@@ -48,6 +49,10 @@ WHEN			  WHO		  WHAT, WHERE, WHY
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 
 #define QL_USB_PRINTER_ENABLE 0
+// #define QL_GATT_START_HANDLE_WITHOUT_SYS 1
+
+// unsigned short ble_server_hanle = QL_GATT_START_HANDLE_WITHOUT_SYS;
+unsigned char check_data[20] = {105, 2, 3, 4, 5, 6, 7, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 /*===========================================================================
  * Variate
@@ -86,10 +91,10 @@ void ql_uart_notify_cb(uint32 ind_type, ql_uart_port_number_e port, uint32 size)
             }
         }
         break;
-        for (size_t i = 0; i < LDS_NUMBER_OF_DATA; i++)
-        {
-            Live_Data.lds[i] = recv_buff[i];
-        }
+        // for (size_t i = 0; i < LDS_NUMBER_OF_DATA; i++)
+        // {
+        //     Live_Data.lds[i] = recv_buff[i];
+        // }
     }
     case QUEC_UART_TX_FIFO_COMPLETE_IND:
     {
@@ -199,6 +204,9 @@ ql_uart_demo_thread(void *param)
             }
             // ql_uart_write(QL_UART_PORT_1, (unsigned char *)0x80FA021D, 1); // 0x80FA021D,   strlen((unsigned char *)childLockFlag)
             QL_UART_DEMO_LOG("times uart write is called:%d", count);
+
+            // ql_ble_demo_send_data();
+            // ql_ble_send_notification_data(0, 3, sizeof(check_data), (unsigned char *)check_data);
 
             // QL_UART_DEMO_LOG("write_len:%d, odo data check:%d", sizeof(AppReceiveInfo.odo_data), AppReceiveInfo.odo_data);
 

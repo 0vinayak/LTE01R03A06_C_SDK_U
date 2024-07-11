@@ -1833,7 +1833,7 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                     free(ble_data);
                 }
 
-                ql_ble_demo_send_data();
+                // ql_ble_demo_send_data();
 
                 // ret = ql_ble_demo_disconect_device();
                 // if (ret != QL_BT_SUCCESS)
