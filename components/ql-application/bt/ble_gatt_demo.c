@@ -1833,6 +1833,8 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                     free(ble_data);
                 }
 
+                ql_ble_demo_send_data();
+
                 // ret = ql_ble_demo_disconect_device();
                 // if (ret != QL_BT_SUCCESS)
                 //{
@@ -1882,7 +1884,6 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                 QL_BLE_GATT_LOG("ble recv failed");
                 goto QL_BLE_ADV_DEMO_STOP;
             }
-            ql_ble_demo_send_data();
         }
         break;
             /*****************************SUCCESSFUL RECEIVE CONDITION**************************/
@@ -3114,6 +3115,7 @@ static ql_errcode_bt_e ql_ble_gatt_client_handle_event()
         break;
         case QUEC_BLE_GATT_RECV_INDICATION_IND:
         {
+
             // recieve indication
             if (QL_BT_STATUS_SUCCESS == status)
             {
