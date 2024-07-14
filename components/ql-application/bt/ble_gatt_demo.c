@@ -44,8 +44,8 @@ extern ql_errcode_bt_e ql_bt_demo_get_state();
 
 extern ql_errcode_dev_e ql_cfun_comm_set(uint8_t at_dst_cfun, uint8_t nSim);
 
-union LDSUnion Live_Data;
 union ErrorUnion error_data;
+union LDSUnion Live_Data;
 
 ql_task_t ble_demo_task = NULL;
 
@@ -1145,7 +1145,8 @@ ql_errcode_bt_e ql_ble_demo_send_data()
     // QL_BLE_GATT_LOG("Live data info value%s", Live_Data.lds[0]);
 
     // ret = ql_ble_send_notification_data(0, ble_server_hanle + 2, sizeof(Live_Data.lds), (unsigned char *)&Live_Data.lds[0]);
-    ret = ql_ble_send_notification_data(0, ble_server_hanle + 2, sizeof(Live_Data.lds), (unsigned char *)Live_Data.lds);
+    // ret = ql_ble_send_notification_data(0, ble_server_hanle + 2, sizeof(Live_Data.lds), (unsigned char *)Live_Data.lds);
+    ret = ql_ble_send_notification_data(0, ble_server_hanle + 2, sizeof(send_data), (unsigned char *)send_data);
 
     // for (size_t i = 0; i < 20; i++)
     // {
@@ -1546,17 +1547,17 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                 ret = ql_ble_demo_get_conection_state();
                 if (ret == QL_BT_SUCCESS)
                 {
-                    // ql_rtos_task_sleep_s(3);
-                    // ret = ql_ble_demo_send_data();
-                    // ret = ql_ble_demo_update_conn_param();
-                    /* if (ret != QL_BT_SUCCESS)
-                     {
-                         ret = ql_ble_demo_disconect_device();
-                         if (ret != QL_BT_SUCCESS)
-                         {
-                             goto QL_BLE_ADV_DEMO_STOP;
-                         }
-                     }*/
+                    ql_rtos_task_sleep_s(3);
+                    ret = ql_ble_demo_send_data();
+                    ret = ql_ble_demo_update_conn_param();
+                    if (ret != QL_BT_SUCCESS)
+                    {
+                        ret = ql_ble_demo_disconect_device();
+                        if (ret != QL_BT_SUCCESS)
+                        {
+                            goto QL_BLE_ADV_DEMO_STOP;
+                        }
+                    }
                     break;
                 }
                 else
@@ -1893,7 +1894,7 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
 
         /*********************************START SENDING DATA HERE WITH DELAY*****************************/
 
-        ql_ble_demo_send_data();
+        // ql_ble_demo_send_data();
 
         return ret;
     QL_BLE_ADV_DEMO_STOP:
