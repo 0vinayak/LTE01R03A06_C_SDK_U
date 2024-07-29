@@ -610,7 +610,7 @@ static void mqtt_app_thread(void *arg)
 		{
 			while (test_num < 10 && mqtt_connected == 1)
 			{
-				if (ql_mqtt_sub_unsub(&mqtt_cli, "topic/telemetry/gps/live", 1, mqtt_requst_result_cb, NULL, 1) == MQTTCLIENT_WOUNDBLOCK)
+				if (ql_mqtt_sub_unsub(&mqtt_cli, "topic/reverse/gps/GPS12345", 0, mqtt_requst_result_cb, NULL, 1) == MQTTCLIENT_WOUNDBLOCK)
 				{
 					QL_MQTT_LOG("======wait subscrible result");
 					ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
@@ -652,11 +652,11 @@ static void mqtt_app_thread(void *arg)
 					ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
 				}
 
-				if (ql_mqtt_sub_unsub(&mqtt_cli, "topic/telemetry/gps/live", 1, mqtt_requst_result_cb, NULL, 0) == MQTTCLIENT_WOUNDBLOCK)
-				{
-					QL_MQTT_LOG("=====wait unsubscrible result");
-					ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
-				}
+				// if (ql_mqtt_sub_unsub(&mqtt_cli, "topic/telemetry/gps/live", 1, mqtt_requst_result_cb, NULL, 0) == MQTTCLIENT_WOUNDBLOCK)
+				// {
+				// 	QL_MQTT_LOG("=====wait unsubscrible result");
+				// 	ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
+				// }
 				test_num++;
 				ql_rtos_task_sleep_ms(500);
 			}
