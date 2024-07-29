@@ -36,108 +36,60 @@
 #error "Number of bits in a char must be 8."
 #endif
 
-extern uint8_t BleRxData[20];
+// extern uint8_t BleRxData[20];
 
-extern float unencoded_longitude;
-extern float unencoded_latitude;
-extern float unencoded_altitude;
+// extern float unencoded_longitude;
+// extern float unencoded_latitude;
+// extern float unencoded_altitude;
 
 void com_emotorad_backend_aggregation_flink_data_bike_init(
     struct com_emotorad_backend_aggregation_flink_data_bike_t *self_p,
     struct pbtools_heap_t *heap_p)
 {
     self_p->base.heap_p = heap_p;
-    self_p->vehicle_speed = 10;
-    self_p->motor_speed = 20;
-    self_p->battery_voltage = 50;
-    self_p->soc = 20;
-    self_p->throttle = 5;
+    self_p->vehicle_speed = 1;
+    self_p->motor_speed = 20; // not in sample
+    self_p->battery_voltage = 24063;
+    self_p->soc = 36;
+    self_p->throttle = 1861;
     self_p->throttle_cut_off = 1;
-    self_p->pas = 3;
+    self_p->pas = 2;
     self_p->eng_mode = 2;
-    self_p->distance_to_empty = 90;
-    self_p->calories = 200;
-    self_p->current_trip_distance = 30;
-    self_p->current_trip_max_speed = 40;
-    self_p->child_mode_speed_limit = 14;
+    self_p->distance_to_empty = 12;
+    self_p->calories = 257;
+    self_p->current_trip_distance = 261.9656193149855;
+    self_p->current_trip_max_speed = 20;
+    self_p->child_mode_speed_limit = 20;
     self_p->side_stand = 1;
     self_p->headlamp = 1;
     self_p->brake = 1;
     self_p->cruise_control = 1;
     self_p->walk_mode = 1;
-    self_p->vehicle_odo_reading = 71;
+    self_p->vehicle_odo_reading = 10;
     self_p->motor_hall_failure = 1;
     self_p->motor_line_short_circuit_fault = 1;
     self_p->brake_failure = 1;
     self_p->handle_bar_failure = 1;
-    self_p->battery_under_voltage_fault = 0;
-    self_p->display_and_mcu_comm_failure = 0;
-    self_p->overvoltage_fault = 0;
-    self_p->controller_opamp_failure = 0;
+    self_p->battery_under_voltage_fault = 1;
+    self_p->display_and_mcu_comm_failure = 1;
+    self_p->overvoltage_fault = 1;
+    self_p->controller_opamp_failure = 1;
     self_p->motor_stall_fault = 1;
-    self_p->mcu_debug_signal0 = 5;
-    self_p->mcu_debug_signal1 = 5;
-    self_p->mcu_debug_signal2 = 5;
-    self_p->mcu_debug_signal3 = 5;
-    self_p->ble_debug_signal0 = 5;
-    self_p->ble_debug_signal1 = 5;
-    self_p->ble_debug_signal2 = 5;
-    self_p->ble_debug_signal3 = 5;
-    self_p->emuser_id_p = "vin";
-    self_p->vin_p = "Testing";
-    self_p->latitude = 15.2;
-    self_p->longitude = 10.3;
-    self_p->altitude = 765;
-    self_p->time = 2000;
+    self_p->mcu_debug_signal0 = 4;
+    self_p->mcu_debug_signal1 = 1;
+    self_p->mcu_debug_signal2 = 1;
+    self_p->mcu_debug_signal3 = 4;
+    self_p->ble_debug_signal0 = 8;
+    self_p->ble_debug_signal1 = 3;
+    self_p->ble_debug_signal2 = 6;
+    self_p->ble_debug_signal3 = 8;
+    self_p->emuser_id_p = "0b927d97-782a-4c82-b9d2-e4e06774ed37";
+    self_p->vin_p = "AmigoBike";
+    self_p->latitude = 13.9210121;
+    self_p->longitude = 77.6722252;
+    self_p->altitude = 10;
+    self_p->time = 1720071401563;
 }
-
-// void com_emotorad_backend_aggregation_flink_data_bike_init(
-//     struct com_emotorad_backend_aggregation_flink_data_bike_t *self_p,
-//     struct pbtools_heap_t *heap_p)
-// {
-//     self_p->base.heap_p = heap_p;
-//     self_p->vehicle_speed = BleRxData[0];
-//     // 10;
-//     self_p->motor_speed = BleRxData[1];
-//     self_p->battery_voltage = BleRxData[2] | (BleRxData[3] << 8);
-//     self_p->eng_mode = 2;
-//     self_p->distance_to_empty = BleRxData[8] | (BleRxData[9] << 8);
-//     self_p->calories = 200; //
-//     self_p->current_trip_distance = BleRxData[12];
-//     self_p->current_trip_max_speed = BleRxData[13];
-//     self_p->child_mode_speed_limit = BleRxData[6];
-//     self_p->side_stand = (BleRxData[14] & 0x1);
-//     self_p->headlamp = (BleRxData[14] & 0x2);
-//     self_p->brake = (BleRxData[14] & 0x4);
-//     self_p->cruise_control = (BleRxData[14] & 0x8);
-//     self_p->walk_mode = (BleRxData[14] & 0x10);
-//     self_p->vehicle_odo_reading = (BleRxData[16] | BleRxData[17] << 8 | BleRxData[18] << 16 | BleRxData[19] << 24);
-//     self_p->motor_hall_failure = BleRxData[15];
-//     self_p->motor_line_short_circuit_fault = 1;
-//     self_p->brake_failure = 1;
-//     self_p->handle_bar_failure = 1;
-//     self_p->battery_under_voltage_fault = 0;
-//     self_p->display_and_mcu_comm_failure = 0;
-//     self_p->overvoltage_fault = 0;
-//     self_p->controller_opamp_failure = 0;
-//     self_p->motor_stall_fault = 1;
-//     self_p->mcu_debug_signal0 = 5;
-//     self_p->mcu_debug_signal1 = 5;
-//     self_p->mcu_debug_signal2 = 5;
-//     self_p->mcu_debug_signal3 = 5;
-//     self_p->ble_debug_signal0 = 5;
-//     self_p->ble_debug_signal1 = 5;
-//     self_p->ble_debug_signal2 = 5;
-//     self_p->ble_debug_signal3 = 5;
-//     self_p->emuser_id_p = "0b927d97-782a-4c82-b9d2-e4e06774ed37";
-//     self_p->vin_p = "AmigoBike";
-//     self_p->latitude = unencoded_latitude;
-//     // 13 .9210121;
-//     self_p->longitude = unencoded_longitude;
-//     // 77 .6722252;
-//     self_p->altitude = unencoded_altitude;
-//     self_p->time = 1720071401563;
-// }
 
 void com_emotorad_backend_aggregation_flink_data_bike_encode_inner(
     struct pbtools_encoder_t *encoder_p,
