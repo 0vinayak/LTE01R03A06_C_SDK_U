@@ -590,7 +590,7 @@ static void mqtt_app_thread(void *arg)
 			break;
 		}
 
-		ql_mqtt_set_inpub_callback(&mqtt_cli, mqtt_inpub_data_cb, NULL);
+		// ql_mqtt_set_inpub_callback(&mqtt_cli, mqtt_inpub_data_cb, NULL);
 
 		if (is_user_onenet == 1)
 		{
@@ -623,6 +623,8 @@ static void mqtt_app_thread(void *arg)
 		{
 			while (test_num < 10000 && mqtt_connected == 1)
 			{
+
+				ql_mqtt_set_inpub_callback(&mqtt_cli, mqtt_inpub_data_cb, NULL);
 
 				subscribeResult = ql_mqtt_sub_unsub(&mqtt_cli, "topic/reverse/gps/GPS12345", 0, mqtt_requst_result_cb, NULL, 1);
 

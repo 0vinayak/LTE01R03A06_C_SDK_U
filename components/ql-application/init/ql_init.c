@@ -465,7 +465,7 @@ static void ql_init_demo_thread(void *param)
     // ql_adc_app_init();
 
 #ifdef QL_APP_FEATURE_UART
-    // ql_uart_app_init();
+    ql_uart_app_init();
     //  ql_uart_rb_app_init();
 #endif
 
@@ -481,7 +481,7 @@ static void ql_init_demo_thread(void *param)
 #endif
 
 #ifdef QL_APP_FEATURE_BLE_GATT
-    // ql_ble_gatt_server_demo_init();
+    ql_ble_gatt_server_demo_init();
     //  ql_ble_gatt_client_demo_init();
     //  ql_ble_hid_demo_init();
 #endif
