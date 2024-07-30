@@ -3417,9 +3417,9 @@ LOAD ../../prebuilts/win32/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/7.2.1/
                 0x60251d4d       0x13 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.__FUNCTION__.19525
                 0x60251d60       0x1a lib/libql_app_mqtt.a(mqtt_demo.c.obj)
- .rodata.__FUNCTION__.19586
+ .rodata.__FUNCTION__.19587
                 0x60251d7a       0x10 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
- .rodata.__FUNCTION__.19606
+ .rodata.__FUNCTION__.19607
                 0x60251d8a       0x11 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.base64Encoder.str1.1
                 0x60251d9b       0x41 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
@@ -4193,17 +4193,17 @@ LOAD ../../prebuilts/win32/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/7.2.1/
  *(.gnu*)
 OUTPUT(hex\examples\APPIMAGE_APP.elf elf32-littlearm)
 
-.debug_info     0x00000000    0x22b57
+.debug_info     0x00000000    0x22b72
  .debug_info    0x00000000     0x299f components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
  .debug_info    0x0000299f     0x1a86 lib/libql_app_peripheral.a(gpio_demo.c.obj)
  .debug_info    0x00004425     0x2500 lib/libql_app_peripheral.a(uart_demo.c.obj)
  .debug_info    0x00006925      0xcdc lib/libql_app_peripheral.a(ql_pin_cfg.c.obj)
- .debug_info    0x00007601     0x35e0 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
- .debug_info    0x0000abe1     0x2744 lib/libql_app_mqtt.a(data.c.obj)
- .debug_info    0x0000d325     0x72e3 lib/libql_app_mqtt.a(pbtools.c.obj)
- .debug_info    0x00014608     0x82b1 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
- .debug_info    0x0001c8b9     0x4dd2 lib/libql_app_gnss.a(gnss_demo.c.obj)
- .debug_info    0x0002168b     0x14cc lib/libql_app_bt.a(bt_demo.c.obj)
+ .debug_info    0x00007601     0x35fb lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+ .debug_info    0x0000abfc     0x2744 lib/libql_app_mqtt.a(data.c.obj)
+ .debug_info    0x0000d340     0x72e3 lib/libql_app_mqtt.a(pbtools.c.obj)
+ .debug_info    0x00014623     0x82b1 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+ .debug_info    0x0001c8d4     0x4dd2 lib/libql_app_gnss.a(gnss_demo.c.obj)
+ .debug_info    0x000216a6     0x14cc lib/libql_app_bt.a(bt_demo.c.obj)
 
 .debug_abbrev   0x00000000     0x248a
  .debug_abbrev  0x00000000      0x3be components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
@@ -4217,16 +4217,16 @@ OUTPUT(hex\examples\APPIMAGE_APP.elf elf32-littlearm)
  .debug_abbrev  0x00001cc5      0x550 lib/libql_app_gnss.a(gnss_demo.c.obj)
  .debug_abbrev  0x00002215      0x275 lib/libql_app_bt.a(bt_demo.c.obj)
 
-.debug_loc      0x00000000     0xabb6
+.debug_loc      0x00000000     0xabd6
  .debug_loc     0x00000000      0x25a components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
  .debug_loc     0x0000025a      0x105 lib/libql_app_peripheral.a(gpio_demo.c.obj)
  .debug_loc     0x0000035f      0x235 lib/libql_app_peripheral.a(uart_demo.c.obj)
- .debug_loc     0x00000594      0x733 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
- .debug_loc     0x00000cc7      0xa11 lib/libql_app_mqtt.a(data.c.obj)
- .debug_loc     0x000016d8     0x624c lib/libql_app_mqtt.a(pbtools.c.obj)
- .debug_loc     0x00007924     0x1865 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
- .debug_loc     0x00009189     0x18e2 lib/libql_app_gnss.a(gnss_demo.c.obj)
- .debug_loc     0x0000aa6b      0x14b lib/libql_app_bt.a(bt_demo.c.obj)
+ .debug_loc     0x00000594      0x753 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+ .debug_loc     0x00000ce7      0xa11 lib/libql_app_mqtt.a(data.c.obj)
+ .debug_loc     0x000016f8     0x624c lib/libql_app_mqtt.a(pbtools.c.obj)
+ .debug_loc     0x00007944     0x1865 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+ .debug_loc     0x000091a9     0x18e2 lib/libql_app_gnss.a(gnss_demo.c.obj)
+ .debug_loc     0x0000aa8b      0x14b lib/libql_app_bt.a(bt_demo.c.obj)
 
 .debug_aranges  0x00000000      0xa50
  .debug_aranges
@@ -4261,19 +4261,19 @@ OUTPUT(hex\examples\APPIMAGE_APP.elf elf32-littlearm)
  .debug_ranges  0x00000f20      0x108 lib/libql_app_gnss.a(gnss_demo.c.obj)
  .debug_ranges  0x00001028       0x40 lib/libql_app_bt.a(bt_demo.c.obj)
 
-.debug_line     0x00000000     0x4853
+.debug_line     0x00000000     0x4854
  .debug_line    0x00000000      0x5bb components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
  .debug_line    0x000005bb      0x350 lib/libql_app_peripheral.a(gpio_demo.c.obj)
  .debug_line    0x0000090b      0x36a lib/libql_app_peripheral.a(uart_demo.c.obj)
  .debug_line    0x00000c75      0x1eb lib/libql_app_peripheral.a(ql_pin_cfg.c.obj)
- .debug_line    0x00000e60      0x6f9 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
- .debug_line    0x00001559      0x527 lib/libql_app_mqtt.a(data.c.obj)
- .debug_line    0x00001a80     0x1209 lib/libql_app_mqtt.a(pbtools.c.obj)
- .debug_line    0x00002c89      0xe3b lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
- .debug_line    0x00003ac4      0xa9f lib/libql_app_gnss.a(gnss_demo.c.obj)
- .debug_line    0x00004563      0x2f0 lib/libql_app_bt.a(bt_demo.c.obj)
+ .debug_line    0x00000e60      0x6fa lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+ .debug_line    0x0000155a      0x527 lib/libql_app_mqtt.a(data.c.obj)
+ .debug_line    0x00001a81     0x1209 lib/libql_app_mqtt.a(pbtools.c.obj)
+ .debug_line    0x00002c8a      0xe3b lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+ .debug_line    0x00003ac5      0xa9f lib/libql_app_gnss.a(gnss_demo.c.obj)
+ .debug_line    0x00004564      0x2f0 lib/libql_app_bt.a(bt_demo.c.obj)
 
-.debug_str      0x00000000     0xaaf3
+.debug_str      0x00000000     0xab15
  .debug_str     0x00000000     0x26bc components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
                                0x284d (size before relaxing)
  .debug_str     0x000026bc      0x144 lib/libql_app_peripheral.a(gpio_demo.c.obj)
@@ -4282,17 +4282,17 @@ OUTPUT(hex\examples\APPIMAGE_APP.elf elf32-littlearm)
                                0x3248 (size before relaxing)
  .debug_str     0x0000436d       0x38 lib/libql_app_peripheral.a(ql_pin_cfg.c.obj)
                                 0xefc (size before relaxing)
- .debug_str     0x000043a5     0x16d1 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
-                               0x3065 (size before relaxing)
- .debug_str     0x00005a76      0x959 lib/libql_app_mqtt.a(data.c.obj)
+ .debug_str     0x000043a5     0x16f3 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                               0x3087 (size before relaxing)
+ .debug_str     0x00005a98      0x959 lib/libql_app_mqtt.a(data.c.obj)
                                0x17c1 (size before relaxing)
- .debug_str     0x000063cf     0x170a lib/libql_app_mqtt.a(pbtools.c.obj)
+ .debug_str     0x000063f1     0x170a lib/libql_app_mqtt.a(pbtools.c.obj)
                                0x2273 (size before relaxing)
- .debug_str     0x00007ad9     0x22d8 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+ .debug_str     0x00007afb     0x22d8 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
                                0x4ea1 (size before relaxing)
- .debug_str     0x00009db1      0xbeb lib/libql_app_gnss.a(gnss_demo.c.obj)
+ .debug_str     0x00009dd3      0xbeb lib/libql_app_gnss.a(gnss_demo.c.obj)
                                0x400e (size before relaxing)
- .debug_str     0x0000a99c      0x157 lib/libql_app_bt.a(bt_demo.c.obj)
+ .debug_str     0x0000a9be      0x157 lib/libql_app_bt.a(bt_demo.c.obj)
                                0x18f4 (size before relaxing)
 
 .debug_frame    0x00000000     0x23b4

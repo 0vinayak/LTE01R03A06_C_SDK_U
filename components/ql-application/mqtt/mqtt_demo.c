@@ -358,6 +358,8 @@ static void mqtt_app_thread(void *arg)
 	// char *token = NULL;
 	int is_user_onenet = 0;
 
+	mqtt_error_code_e subscribeResult;
+
 	char *sendBikePacket;
 	char *sendTrip1Packet;
 	char *sendTrip2Packet;
@@ -609,8 +611,11 @@ static void mqtt_app_thread(void *arg)
 		else
 		{
 			while (test_num < 10 && mqtt_connected == 1)
+
 			{
-				if (ql_mqtt_sub_unsub(&mqtt_cli, "topic/reverse/gps/GPS12345", 0, mqtt_requst_result_cb, NULL, 1) == MQTTCLIENT_WOUNDBLOCK)
+				subscribeResult = ql_mqtt_sub_unsub(&mqtt_cli, "topic/reverse/gps/GPS12345", 0, mqtt_requst_result_cb, NULL, 1);
+
+				if (subscribeResult == MQTTCLIENT_WOUNDBLOCK)
 				{
 					QL_MQTT_LOG("======wait subscrible result");
 					ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
