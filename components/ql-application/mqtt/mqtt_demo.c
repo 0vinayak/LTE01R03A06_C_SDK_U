@@ -622,38 +622,41 @@ static void mqtt_app_thread(void *arg)
 				}
 
 				make_Bike_message();
-				sendBikePacket = base64Encoder(encodedCore);
+				// sendBikePacket = base64Encoder(encodedCore);
+				QL_MQTT_LOG("bike data packet:%c", sendBikePacket);
 
 				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/bike", sendBikePacket, strlen(sendBikePacket), 0, 1, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
 				{
-					QL_MQTT_LOG("======wait publish result");
+					QL_MQTT_LOG("======wait publish result bike");
 					ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
 				}
 
 				make_Trip1_message();
-				sendTrip1Packet = base64Encoder(encodedTrip1);
+				// sendTrip1Packet = base64Encoder(encodedTrip1);
+				QL_MQTT_LOG("trip1 data packet:%c", sendTrip1Packet);
 
-				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/trip1", sendTrip1Packet, strlen(sendTrip1Packet), 0, 1, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
+				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/trip1", sendTrip1Packet, strlen(sendTrip1Packet), 1, 1, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
 				{
-					QL_MQTT_LOG("======wait publish result");
+					QL_MQTT_LOG("======wait publish result trip1");
 					ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
 				}
 
 				make_Trip2_message();
-				sendTrip2Packet = base64Encoder(encodedTrip2);
+				// sendTrip2Packet = base64Encoder(encodedTrip2);
+				QL_MQTT_LOG("trip2 data packet:%c", sendTrip2Packet);
 
-				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/trip2", sendTrip2Packet, strlen(sendTrip2Packet), 0, 1, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
+				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/trip2", sendTrip2Packet, strlen(sendTrip2Packet), 2, 1, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
 				{
-					QL_MQTT_LOG("======wait publish result");
+					QL_MQTT_LOG("======wait publish result trip2");
 					ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
 				}
 
 				make_End_message();
-				sendEndPacket = base64Encoder(encodedEnd);
+				// sendEndPacket = base64Encoder(encodedEnd);
 
 				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/end", sendEndPacket, strlen(sendEndPacket), 0, 1, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
 				{
-					QL_MQTT_LOG("======wait publish result");
+					QL_MQTT_LOG("======wait publish result end");
 					ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
 				}
 
