@@ -615,7 +615,7 @@ static void mqtt_app_thread(void *arg)
 			{
 				subscribeResult = ql_mqtt_sub_unsub(&mqtt_cli, "topic/reverse/gps/GPS12345", 0, mqtt_requst_result_cb, NULL, 1);
 
-				QL_MQTT_LOG("subscribe result : %u", subscribeResult);
+				QL_MQTT_LOG("subscribe result : %d", subscribeResult);
 
 				if (subscribeResult == MQTTCLIENT_WOUNDBLOCK)
 				{
@@ -628,7 +628,7 @@ static void mqtt_app_thread(void *arg)
 
 				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/bike", "hi, mqtt qos 0", strlen("hi, mqtt qos 0"), 0, 0, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
 				{
-					QL_MQTT_LOG("======wait publish result");
+					QL_MQTT_LOG("======wait publish result bike");
 					ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
 				}
 
@@ -637,7 +637,7 @@ static void mqtt_app_thread(void *arg)
 
 				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/trip1", "hi, mqtt qos 1", strlen("hi, mqtt qos 1"), 1, 0, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
 				{
-					QL_MQTT_LOG("======wait publish result");
+					QL_MQTT_LOG("======wait publish result trip1");
 					ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
 				}
 
@@ -646,7 +646,7 @@ static void mqtt_app_thread(void *arg)
 
 				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/trip2", "hi, mqtt qos 2", strlen("hi, mqtt qos 2"), 2, 0, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
 				{
-					QL_MQTT_LOG("======wait publish result");
+					QL_MQTT_LOG("======wait publish result trip2");
 					ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
 				}
 

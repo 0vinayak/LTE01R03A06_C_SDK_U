@@ -2132,12 +2132,12 @@ LOAD ../../prebuilts/win32/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/7.2.1/
                 0x6025002c        0x4 LONG 0x80fa0000 __corestub_start
                 0x60250030        0x4 LONG 0x4
                 0x60250034        0x4 LONG 0x180 (__text_load_start - __flash_start)
-                0x60250038        0x4 LONG 0x18d0 (__text_end - __text_start)
+                0x60250038        0x4 LONG 0x1938 (__text_end - __text_start)
                 0x6025003c        0x4 LONG 0x60250180 __text_start
                 0x60250040        0x4 LONG 0x4
-                0x60250044        0x4 LONG 0x1a60 (__init_array_load_start - __flash_start)
+                0x60250044        0x4 LONG 0x1ac0 (__init_array_load_start - __flash_start)
                 0x60250048        0x4 LONG 0x0 (__init_array_end - __init_array_start)
-                0x6025004c        0x4 LONG 0x60251a60 __init_array_start
+                0x6025004c        0x4 LONG 0x60251ac0 __init_array_start
                 0x60250050        0x4 LONG 0x1
                 0x60250054        0x4 LONG 0x180 (__data_load_start - __flash_start)
                 0x60250058        0x4 LONG 0x0 (__data_end - __data_start)
@@ -2281,7 +2281,7 @@ LOAD ../../prebuilts/win32/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/7.2.1/
  *fill*         0x80fa010c       0x14 
                 0x60250180                . = ((LOADADDR (.corestub) + SIZEOF (.corestub)) + SIZEOF (.data))
 
-.text           0x60250180     0x18e0
+.text           0x60250180     0x1940
                 0x60250180                __text_start = .
  *(.text .text.* .gnu.linkonce.t.* .rdata .rodata .rodata.* .gnu.linkonce.r.* .glue_7 .glue_7t .vfp11_veneer .v4_bx)
  .glue_7        0x60250180        0x0 linker stubs
@@ -2344,62 +2344,61 @@ LOAD ../../prebuilts/win32/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/7.2.1/
  .text.mqtt_state_exception_cb
                 0x60250ca0       0x28 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .text.mqtt_app_thread
-                0x60250cc8      0x4b4 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x60250cc8      0x4bc lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .text.mqtt_requst_result_cb
-                0x6025117c       0x30 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x60251184       0x30 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .text.mqtt_connect_result_cb
-                0x602511ac       0x3c lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x602511b4       0x3c lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .text.ql_mqtt_app_init
-                0x602511e8       0x4c lib/libql_app_mqtt.a(mqtt_demo.c.obj)
-                0x602511e8                ql_mqtt_app_init
+                0x602511f0       0x4c lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x602511f0                ql_mqtt_app_init
  .rodata.__FUNCTION__.19498
-                0x60251234       0x18 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x6025123c       0x18 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.__FUNCTION__.19504
-                0x6025124c       0x17 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x60251254       0x17 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.__FUNCTION__.19510
-                0x60251263       0x16 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x6025126b       0x16 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.__FUNCTION__.19519
-                0x60251279       0x13 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x60251281       0x13 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.__FUNCTION__.19566
-                0x6025128c       0x10 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x60251294       0x10 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.__FUNCTION__.19587
-                0x6025129c       0x11 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x602512a4       0x11 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.mqtt_app_thread.str1.1
-                0x602512ad      0x50a lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x602512b5      0x56b lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.mqtt_connect_result_cb.str1.1
-                0x602517b7       0x19 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x60251820       0x19 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.mqtt_inpub_data_cb.str1.1
-                0x602517d0       0x32 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x60251839       0x32 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.mqtt_requst_result_cb.str1.1
-                0x60251802       0x16 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x6025186b       0x16 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.mqtt_state_exception_cb.str1.1
-                0x60251818       0x2f lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x60251881       0x2f lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.ql_mqtt_app_init.str1.1
-                0x60251847       0x2c lib/libql_app_mqtt.a(mqtt_demo.c.obj)
- *fill*         0x60251873        0x1 
- .text.memset   0x60251874       0xa8 ..\..\components\newlib\armca5\libc.a(lib_a-memset.o)
-                0x60251874                memset
- *fill*         0x6025191c        0x4 
+                0x602518b0       0x2c lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+ .text.memset   0x602518dc       0xa8 ..\..\components\newlib\armca5\libc.a(lib_a-memset.o)
+                0x602518dc                memset
+ *fill*         0x60251984        0x4 
  .text.memset.__stub
-                0x60251920      0x130 linker stubs
-                0x60251a50                __text_end = .
-                0x60251a60                . = ALIGN (0x20)
- *fill*         0x60251a50       0x10 
+                0x60251988      0x130 linker stubs
+                0x60251ab8                __text_end = .
+                0x60251ac0                . = ALIGN (0x20)
+ *fill*         0x60251ab8        0x8 
                 0x60250180                __text_load_start = LOADADDR (.text)
 
-.iplt           0x60251a60        0x0
- .iplt          0x60251a60        0x0 lib/core_stub.o
+.iplt           0x60251ac0        0x0
+ .iplt          0x60251ac0        0x0 lib/core_stub.o
 
-.rel.dyn        0x60251a60        0x0
- .rel.iplt      0x60251a60        0x0 lib/core_stub.o
+.rel.dyn        0x60251ac0        0x0
+ .rel.iplt      0x60251ac0        0x0 lib/core_stub.o
 
-.init_array     0x60251a60        0x0
-                0x60251a60                __init_array_start = .
+.init_array     0x60251ac0        0x0
+                0x60251ac0                __init_array_start = .
  *(.init_array*)
-                0x60251a60                __init_array_end = .
-                0x60251a60                . = ALIGN (0x20)
-                0x60251a60                __init_array_load_start = LOADADDR (.init_array)
-                0x60251a60                __flash_end = (ADDR (.init_array) + SIZEOF (.init_array))
+                0x60251ac0                __init_array_end = .
+                0x60251ac0                . = ALIGN (0x20)
+                0x60251ac0                __init_array_load_start = LOADADDR (.init_array)
+                0x60251ac0                __flash_end = (ADDR (.init_array) + SIZEOF (.init_array))
                 0x80fa0120                __ram_end = (ADDR (.bss) + SIZEOF (.bss))
                 0x00000001                ASSERT ((__flash_end <= (ORIGIN (flash) + LENGTH (flash))), FLASH overflow)
                 0x00000001                ASSERT ((__ram_end <= (ORIGIN (ram) + LENGTH (ram))), RAM overflow)
