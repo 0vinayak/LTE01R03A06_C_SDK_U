@@ -206,12 +206,12 @@ static void mqtt_inpub_data_cb(mqtt_client_t *client, void *arg, int pkt_id, con
 	QL_MQTT_LOG("payload: %s", payload);
 }
 
-static void mqtt_disconnect_result_cb(mqtt_client_t *client, void *arg, int err)
-{
-	QL_MQTT_LOG("err: %d", err);
+// static void mqtt_disconnect_result_cb(mqtt_client_t *client, void *arg, int err)
+// {
+// 	QL_MQTT_LOG("err: %d", err);
 
-	ql_rtos_semaphore_release(mqtt_semp);
-}
+// 	ql_rtos_semaphore_release(mqtt_semp);
+// }
 
 char *base64Encoder(unsigned char input_str[])
 {
@@ -362,6 +362,8 @@ static void mqtt_app_thread(void *arg)
 	char *sendTrip1Packet;
 	char *sendTrip2Packet;
 	char *sendEndPacket;
+
+	mqtt_error_code_e subscribeResult;
 
 	ql_rtos_semaphore_create(&mqtt_semp, 0);
 	ql_rtos_task_sleep_s(10);
@@ -608,9 +610,12 @@ static void mqtt_app_thread(void *arg)
 		}
 		else
 		{
-			while (test_num < 10 && mqtt_connected == 1)
+			while (test_num < 10000 && mqtt_connected == 1)
 			{
-				if (ql_mqtt_sub_unsub(&mqtt_cli, "topic/reverse/gps/GPS12345", 0, mqtt_requst_result_cb, NULL, 1) == MQTTCLIENT_WOUNDBLOCK)
+
+				subscribeResult = ql_mqtt_sub_unsub(&mqtt_cli, "topic/reverse/gps/GPS12345", 0, mqtt_requst_result_cb, NULL, 1);
+
+				if (subscribeResult == MQTTCLIENT_WOUNDBLOCK)
 				{
 					QL_MQTT_LOG("======wait subscrible result");
 					ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
@@ -661,20 +666,20 @@ static void mqtt_app_thread(void *arg)
 				ql_rtos_task_sleep_ms(500);
 			}
 		}
-		if (mqtt_connected == 1 && ql_mqtt_disconnect(&mqtt_cli, mqtt_disconnect_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
-		{
-			QL_MQTT_LOG("=====wait disconnect result");
-			ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
-		}
-		QL_MQTT_LOG("==============mqtt_client_test[%d] end=======%x=========\n", run_num, &mqtt_cli);
-		ql_mqtt_client_deinit(&mqtt_cli);
-		mqtt_connected = 0;
+		// if (mqtt_connected == 1 && ql_mqtt_disconnect(&mqtt_cli, mqtt_disconnect_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
+		// {
+		// 	QL_MQTT_LOG("=====wait disconnect result");
+		// 	ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
+		// }
+		// QL_MQTT_LOG("==============mqtt_client_test[%d] end=======%x=========\n", run_num, &mqtt_cli);
+		// ql_mqtt_client_deinit(&mqtt_cli);
+		// mqtt_connected = 0;
 		run_num++;
 		ql_rtos_task_sleep_s(1);
-		if (is_user_onenet == 1)
-		{
-			break;
-		}
+		// if (is_user_onenet == 1)
+		// // {
+		// // 	break;
+		// // }
 	}
 
 exit:
