@@ -84,7 +84,7 @@ void com_emotorad_backend_aggregation_flink_data_bike_init(
     self_p->ble_debug_signal2 = 6;
     self_p->ble_debug_signal3 = 8;
     self_p->emuser_id_p = "0b927d97-782a-4c82-b9d2-e4e06774ed37";
-    self_p->vin_p = "AmigoBike";
+    self_p->vin_p = "Indian User";
     self_p->latitude = 13.9210121;
     self_p->longitude = 77.6722252;
     self_p->altitude = 10;
@@ -404,7 +404,7 @@ void com_emotorad_backend_aggregation_flink_data_trip1_init(
     self_p->start_soc = 90;
     self_p->end_soc = 35;
     self_p->emuser_id_p = "0b927d97-782a-4c82-b9d2-e4e06774ed37"; // 0b927d97-782a-4c82-b9d2-e4e06774ed37
-    self_p->vin_p = "AmigoBike";
+    self_p->vin_p = "Indian User";
     self_p->time = 910284540491034169;
 }
 
@@ -562,7 +562,7 @@ void com_emotorad_backend_aggregation_flink_data_trip2_init(
     self_p->lab_duration = 332;
     self_p->fitness_duration = 23;
     self_p->emuser_id_p = "0b927d97-782a-4c82-b9d2-e4e06774ed37";
-    self_p->vin_p = "AmigoBike";
+    self_p->vin_p = "Indian User";
     self_p->time = 1140809326210294872;
 }
 
@@ -696,7 +696,7 @@ void com_emotorad_backend_aggregation_flink_data_end_init(
 {
     self_p->base.heap_p = heap_p;
     self_p->emuser_id_p = "0b927d97-782a-4c82-b9d2-e4e06774ed37";
-    self_p->vin_p = "AmigoBike";
+    self_p->vin_p = "Indian User";
     self_p->time = 1721282408480;
 }
 
