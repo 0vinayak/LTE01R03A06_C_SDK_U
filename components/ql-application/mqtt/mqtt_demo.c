@@ -642,10 +642,13 @@ static void mqtt_app_thread(void *arg)
 				make_Bike_message();
 				// mbedtls_base64_encode(&sendCore[0], 0, &encodedLengthBike, &encodedCore[0], sizeof(encodedCore));
 				sendBikePacket = base64Encoder(encodedCore);
-				strncpy(sendBikeMqttPacket, sendBikePacket, strlen(sendBikePacket));
-				QL_MQTT_LOG("bike data packet:%s", sendBikeMqttPacket);
+				strncpy(sendBikeMqttPacket, sendBikePacket, 72);
 
-				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/bike", sendBikeMqttPacket, sizeof(sendBikeMqttPacket), 0, 1, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
+				QL_MQTT_LOG("bike data packet length:%d", strlen(sendBikePacket));
+				QL_MQTT_LOG("bike data packet length final:%d", strlen(sendBikeMqttPacket));
+				QL_MQTT_LOG("bike data packet:%s", sendBikePacket);
+
+				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/bike", sendBikePacket, strlen(sendBikePacket), 0, 1, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
 				{
 					QL_MQTT_LOG("======wait publish result bike");
 					// ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
