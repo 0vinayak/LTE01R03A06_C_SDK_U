@@ -567,7 +567,7 @@ static void ql_init_demo_thread(void *param)
 #endif
 
 #ifdef QL_APP_FEATURE_GNSS
-    // ql_gnss_app_init();
+    ql_gnss_app_init();
 #endif
 
 #ifdef QL_APP_FEATURE_FILE_ZIP
