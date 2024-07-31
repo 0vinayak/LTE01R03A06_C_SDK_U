@@ -517,7 +517,7 @@ static void ql_init_demo_thread(void *param)
 #endif
 
 #ifdef QL_APP_FEATURE_MQTT
-    ql_mqtt_app_init();
+    // ql_mqtt_app_init();
 #endif
 #ifdef QL_APP_FEATURE_SSL
     // ql_ssl_app_init();
@@ -668,7 +668,7 @@ static void ql_init_demo_thread(void *param)
 #ifdef QL_APP_FEATURE_I2C
     /*因为i2c通过camera来演示功能，所以打开i2c demo时不可同时打开camera demo*/
     /*because I2C uses the camera as a demonstration, so i2c demo can not be opened when the camera demo open */
-    // ql_i2c_demo_init();
+    ql_i2c_demo_init();
 #endif
 
 #ifdef QL_APP_FEATURE_USBNET
