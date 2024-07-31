@@ -637,9 +637,9 @@ static void mqtt_app_thread(void *arg)
 				make_Bike_message();
 				// mbedtls_base64_encode(&sendCore[0], 0, &encodedLengthBike, &encodedCore[0], sizeof(encodedCore));
 				sendBikePacket = base64Encoder(encodedCore);
-				QL_MQTT_LOG("bike data packet:%c", sendCore);
+				QL_MQTT_LOG("bike data packet:%s", &sendBikePacket);
 
-				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/bike", sendBikePacket, sizeof(sendBikePacket), 0, 0, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
+				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/bike", (const void *)sendBikePacket, sizeof(sendBikePacket), 0, 0, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
 				{
 					QL_MQTT_LOG("======wait publish result bike");
 					// ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
@@ -649,9 +649,9 @@ static void mqtt_app_thread(void *arg)
 				// mbedtls_base64_encode(&sendTrip1[0], 0, &encodedLengthTrip1, &encodedTrip1[0], sizeof(encodedTrip1));
 
 				sendTrip1Packet = base64Encoder(encodedTrip1);
-				QL_MQTT_LOG("trip1 data packet:%c", sendTrip1);
+				QL_MQTT_LOG("trip1 data packet:%s", &sendTrip1Packet);
 
-				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/trip1", sendTrip1Packet, sizeof(sendTrip1Packet), 1, 0, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
+				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/trip1", (const void *)sendTrip1Packet, sizeof(sendTrip1Packet), 1, 0, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
 				{
 					QL_MQTT_LOG("======wait publish result trip1");
 					// ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
@@ -661,9 +661,9 @@ static void mqtt_app_thread(void *arg)
 				// mbedtls_base64_encode(&sendTrip2[0], 0, &encodedLengthTrip2, &encodedTrip2[0], sizeof(encodedTrip2));
 
 				sendTrip2Packet = base64Encoder(encodedTrip2);
-				// QL_MQTT_LOG("trip2 data packet:%c", sendTrip2Packet);
+				QL_MQTT_LOG("trip2 data packet:%s", &sendTrip2Packet);
 
-				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/trip2", sendTrip2Packet, sizeof(sendTrip2Packet), 2, 0, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
+				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/trip2", (const void *)sendTrip2Packet, sizeof(sendTrip2Packet), 2, 0, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
 				{
 					QL_MQTT_LOG("======wait publish result trip2");
 					ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
@@ -673,8 +673,9 @@ static void mqtt_app_thread(void *arg)
 				// mbedtls_base64_encode(&sendEnd[0], 0, &encodedLengthEnd, &encodedEnd[0], sizeof(encodedEnd));
 
 				sendEndPacket = base64Encoder(encodedEnd);
+				QL_MQTT_LOG("trip2 data packet:%s", &sendEndPacket);
 
-				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/end", sendEndPacket, sizeof(sendEndPacket), 0, 0, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
+				if (ql_mqtt_publish(&mqtt_cli, "topic/telemetry/end", (const void *)sendEndPacket, sizeof(sendEndPacket), 0, 0, mqtt_requst_result_cb, NULL) == MQTTCLIENT_WOUNDBLOCK)
 				{
 					QL_MQTT_LOG("======wait publish result end");
 					ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
