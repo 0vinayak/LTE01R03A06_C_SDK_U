@@ -98,7 +98,7 @@ static void ql_gnss_demo_thread(void *param)
 		goto exit;
 	}
 	ql_gnss_device_info_request();
-	ql_gnss_apflash_getpvdata(&g_gps_data);
+	ql_gnss_apflash_getpvdata(&g_gps_data); // GNSS positioning data pointer
 
 	ql_gnss_cfg_s gnss_cfg;
 	ret = ql_gnss_get_cfg(&gnss_cfg);
@@ -244,9 +244,9 @@ exit:
 		free(recbuff);
 		recbuff = NULL;
 	}
-	ql_gnss_switch(GNSS_DISABLE);
+	// ql_gnss_switch(GNSS_DISABLE);
 	QL_GNSSDEMO_LOG("gnss demo thread exit, param 0x%x", param);
-	ql_rtos_task_delete(NULL);
+	// ql_rtos_task_delete(NULL);
 }
 
 void ql_gnss_app_init(void)
