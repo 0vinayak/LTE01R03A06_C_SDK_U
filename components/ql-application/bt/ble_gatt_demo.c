@@ -1146,7 +1146,7 @@ ql_errcode_bt_e ql_ble_demo_send_data()
 
     // ret = ql_ble_send_notification_data(0, ble_server_hanle + 2, sizeof(Live_Data.lds), (unsigned char *)&Live_Data.lds[0]);
     // ret = ql_ble_send_notification_data(0, ble_server_hanle + 2, sizeof(Live_Data.lds), (unsigned char *)Live_Data.lds);
-    ret = ql_ble_send_notification_data(0, ble_server_hanle + 2, sizeof(send_data), (unsigned char *)send_data);
+    ret = ql_ble_send_notification_data(0, ble_server_hanle + 2, sizeof(Live_Data.lds), (unsigned char *)Live_Data.lds);
 
     // for (size_t i = 0; i < 20; i++)
     // {
