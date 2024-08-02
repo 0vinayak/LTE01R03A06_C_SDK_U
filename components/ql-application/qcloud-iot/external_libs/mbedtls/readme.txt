@@ -1,1 +1,0 @@
-删除qcloud SDK适配的mbedtls，使用quectel适配的mbedtls
