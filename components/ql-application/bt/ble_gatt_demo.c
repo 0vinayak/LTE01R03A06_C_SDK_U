@@ -710,205 +710,186 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_service()
 ql_errcode_bt_e ql_ble_gatt_demo_add_chara(int idx)
 {
     ql_errcode_bt_e ret = QL_BT_SUCCESS;
-    // ql_ble_gatt_uuid_s uuid;
+    // // ql_ble_gatt_uuid_s uuid;
 
-    ql_ble_gatt_uuid_s uuidCore;
-    ql_ble_gatt_uuid_s uuidError;
-    ql_ble_gatt_uuid_s uuidDebug; /**SERVICE 1 CHARACTERISTICS */
-    ql_ble_gatt_uuid_s uuidMCUFeedback;
-    ql_ble_gatt_uuid_s uuidBLEFeedback;
+    // ql_ble_gatt_uuid_s uuidCore;
+    // ql_ble_gatt_uuid_s uuidError;
+    // ql_ble_gatt_uuid_s uuidDebug; /**SERVICE 1 CHARACTERISTICS */
+    // ql_ble_gatt_uuid_s uuidMCUFeedback;
+    // ql_ble_gatt_uuid_s uuidBLEFeedback;
 
-    ql_ble_gatt_uuid_s uuidTP1; /**SERVICE 2 CHARACTERISTICS */
-    ql_ble_gatt_uuid_s uuidTP2;
+    // ql_ble_gatt_uuid_s uuidTP1; /**SERVICE 2 CHARACTERISTICS */
+    // ql_ble_gatt_uuid_s uuidTP2;
 
-    ql_ble_gatt_uuid_s uuidVin;
-    ql_ble_gatt_uuid_s uuidBatteryNumber; /**SERVICE 3 CHARACTERISTICS */
-    ql_ble_gatt_uuid_s VehicleSWVersions;
+    // ql_ble_gatt_uuid_s uuidVin;
+    // ql_ble_gatt_uuid_s uuidBatteryNumber; /**SERVICE 3 CHARACTERISTICS */
+    // ql_ble_gatt_uuid_s VehicleSWVersions;
 
-    ql_ble_gatt_uuid_s uuidODOWrite;
-    ql_ble_gatt_uuid_s uuidHeadlamp;
-    ql_ble_gatt_uuid_s uuidChildMode;
-    ql_ble_gatt_uuid_s uuidControl; /**SERVICE 4 CHARACTERISTICS */
-    ql_ble_gatt_uuid_s uuidAltitude;
-    ql_ble_gatt_uuid_s uuidMcuOTA;
+    // ql_ble_gatt_uuid_s uuidODOWrite;
+    // ql_ble_gatt_uuid_s uuidHeadlamp;
+    // ql_ble_gatt_uuid_s uuidChildMode;
+    // ql_ble_gatt_uuid_s uuidControl; /**SERVICE 4 CHARACTERISTICS */
+    // ql_ble_gatt_uuid_s uuidAltitude;
+    // ql_ble_gatt_uuid_s uuidMcuOTA;
 
-    ql_ble_gatt_uuid_s uuidOTAControl; /**SERVICE 8 CHARACTERISTICS */
-    ql_ble_gatt_uuid_s uuidOTAData;
+    // ql_ble_gatt_uuid_s uuidOTAControl; /**SERVICE 8 CHARACTERISTICS */
+    // ql_ble_gatt_uuid_s uuidOTAData;
 
-    switch (idx)
-    {
-    case 0:
-        uuidCore =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1,
-                .uuid_l = {0x00},
-                .uuid_s = 0xFA00,
-            };
+    uuidCore =
+        (ql_ble_gatt_uuid_s){
+            .uuid_type = 1,
+            .uuid_l = {0x00},
+            .uuid_s = 0xFA00,
+        };
+    ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidCore);
 
-        uuidError =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1,
-                .uuid_l = {0x00},
-                .uuid_s = 0xFA01,
-            };
+    uuidError =
+        (ql_ble_gatt_uuid_s){
+            .uuid_type = 1,
+            .uuid_l = {0x00},
+            .uuid_s = 0xFA01,
+        };
+    ql_ble_gatt_add_chara(0x01, 0x02, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidError);
 
-        uuidDebug =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1,
-                .uuid_l = {0x00},
-                .uuid_s = 0xFA02,
-            };
+    uuidDebug =
+        (ql_ble_gatt_uuid_s){
+            .uuid_type = 1,
+            .uuid_l = {0x00},
+            .uuid_s = 0xFA02,
+        };
+    ql_ble_gatt_add_chara(0x01, 0x03, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidDebug);
 
-        uuidMCUFeedback =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1,
-                .uuid_l = {0x00},
-                .uuid_s = 0xFA03,
-            };
+    uuidMCUFeedback =
+        (ql_ble_gatt_uuid_s){
+            .uuid_type = 1,
+            .uuid_l = {0x00},
+            .uuid_s = 0xFA03,
+        };
+    ql_ble_gatt_add_chara(0x01, 0x04, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidMCUFeedback);
 
-        uuidBLEFeedback =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1,
-                .uuid_l = {0x00},
-                .uuid_s = 0xFA04,
-            };
+    uuidBLEFeedback =
+        (ql_ble_gatt_uuid_s){
+            .uuid_type = 1,
+            .uuid_l = {0x00},
+            .uuid_s = 0xFA04,
+        };
+    ql_ble_gatt_add_chara(0x01, 0x05, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidBLEFeedback);
 
-        // ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
-        // ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
-        // ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
-        // ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
-        // ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
+    // ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
+    // ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
+    // ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
+    // ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
+    // ret = ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
 
-        // ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
-        ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidCore);
-        ql_ble_gatt_add_chara(0x01, 0x02, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidError);
-        ql_ble_gatt_add_chara(0x01, 0x03, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidDebug);
-        ql_ble_gatt_add_chara(0x01, 0x04, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidMCUFeedback);
-        ql_ble_gatt_add_chara(0x01, 0x05, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidBLEFeedback);
+    // ql_ble_gatt_add_chara(0x01, 0x01, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuid);
 
-        break;
+    /*************************Characteristic for service no 2******************************/
 
-        /*************************Characteristic for service no 2******************************/
-    case 1:
-        uuidTP1 =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1,
-                .uuid_l = {0x00},
-                .uuid_s = 0xFC00,
-            };
+    uuidTP1 =
+        (ql_ble_gatt_uuid_s){
+            .uuid_type = 1,
+            .uuid_l = {0x00},
+            .uuid_s = 0xFC00,
+        };
+    ql_ble_gatt_add_chara(0x02, 0x06, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidTP1);
 
-        uuidTP2 =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1,
-                .uuid_l = {0x00},
-                .uuid_s = 0xFC01,
-            };
+    uuidTP2 =
+        (ql_ble_gatt_uuid_s){
+            .uuid_type = 1,
+            .uuid_l = {0x00},
+            .uuid_s = 0xFC01,
+        };
+    ql_ble_gatt_add_chara(0x02, 0x07, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidTP2);
 
-        ql_ble_gatt_add_chara(0x02, 0x06, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidTP1);
-        ql_ble_gatt_add_chara(0x02, 0x07, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidTP2);
-        break;
+    uuidVin =
+        (ql_ble_gatt_uuid_s){
+            .uuid_type = 1,
+            .uuid_l = {0x00},
+            .uuid_s = 0xFE01,
+        };
+    ql_ble_gatt_add_chara(0x03, 0x08, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidVin);
 
-    case 2:
-        uuidVin =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1,
-                .uuid_l = {0x00},
-                .uuid_s = 0xFE01,
-            };
+    uuidBatteryNumber =
+        (ql_ble_gatt_uuid_s){
+            .uuid_type = 1,
+            .uuid_l = {0x00},
+            .uuid_s = 0xFE02,
+        };
+    ql_ble_gatt_add_chara(0x03, 0x09, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidBatteryNumber);
 
-        uuidBatteryNumber =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1,
-                .uuid_l = {0x00},
-                .uuid_s = 0xFE02,
-            };
+    VehicleSWVersions =
+        (ql_ble_gatt_uuid_s){
+            .uuid_type = 1,
+            .uuid_l = {0x00},
+            .uuid_s = 0xFE03,
+        };
+    ql_ble_gatt_add_chara(0x03, 0x10, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, VehicleSWVersions);
 
-        VehicleSWVersions =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1,
-                .uuid_l = {0x00},
-                .uuid_s = 0xFE03,
-            };
+    uuidODOWrite =
+        (ql_ble_gatt_uuid_s){
+            .uuid_type = 1,
+            .uuid_l = {0x00},
+            .uuid_s = 0xFB00,
+        };
+    ql_ble_gatt_add_chara(0x04, 0x11, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidODOWrite);
 
-        ql_ble_gatt_add_chara(0x03, 0x08, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidVin);
-        ql_ble_gatt_add_chara(0x03, 0x09, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidBatteryNumber);
-        ql_ble_gatt_add_chara(0x03, 0x10, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, VehicleSWVersions);
+    uuidHeadlamp =
+        (ql_ble_gatt_uuid_s){
+            .uuid_type = 1,
+            .uuid_l = {0x00},
+            .uuid_s = 0xFB01,
+        };
+    ql_ble_gatt_add_chara(0x04, 0x12, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidHeadlamp);
 
-        break;
+    uuidChildMode =
+        (ql_ble_gatt_uuid_s){
+            .uuid_type = 1,
+            .uuid_l = {0x00},
+            .uuid_s = 0xFB02,
+        };
+    ql_ble_gatt_add_chara(0x04, 0x13, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidChildMode);
 
-    case 3:
-        uuidODOWrite =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1,
-                .uuid_l = {0x00},
-                .uuid_s = 0xFB00,
-            };
+    uuidControl =
+        (ql_ble_gatt_uuid_s){
+            .uuid_type = 1,
+            .uuid_l = {0x00},
+            .uuid_s = 0xFB03,
+        };
+    ql_ble_gatt_add_chara(0x04, 0x14, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidControl);
 
-        uuidHeadlamp =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1,
-                .uuid_l = {0x00},
-                .uuid_s = 0xFB01,
-            };
+    uuidAltitude =
+        (ql_ble_gatt_uuid_s){
+            .uuid_type = 1,
+            .uuid_l = {0x00},
+            .uuid_s = 0xFB04,
+        };
+    ql_ble_gatt_add_chara(0x04, 0x15, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidAltitude);
 
-        uuidChildMode =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1,
-                .uuid_l = {0x00},
-                .uuid_s = 0xFB02,
-            };
+    uuidMcuOTA =
+        (ql_ble_gatt_uuid_s){
+            .uuid_type = 1,
+            .uuid_l = {0x00},
+            .uuid_s = 0xFB05,
+        };
 
-        uuidControl =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1,
-                .uuid_l = {0x00},
-                .uuid_s = 0xFB03,
-            };
+    ql_ble_gatt_add_chara(0x04, 0x16, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidMcuOTA);
 
-        uuidAltitude =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1,
-                .uuid_l = {0x00},
-                .uuid_s = 0xFB04,
-            };
+    uuidOTAControl =
+        (ql_ble_gatt_uuid_s){
+            .uuid_type = 1,
+            .uuid_l = {0x00},
+            .uuid_s = 0x3300,
+        };
+    ql_ble_gatt_add_chara(0x08, 0x017, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidOTAControl);
 
-        uuidMcuOTA =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1,
-                .uuid_l = {0x00},
-                .uuid_s = 0xFB05,
-            };
+    uuidOTAData =
+        (ql_ble_gatt_uuid_s){
+            .uuid_type = 1,
+            .uuid_l = {0x00},
+            .uuid_s = 0x3301,
+        };
 
-        ql_ble_gatt_add_chara(0x04, 0x11, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidODOWrite);
-        ql_ble_gatt_add_chara(0x04, 0x12, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidHeadlamp);
-        ql_ble_gatt_add_chara(0x04, 0x13, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidChildMode);
-        ql_ble_gatt_add_chara(0x04, 0x14, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidControl);
-        ql_ble_gatt_add_chara(0x04, 0x15, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidAltitude);
-        ql_ble_gatt_add_chara(0x04, 0x16, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidMcuOTA);
-        break;
-
-    case 7:
-        uuidOTAControl =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1,
-                .uuid_l = {0x00},
-                .uuid_s = 0x3300,
-            };
-
-        uuidOTAData =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1,
-                .uuid_l = {0x00},
-                .uuid_s = 0x3301,
-            };
-
-        ql_ble_gatt_add_chara(0x08, 0x017, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidOTAControl);
-        ql_ble_gatt_add_chara(0x08, 0x18, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidOTAData);
-        break;
-
-    default:
-        break;
-    }
+    ql_ble_gatt_add_chara(0x08, 0x18, QL_ATT_CHARA_PROP_READ | QL_ATT_CHARA_PROP_NOTIFY | QL_ATT_CHARA_PROP_INDICATE | QL_ATT_CHARA_PROP_WRITE, uuidOTAData);
 
     return ret;
 }
@@ -1169,123 +1150,6 @@ ql_errcode_bt_e ql_ble_demo_disconect_device()
  * QUEC_BLE_GATT_RECV_READ_IND
  ************************************************************************/
 
-void setServiceCharacteristics()
-
-{
-
-    // static uint8_t SeqNumber = 0;
-    //  unsigned char service_id[7] = {0};
-
-    // switch (SeqNumber)
-    // {
-    // case 0:
-
-    //     // Send_Data(UART_LPUART_INTERNAL_CHANNEL3, UART_LPUART_INTERNAL_CHANNEL2, (const uint8 *)sendSpeedBuffer, 8);
-    //     // Uart_AsyncSend(UART_LPUART_INTERNAL_CHANNEL3, (const uint8 *)sendSpeedBuffer, 8);
-    //     ql_ble_gatt_demo_add_service(0);
-    //     ql_ble_gatt_demo_add_chara(0);
-    //     ql_ble_gatt_demo_add_chara_value(0);
-    //     ql_ble_gatt_add_or_clear_service_complete(QL_BLE_SERVICE_ADD_COMPLETE, ql_ble_gatt_sys_service);
-
-    //     break;
-
-    // case 1:
-    //     ql_ble_gatt_demo_add_service(1);
-    //     ql_ble_gatt_demo_add_chara(1);
-    //     ql_ble_gatt_demo_add_chara_value(1);
-    //     ql_ble_gatt_add_or_clear_service_complete(QL_BLE_SERVICE_ADD_COMPLETE, ql_ble_gatt_sys_service);
-
-    //     break;
-
-    // case 2:
-    //     ql_ble_gatt_demo_add_service(2);
-    //     ql_ble_gatt_demo_add_chara(2);
-    //     ql_ble_gatt_demo_add_chara_value(2);
-    //     ql_ble_gatt_add_or_clear_service_complete(QL_BLE_SERVICE_ADD_COMPLETE, ql_ble_gatt_sys_service);
-
-    //     break;
-
-    // case 3:
-    //     ql_ble_gatt_demo_add_service(3);
-    //     ql_ble_gatt_demo_add_chara(3);
-    //     ql_ble_gatt_demo_add_chara_value(3);
-    //     ql_ble_gatt_add_or_clear_service_complete(QL_BLE_SERVICE_ADD_COMPLETE, ql_ble_gatt_sys_service);
-
-    //     break;
-
-    // case 4:
-    //     ql_ble_gatt_demo_add_service(4);
-    //     ql_ble_gatt_demo_add_chara(4);
-    //     ql_ble_gatt_demo_add_chara_value(4);
-    //     ql_ble_gatt_add_or_clear_service_complete(QL_BLE_SERVICE_ADD_COMPLETE, ql_ble_gatt_sys_service);
-
-    //     break;
-
-    // case 5:
-    //     ql_ble_gatt_demo_add_service(5);
-    //     ql_ble_gatt_demo_add_chara(5);
-    //     ql_ble_gatt_demo_add_chara_value(5);
-    //     ql_ble_gatt_add_or_clear_service_complete(QL_BLE_SERVICE_ADD_COMPLETE, ql_ble_gatt_sys_service);
-
-    //     break;
-
-    // case 6:
-    //     ql_ble_gatt_demo_add_service(6);
-    //     ql_ble_gatt_demo_add_chara(6);
-    //     ql_ble_gatt_demo_add_chara_value(6);
-    //     ql_ble_gatt_add_or_clear_service_complete(QL_BLE_SERVICE_ADD_COMPLETE, ql_ble_gatt_sys_service);
-
-    //     break;
-
-    // case 7:
-    //     ql_ble_gatt_demo_add_service(7);
-    //     ql_ble_gatt_demo_add_chara(7);
-    //     ql_ble_gatt_demo_add_chara_value(7);
-    //     ql_ble_gatt_add_or_clear_service_complete(QL_BLE_SERVICE_ADD_COMPLETE, ql_ble_gatt_sys_service);
-
-    //     break;
-
-    for (size_t i = 0; i < NUM_SERVICES; i++)
-    {
-        ql_ble_gatt_demo_add_service(i);
-        ql_ble_gatt_demo_add_chara(i);
-        ql_ble_gatt_demo_add_chara_value(i);
-        // if (i == 7){
-        // }
-        // {
-        //     ql_ble_gatt_add_or_clear_service_complete(QL_BLE_SERVICE_ADD_COMPLETE, ql_ble_gatt_sys_service);
-        // }
-
-        //
-    }
-    ql_ble_gatt_add_or_clear_service_complete(QL_BLE_SERVICE_ADD_COMPLETE, ql_ble_gatt_sys_service);
-
-    // ql_ble_gatt_demo_add_service(0);
-    // ql_ble_gatt_demo_add_chara(0);
-    // ql_ble_gatt_demo_add_chara_value(0);
-
-    // ql_ble_gatt_demo_add_service(1);
-    // ql_ble_gatt_demo_add_chara(1);
-    // ql_ble_gatt_demo_add_chara_value(1);
-
-    //  case 6:
-    //     ql_ble_gatt_demo_add_service(6);
-    //     ql_ble_gatt_demo_add_chara(6);
-    //     ql_ble_gatt_demo_add_chara_value(6);
-    //     ql_ble_gatt_add_or_clear_service_complete(QL_BLE_SERVICE_ADD_COMPLETE, ql_ble_gatt_sys_service);
-
-    //     break;
-
-    // default:
-    //     break;
-}
-
-// SeqNumber++;
-// if (SeqNumber > 7)
-// {
-//     return ;//SeqNumber = 0;
-// }
-
 ql_errcode_bt_e ql_ble_gatt_server_handle_event()
 {
     ql_event_t test_event;
@@ -1410,6 +1274,24 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                     goto QL_BLE_ADV_DEMO_STOP;
                 }
 
+                ret = ql_ble_gatt_demo_add_service();
+                if (ret != QL_BT_SUCCESS)
+                {
+                    goto QL_BLE_ADV_DEMO_STOP;
+                }
+
+                ret = ql_ble_gatt_demo_add_chara(0);
+                if (ret != QL_BT_SUCCESS)
+                {
+                    goto QL_BLE_ADV_DEMO_STOP;
+                }
+
+                ret = ql_ble_gatt_demo_add_chara_value(0);
+                if (ret != QL_BT_SUCCESS)
+                {
+                    goto QL_BLE_ADV_DEMO_STOP;
+                }
+
                 /*************************Setting services and characteristics*****/ // Vinayak Jaldeeeeeeeee
 
                 // ql_ble_gatt_demo_add_service(0);
@@ -1420,22 +1302,22 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                 // ql_ble_gatt_demo_add_chara(1);
                 // ql_ble_gatt_demo_add_chara_value(1);
 
-                for (size_t i = 0; i < NUM_SERVICES; i++)
-                {
-                    ql_ble_gatt_demo_add_service(i);
-                }
+                // for (size_t i = 0; i < NUM_SERVICES; i++)
+                // {
+                //     ql_ble_gatt_demo_add_service(i);
+                // }
 
-                for (size_t i = 0; i < NUM_SERVICES; i++)
-                {
-                    ql_ble_gatt_demo_add_chara(i);
-                }
+                // for (size_t i = 0; i < NUM_SERVICES; i++)
+                // {
+                //     ql_ble_gatt_demo_add_chara(i);
+                // }
 
-                for (size_t i = 0; i < NUM_SERVICES; i++)
-                {
-                    ql_ble_gatt_demo_add_chara_value(i);
-                }
+                // for (size_t i = 0; i < NUM_SERVICES; i++)
+                // {
+                //     ql_ble_gatt_demo_add_chara_value(i);
+                // }
 
-                ql_ble_gatt_demo_add_chara_desc();
+                // ql_ble_gatt_demo_add_chara_desc();
 
                 ql_ble_gatt_add_or_clear_service_complete(QL_BLE_SERVICE_ADD_COMPLETE, ql_ble_gatt_sys_service);
 
@@ -1708,28 +1590,28 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
 
                         // free(mem_data);
 
-                        switch (ble_data->len)
+                        switch (ble_data->uuid_s)
                         {
-                        case 4:
+                        case 64256:
                             characteristicInd = ODOWRITE;
                             AppReceiveInfo.odo_data = *(uint32_t *)data;
                             // AppReceiveInfo.odo_data = hexToDecimal((const char *)&AppReceiveInfo.odo_data);
                             break;
 
-                        case 0:
+                        case 64257:
                             characteristicInd = HEADLAMP;
                             AppReceiveInfo.headLamp = *(bool *)data;
                             // AppReceiveInfo.headLamp = hexToDecimal((const char *)&AppReceiveInfo.headLamp);
                             break;
 
-                        case 1:
+                        case 64258:
 
                             characteristicInd = CHILDMODE;
                             AppReceiveInfo.childMode = *(uint8_t *)data;
                             // AppReceiveInfo.childMode = hexToDecimal((const char *)&AppReceiveInfo.childMode);
                             break;
 
-                        case 7:
+                        case 64259:
                             characteristicInd = CONTROL;
                             // for (size_t i = 0; i < sizeof(data); i++)
                             // {
@@ -1745,13 +1627,13 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
 
                             break;
 
-                        case 2:
+                        case 64260:
                             characteristicInd = ALTITUDE;
                             AppReceiveInfo.Altitude = *(uint16_t *)data;
                             // AppReceiveInfo.Altitude = hexToDecimal((const char *)&AppReceiveInfo.Altitude);
                             break;
 
-                        case 20:
+                        case 64261:
                             characteristicInd = MCU_OTA_RX;
                             for (size_t i = 0; i < sizeof(data); i++)
                             {
@@ -2105,1088 +1987,6 @@ QlOSStatus ql_ble_gatt_server_demo_init(void)
     bt_ble_power_lock = ql_lpm_wakelock_create("bt_ble", strlen("bt_ble"));
 #endif
     err = ql_rtos_task_create(&ble_demo_task, BT_BLE_DEMO_TASK_STACK_SIZE, BT_BLE_DEMO_TASK_PRIO, "gatt_server", ql_ble_gatt_server_demo_task_pthread, NULL, BT_BLE_DEMO_TASK_EVENT_CNT);
-
-    return err;
-}
-
-// gatt client
-ql_errcode_bt_e ql_blescan_demo_set_param()
-{
-    ql_errcode_bt_e ret;
-
-    ret = ql_blescan_set_param(ble_scan_param);
-    if (ret == QL_BT_SUCCESS)
-    {
-        QL_BLE_GATT_LOG("sucess");
-    }
-    else
-    {
-        QL_BLE_GATT_LOG("error=%x", ret);
-    }
-
-    return ret;
-}
-
-static ql_errcode_bt_e ql_blescan_demo_start()
-{
-    ql_errcode_bt_e ret = 0;
-
-    ret = ql_blescan_start();
-    if (ret == QL_BT_SUCCESS)
-    {
-        QL_BLE_GATT_LOG("scan sucess");
-    }
-    else
-    {
-        QL_BLE_GATT_LOG(" scan error=%x", ret);
-    }
-
-    return ret;
-}
-
-static ql_errcode_bt_e ql_blescan_demo_stop()
-{
-    ql_errcode_bt_e ret;
-
-    ret = ql_blescan_stop();
-    if (ret == QL_BT_SUCCESS)
-    {
-        QL_BLE_GATT_LOG("sucess");
-    }
-    else
-    {
-        QL_BLE_GATT_LOG("error=%x", ret);
-    }
-
-    return ret;
-}
-
-ql_errcode_bt_e ql_ble_demo_connect_public_addr()
-{
-    ql_errcode_bt_e ret;
-
-    ret = ql_ble_conncet_public_addr(ble_scan_report_addr);
-    if (ret == QL_BT_SUCCESS)
-    {
-        QL_BLE_GATT_LOG("sucess");
-    }
-    else
-    {
-        QL_BLE_GATT_LOG("error=%x", ret);
-    }
-
-    return ret;
-}
-
-ql_errcode_bt_e ql_ble_demo_connect_random_addr()
-{
-    ql_errcode_bt_e ret;
-
-    ret = ql_ble_conncet_random_addr(ble_scan_report_addr);
-    if (ret == QL_BT_SUCCESS)
-    {
-        QL_BLE_GATT_LOG("sucess");
-    }
-    else
-    {
-        QL_BLE_GATT_LOG("error=%x", ret);
-    }
-
-    return ret;
-}
-
-ql_errcode_bt_e ql_ble_gatt_demo_discover_all_service()
-{
-    ql_errcode_bt_e ret = 0;
-
-    ret = ql_ble_gatt_discover_all_service(ble_conn_handle);
-    if (ret == QL_BT_SUCCESS)
-    {
-        QL_BLE_GATT_LOG("sucess");
-    }
-    else
-    {
-        QL_BLE_GATT_LOG("error=%x", ret);
-    }
-
-    return ret;
-}
-
-ql_errcode_bt_e ql_ble_gatt_demo_discover_service_by_uuid()
-{
-    ql_errcode_bt_e ret = 0;
-    ql_ble_gatt_uuid_s uuid = {0};
-
-    uuid.uuid_type = ql_ble_gatt_uuid_state;
-    if (ql_ble_gatt_uuid_state == QL_BLE_GATT_SHORT_UUID)
-    {
-        uuid.uuid_s = ql_ble_gatt_target_service.uuid;
-        ret = ql_ble_gatt_discover_by_uuid(ble_conn_handle, uuid);
-    }
-    else
-    {
-        memcpy(uuid.uuid_l, ql_ble_gatt_uuid_l, QL_BLE_LONG_UUID_SIZE);
-        ret = ql_ble_gatt_discover_by_uuid(ble_conn_handle, uuid);
-    }
-
-    if (ret == QL_BT_SUCCESS)
-    {
-        QL_BLE_GATT_LOG("sucess");
-    }
-    else
-    {
-        QL_BLE_GATT_LOG("error=%x", ret);
-    }
-
-    return ret;
-}
-
-ql_errcode_bt_e ql_ble_gatt_demo_discover_all_includes()
-{
-    ql_errcode_bt_e ret = 0;
-
-    ret = ql_ble_gatt_discover_all_includes(ble_conn_handle, ql_ble_gatt_target_service.start_handle, ql_ble_gatt_target_service.end_handle);
-    if (ret == QL_BT_SUCCESS)
-    {
-        QL_BLE_GATT_LOG("sucess");
-    }
-    else
-    {
-        QL_BLE_GATT_LOG("error=%x", ret);
-    }
-
-    return ret;
-}
-
-ql_errcode_bt_e ql_ble_gatt_demo_discover_all_characteristic()
-{
-    ql_errcode_bt_e ret = 0;
-
-    ret = ql_ble_gatt_discover_all_characteristic(ble_conn_handle, ql_ble_gatt_target_service.start_handle, ql_ble_gatt_target_service.end_handle);
-    if (ret == QL_BT_SUCCESS)
-    {
-        QL_BLE_GATT_LOG("sucess");
-    }
-    else
-    {
-        QL_BLE_GATT_LOG("error=%x", ret);
-    }
-
-    return ret;
-}
-
-ql_errcode_bt_e ql_ble_gatt_demo_discover_chara_desc()
-{
-    ql_errcode_bt_e ret = 0;
-
-    QL_BLE_GATT_LOG("value_handle=%x,end_handle=%x", ql_ble_gatt_characteristic[ql_ble_gatt_chara_desc_index].value_handle,
-                    ql_ble_gatt_target_service.end_handle);
-    QL_BLE_GATT_LOG("ql_ble_gatt_chara_desc_index=%d,ql_ble_gatt_chara_count=%x", ql_ble_gatt_chara_desc_index, ql_ble_gatt_chara_count);
-
-    if (ql_ble_gatt_chara_desc_index == (ql_ble_gatt_chara_count - 1))
-    {
-        ret = ql_ble_gatt_discover_chara_desc(ble_conn_handle, ql_ble_gatt_characteristic[ql_ble_gatt_chara_desc_index].value_handle + 1,
-                                              ql_ble_gatt_target_service.end_handle);
-    }
-    else
-    {
-        ret = ql_ble_gatt_discover_chara_desc(ble_conn_handle, ql_ble_gatt_characteristic[ql_ble_gatt_chara_desc_index].value_handle + 1,
-                                              ql_ble_gatt_characteristic[ql_ble_gatt_chara_desc_index + 1].handle - 1);
-    }
-
-    ql_ble_gatt_chara_desc_index++;
-    if (ret == QL_BT_SUCCESS)
-    {
-        QL_BLE_GATT_LOG("sucess");
-    }
-    else
-    {
-        QL_BLE_GATT_LOG("error=%x", ret);
-    }
-
-    return ret;
-}
-
-ql_errcode_bt_e ql_ble_gatt_demo_read_chara_value_by_uuid()
-{
-    ql_errcode_bt_e ret = 0;
-    ql_ble_gatt_uuid_s uuid =
-        {
-            .uuid_type = 1,
-            .uuid_l = {0x00},
-            .uuid_s = 0,
-        };
-#if 0
-    QL_BT_LOG("uuid=%x,start_handle=%x,end_handle=%x", ql_ble_gatt_characteristic[ql_ble_gatt_cur_chara].uuid, ql_ble_gatt_target_service.start_handle, 
-        ql_ble_gatt_target_service.end_handle);
-   
-    ret = ql_ble_gatt_read_chara_value_by_uuid(ble_conn_handle, NULL, ql_ble_gatt_characteristic[ql_ble_gatt_cur_chara].uuid, ql_ble_gatt_target_service.start_handle, 
-        ql_ble_gatt_target_service.end_handle);
-#endif
-    QL_BLE_GATT_LOG("uuid=%x,handle=%x,value_handle=%x", ql_ble_gatt_characteristic[ql_ble_gatt_cur_chara].uuid, ql_ble_gatt_characteristic[ql_ble_gatt_cur_chara].handle,
-                    ql_ble_gatt_characteristic[ql_ble_gatt_cur_chara].value_handle);
-    uuid.uuid_s = ql_ble_gatt_characteristic[ql_ble_gatt_cur_chara].uuid;
-    ret = ql_ble_gatt_read_chara_value_by_uuid(ble_conn_handle, uuid, ql_ble_gatt_characteristic[ql_ble_gatt_cur_chara].handle,
-                                               ql_ble_gatt_characteristic[ql_ble_gatt_cur_chara].value_handle);
-
-    if (ret == QL_BT_SUCCESS)
-    {
-        QL_BLE_GATT_LOG("sucess");
-    }
-    else
-    {
-        QL_BLE_GATT_LOG("error=%x", ret);
-    }
-
-    return ret;
-}
-
-ql_errcode_bt_e ql_ble_gatt_demo_read_chara_value_by_handle()
-{
-    ql_errcode_bt_e ret = 0;
-
-    QL_BLE_GATT_LOG("value_handle=%x", ql_ble_gatt_characteristic[ql_ble_gatt_cur_chara].value_handle);
-    ret = ql_ble_gatt_read_chara_value_by_handle(ble_conn_handle, ql_ble_gatt_characteristic[ql_ble_gatt_cur_chara].value_handle, 0, 0);
-    if (ret == QL_BT_SUCCESS)
-    {
-        QL_BLE_GATT_LOG("sucess");
-    }
-    else
-    {
-        QL_BLE_GATT_LOG("error=%x", ret);
-    }
-
-    return ret;
-}
-
-ql_errcode_bt_e ql_ble_gatt_demo_read_mul_chara_value()
-{
-    ql_errcode_bt_e ret = 0;
-
-    QL_BLE_GATT_LOG("value_handle=%x", ql_ble_gatt_characteristic[ql_ble_gatt_cur_chara].value_handle);
-    ret = ql_ble_gatt_read_mul_chara_value(ble_conn_handle, (unsigned char *)&ql_ble_gatt_characteristic[ql_ble_gatt_cur_chara].value_handle, 2);
-    if (ret == QL_BT_SUCCESS)
-    {
-        QL_BLE_GATT_LOG("sucess");
-    }
-    else
-    {
-        QL_BLE_GATT_LOG("error=%x", ret);
-    }
-
-    return ret;
-}
-
-ql_errcode_bt_e ql_ble_gatt_demo_read_chara_desc()
-{
-    ql_errcode_bt_e ret = 0;
-
-    QL_BLE_GATT_LOG("handle=%x", ql_ble_gatt_chara_desc[ql_ble_gatt_chara_cur_desc].handle);
-    ret = ql_ble_gatt_read_chara_desc(ble_conn_handle, ql_ble_gatt_chara_desc[ql_ble_gatt_chara_cur_desc].handle, 0);
-    if (ret == QL_BT_SUCCESS)
-    {
-        QL_BLE_GATT_LOG("sucess");
-    }
-    else
-    {
-        QL_BLE_GATT_LOG("error=%x", ret);
-    }
-
-    return ret;
-}
-
-ql_errcode_bt_e ql_ble_gatt_demo_write_chara_desc()
-{
-    ql_errcode_bt_e ret = 0;
-    unsigned char value[2] = {0x01, 0x02};
-
-    // value[2] = (ble_conn_handle >>8) & 0xFF;
-    // value[3] = ble_conn_handle & 0xFF;
-    QL_BLE_GATT_LOG("handle=%x", ql_ble_gatt_chara_desc[ql_ble_gatt_chara_cur_desc].handle);
-    ret = ql_ble_gatt_write_chara_desc(ble_conn_handle, ql_ble_gatt_chara_desc[ql_ble_gatt_chara_cur_desc].handle, sizeof(value), value);
-    if (ret == QL_BT_SUCCESS)
-    {
-        QL_BLE_GATT_LOG("ble write sucess");
-    }
-    else
-    {
-        QL_BLE_GATT_LOG("ble write error=%x", ret);
-    }
-
-    return ret;
-}
-
-ql_errcode_bt_e ql_ble_gatt_demo_write_chara_value()
-{
-    ql_errcode_bt_e ret = 0;
-    unsigned char value[2] = {0x40};
-
-    QL_BLE_GATT_LOG("value_handle=%x,uuid=%x", ql_ble_gatt_characteristic[ql_ble_gatt_cur_chara].value_handle,
-                    ql_ble_gatt_characteristic[ql_ble_gatt_cur_chara].uuid);
-
-    ret = ql_ble_gatt_write_chara_value(ble_conn_handle, ql_ble_gatt_characteristic[ql_ble_gatt_cur_chara].value_handle,
-                                        sizeof(value), value, 0, 0);
-    if (ret == QL_BT_SUCCESS)
-    {
-        QL_BLE_GATT_LOG("sucess");
-    }
-    else
-    {
-        QL_BLE_GATT_LOG("error=%x", ret);
-    }
-
-    return ret;
-}
-
-ql_errcode_bt_e ql_ble_gatt_demo_write_chara_value_no_rsp()
-{
-    ql_errcode_bt_e ret = 0;
-    unsigned char value[1] = {0x20};
-
-    QL_BLE_GATT_LOG("value_handle=%x,uuid=%x", ql_ble_gatt_characteristic[ql_ble_gatt_cur_chara].value_handle,
-                    ql_ble_gatt_characteristic[ql_ble_gatt_cur_chara].uuid);
-
-    ret = ql_ble_gatt_write_chara_value_no_rsp(ble_conn_handle, ql_ble_gatt_characteristic[ql_ble_gatt_cur_chara].value_handle,
-                                               sizeof(value), value);
-    if (ret == QL_BT_SUCCESS)
-    {
-        QL_BLE_GATT_LOG("sucess");
-    }
-    else
-    {
-        QL_BLE_GATT_LOG("error=%x", ret);
-    }
-
-    return ret;
-}
-
-/************************************************************************
- * QUEC_BLE_CONNECT_IND
- * QUEC_BLE_DISCONNECT_IND
- * QUEC_BLE_UPDATE_CONN_PARAM_IND
- * QUEC_BLESCAN_REPORT_IND
- * QUEC_BLE_GATT_RECV_NOTIFICATION_IND
- * QUEC_BLE_GATT_RECV_INDICATION_IND
- * QUEC_BLE_GATT_DISCOVER_SERVICE_IND
- * QUEC_BLE_GATT_DISCOVER_CHARACTERISTIC_DATA_IND
- * QUEC_BLE_GATT_DISCOVER_CHARA_DESC_IND
- * QUEC_BLE_GATT_CHARA_READ_IND
- * QUEC_BLE_GATT_CHARA_READ_BY_UUID_IND
- * QUEC_BLE_GATT_CHARA_MULTI_READ_IND
- * QUEC_BLE_GATT_DESC_READ_IND
- ************************************************************************/
-static ql_errcode_bt_e ql_ble_gatt_client_handle_event()
-{
-    ql_event_t test_event;
-    ql_errcode_bt_e ret = QL_BT_SUCCESS;
-    QL_BT_STATUS status;
-    if (ql_event_try_wait(&test_event) == 0)
-    {
-        if (test_event.id == 0)
-        {
-            return ret;
-        }
-
-        status = (QL_BT_STATUS)(test_event.param1);
-        switch (test_event.id)
-        {
-        case QUEC_BT_START_STATUS_IND:
-        {
-            if (QL_BT_STATUS_SUCCESS == status)
-            {
-                QL_BLE_GATT_LOG("start sucess");
-#if QL_BLE_DEMO_LOW_POWER_USE
-                ql_lpm_wakelock_unlock(bt_ble_power_lock);
-#endif
-                ret = ql_bt_demo_get_state();
-                if (ret != QL_BT_SUCCESS)
-                {
-                    goto QL_BLE_SCAN_DEMO_STOP;
-                }
-
-                ret = ql_blescan_demo_set_param();
-                if (ret != QL_BT_SUCCESS)
-                {
-                    goto QL_BLE_SCAN_DEMO_STOP;
-                }
-
-                ret = ql_blescan_demo_start();
-                if (ret != QL_BT_SUCCESS)
-                {
-                    goto QL_BLE_SCAN_DEMO_STOP;
-                }
-            }
-            else
-            {
-                QL_BLE_GATT_LOG("start failed");
-            }
-        }
-        break;
-        case QUEC_BT_STOP_STATUS_IND:
-        {
-#if QL_BLE_DEMO_LOW_POWER_USE
-            ql_lpm_wakelock_unlock(bt_ble_power_lock);
-#endif
-            if (QL_BT_STATUS_SUCCESS == status)
-            {
-                QL_BLE_GATT_LOG("stop sucess");
-                ret = QL_BT_ALREADY_STOPED_ERR;
-            }
-            else
-            {
-                QL_BLE_GATT_LOG("stop failed");
-                ret = QL_BT_ALREADY_STOPED_ERR;
-            }
-        }
-        break;
-        case QUEC_BT_BLE_RESET_IND:
-        {
-#if QL_BLE_DEMO_LOW_POWER_USE
-            ql_lpm_wakelock_unlock(bt_ble_power_lock);
-#endif
-            QL_BLE_GATT_LOG("bt reset");
-            ret = QL_BT_ALREADY_STOPED_ERR;
-        }
-        break;
-        case QUEC_BLESCAN_REPORT_IND:
-        {
-            // scan and report other devices
-            if (QL_BT_STATUS_SUCCESS == status)
-            {
-                QL_BLE_GATT_LOG("scan report sucess");
-
-                ql_ble_scan_report_info_s *bt_scan_report = NULL;
-                bt_scan_report = (ql_ble_scan_report_info_s *)test_event.param2;
-                if (bt_scan_report)
-                {
-                    char scan_rsp_info[128] = {'\0'};
-                    sprintf(scan_rsp_info, "%s:%d,%02x:%02x:%02x:%02x:%02x:%02x", bt_scan_report->name, bt_scan_report->addr_type, bt_scan_report->addr.addr[0], bt_scan_report->addr.addr[1], bt_scan_report->addr.addr[2], bt_scan_report->addr.addr[3], bt_scan_report->addr.addr[4], bt_scan_report->addr.addr[5]);
-                    QL_BLE_GATT_LOG("scan_rsp_info=%s,rssi=%d", scan_rsp_info, bt_scan_report->rssi);
-
-                    if (0 == memcmp(ble_scan_report_name, bt_scan_report->name, sizeof(ble_scan_report_name)))
-                    {
-                        ble_scan_report_addr_type = bt_scan_report->addr_type;
-                        memcpy(ble_scan_report_addr.addr, bt_scan_report->addr.addr, QL_BT_MAC_ADDRESS_SIZE);
-                        ret = ql_blescan_demo_stop();
-                        if (ret != QL_BT_SUCCESS)
-                        {
-                            goto QL_BLE_SCAN_DEMO_STOP;
-                        }
-
-                        if (ble_scan_report_addr_type == QL_BLE_PUBLIC_ADDRESS)
-                        {
-                            ret = ql_ble_demo_connect_public_addr();
-                        }
-                        else
-                        {
-                            ret = ql_ble_demo_connect_random_addr();
-                        }
-                        if (ret != QL_BT_SUCCESS)
-                        {
-                            goto QL_BLE_SCAN_DEMO_STOP;
-                        }
-                    }
-                    free(bt_scan_report);
-                }
-            }
-            else
-            {
-                QL_BLE_GATT_LOG("scan report failed");
-                ret = ql_blescan_demo_stop();
-                if (ret != QL_BT_SUCCESS)
-                {
-                    goto QL_BLE_SCAN_DEMO_STOP;
-                }
-            }
-        }
-        break;
-        case QUEC_BLE_CONNECT_IND:
-        {
-            if (QL_BT_STATUS_SUCCESS == status)
-            {
-                QL_BLE_GATT_LOG("connect sucess");
-                ql_bt_addr_s *addr = (ql_bt_addr_s *)test_event.param2;
-                if (addr)
-                {
-                    // addr need to free
-                    unsigned char addr_string[QL_BLE_DEMO_ADDR_MAX_SIZE + 1] = {0};
-                    memset(addr_string, 0x00, sizeof(addr_string));
-                    sprintf((char *)addr_string, "%02x:%02x:%02x:%02x:%02x:%02x", addr->addr[0], addr->addr[1], addr->addr[2], addr->addr[3], addr->addr[4], addr->addr[5]);
-                    QL_BLE_GATT_LOG("addr_string=%s", addr_string);
-                    memcpy(ble_connection_addr.addr, addr->addr, QL_BT_MAC_ADDRESS_SIZE);
-                    free(addr);
-                }
-                ble_conn_handle = test_event.param3;
-                QL_BLE_GATT_LOG("ble_conn_handle=%d", ble_conn_handle);
-                ret = ql_ble_demo_get_conection_state();
-                if (ret == QL_BT_SUCCESS)
-                {
-                    // ret = ql_ble_demo_send_data();
-                    // if (ret != QL_BT_SUCCESS)
-                    //{
-                    //     goto QL_BLE_SCAN_DEMO_STOP;
-                    // }
-                }
-                else
-                {
-                    goto QL_BLE_SCAN_DEMO_STOP;
-                }
-            }
-            else
-            {
-                QL_BLE_GATT_LOG("connect failed");
-                // goto QL_BLE_SCAN_DEMO_STOP;
-            }
-        }
-        break;
-        case QUEC_BLE_UPDATE_CONN_PARAM_IND:
-        {
-            // update connection parameter
-            if (QL_BT_STATUS_SUCCESS == status)
-            {
-                QL_BLE_GATT_LOG("update conn param sucess");
-                ql_ble_update_conn_infos_s *conn_param = (ql_ble_update_conn_infos_s *)test_event.param2;
-                if (conn_param)
-                {
-                    QL_BLE_GATT_LOG("conn_id=%d,min_interval=%d,max_interval=%d,latency=%d,timeout=%d", conn_param->conn_id,
-                                    conn_param->min_interval, conn_param->max_interval, conn_param->latency, conn_param->timeout);
-                    free(conn_param);
-                }
-#if 0
-                    ret = ql_ble_demo_send_data();
-                    if (ret == QL_BT_SUCCESS)
-                    {
-                        ret = ql_ble_demo_disconect_device();
-                        if (ret != QL_BT_SUCCESS)
-                        {
-                            goto QL_BLE_SCAN_DEMO_STOP;
-                        }
-                    }
-                    else 
-                    {
-                        goto QL_BLE_SCAN_DEMO_STOP;
-                    }
-#endif
-            }
-            else
-            {
-                QL_BLE_GATT_LOG("update conn param failed");
-                goto QL_BLE_SCAN_DEMO_STOP;
-            }
-        }
-        break;
-        case QUEC_BLE_GATT_MTU:
-        {
-            if (QL_BT_STATUS_SUCCESS == status)
-            {
-                QL_BLE_GATT_LOG("connect mtu sucess,handle=%d,mtu=%d", test_event.param2, test_event.param3);
-                ql_bt_ble_mtu = test_event.param3;
-            }
-            else
-            {
-                QL_BLE_GATT_LOG("connect mtu failed");
-                goto QL_BLE_SCAN_DEMO_STOP;
-            }
-        }
-        break;
-        case QUEC_BLE_DISCONNECT_IND:
-        {
-            if (QL_BT_STATUS_SUCCESS == status)
-            {
-                QL_BLE_GATT_LOG("disconnect sucess");
-                ql_bt_addr_s *addr = (ql_bt_addr_s *)test_event.param2;
-                if (addr)
-                {
-                    // addr need to free
-                    unsigned char addr_string[QL_BLE_DEMO_ADDR_MAX_SIZE + 1] = {0};
-                    memset(addr_string, 0x00, sizeof(addr_string));
-                    sprintf((char *)addr_string, "%02x:%02x:%02x:%02x:%02x:%02x", addr->addr[0], addr->addr[1], addr->addr[2], addr->addr[3], addr->addr[4], addr->addr[5]);
-                    QL_BLE_GATT_LOG("addr_string=%s", addr_string);
-                    free(addr);
-                }
-                goto QL_BLE_SCAN_DEMO_STOP;
-            }
-            else
-            {
-                QL_BLE_GATT_LOG("disconnect failed");
-                goto QL_BLE_SCAN_DEMO_STOP;
-            }
-        }
-        break;
-        case QUEC_BLE_GATT_START_DISCOVER_SERVICE_IND:
-        {
-            // discover all service or discover service by uuid
-            if (QL_BT_STATUS_SUCCESS == status)
-            {
-                QL_BLE_GATT_LOG("start discover sucess");
-                ql_ble_gatt_chara_count = 0;
-                ql_ble_gatt_chara_desc_index = 0;
-                ql_ble_gatt_chara_desc_count = 0;
-                ql_ble_gatt_state = QL_BLE_GATT_DISCOVER_SERVICE;
-                if (ql_ble_gatt_discover_service_mode == QL_BLE_GATT_DISCOVER_SERVICE_ALL)
-                {
-                    ret = ql_ble_gatt_demo_discover_all_service();
-                }
-                else
-                {
-                    ret = ql_ble_gatt_demo_discover_service_by_uuid();
-                }
-
-                if (ret != QL_BT_SUCCESS)
-                {
-                    goto QL_BLE_SCAN_DEMO_STOP;
-                }
-            }
-            else
-            {
-                QL_BLE_GATT_LOG("start discover failed");
-                goto QL_BLE_SCAN_DEMO_STOP;
-            }
-        }
-        break;
-        case QUEC_BLE_GATT_DISCOVER_SERVICE_IND:
-        {
-            // discorver service
-            if (QL_BT_STATUS_SUCCESS == status)
-            {
-                QL_BLE_GATT_LOG("discover servie sucess");
-
-                ql_blegatt_prime_service_s *service = (ql_blegatt_prime_service_s *)test_event.param2;
-                if (service)
-                {
-                    if (ql_ble_gatt_discover_service_mode == QL_BLE_GATT_DISCOVER_SERVICE_ALL)
-                    {
-                        QL_BLE_GATT_LOG("start_handle=%x,end_handle=%x,uuid=%x", service->start_handle, service->end_handle, service->uuid);
-
-                        if (ql_ble_gatt_target_service.uuid == service->uuid)
-                        {
-                            ql_ble_gatt_target_service.start_handle = service->start_handle;
-                            ql_ble_gatt_target_service.end_handle = service->end_handle;
-
-                            // ql_ble_gatt_demo_discover_all_includes();
-                            ql_ble_gatt_state = QL_BLE_GATT_DISCOVER_CHARACTERISTIC;
-                            ret = ql_ble_gatt_demo_discover_all_characteristic();
-                            if (ret != QL_BT_SUCCESS)
-                            {
-                                goto QL_BLE_SCAN_DEMO_STOP;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        QL_BLE_GATT_LOG("start_handle=%x,end_handle=%x", service->start_handle, service->end_handle);
-
-                        ql_ble_gatt_target_service.start_handle = service->start_handle;
-                        ql_ble_gatt_target_service.end_handle = service->end_handle;
-                        ql_ble_gatt_state = QL_BLE_GATT_DISCOVER_CHARACTERISTIC;
-                        ret = ql_ble_gatt_demo_discover_all_characteristic();
-                        if (ret != QL_BT_SUCCESS)
-                        {
-                            goto QL_BLE_SCAN_DEMO_STOP;
-                        }
-                    }
-                    free(service);
-                }
-            }
-            else
-            {
-                QL_BLE_GATT_LOG("discover servie failed");
-                goto QL_BLE_SCAN_DEMO_STOP;
-            }
-        }
-        break;
-        case QUEC_BLE_GATT_DISCOVER_CHARACTERISTIC_DATA_IND:
-        {
-            // discover characteristic
-            if (QL_BT_STATUS_SUCCESS == status)
-            {
-                QL_BLE_GATT_LOG("get charactersictic sucess");
-                ql_att_general_rsp_s *last_rsp = (ql_att_general_rsp_s *)test_event.param2;
-                int i = 0;
-                if (last_rsp && last_rsp->pay_load)
-                {
-                    if (ql_ble_gatt_state == QL_BLE_GATT_DISCOVER_CHARACTERISTIC)
-                    {
-                        unsigned char pair_len = last_rsp->pay_load[0];
-                        QL_BLE_GATT_LOG("pair_len=%d,last_rsp.length=%d", pair_len, (int)last_rsp->length);
-                        while (i < (last_rsp->length - 1) / pair_len)
-                        {
-                            ql_ble_gatt_characteristic[ql_ble_gatt_chara_count].handle = (last_rsp->pay_load[i * pair_len + 2] << 8) | last_rsp->pay_load[i * pair_len + 1];
-                            ql_ble_gatt_characteristic[ql_ble_gatt_chara_count].properties = last_rsp->pay_load[i * pair_len + 3];
-                            ql_ble_gatt_characteristic[ql_ble_gatt_chara_count].value_handle = (last_rsp->pay_load[i * pair_len + 5] << 8) | last_rsp->pay_load[i * pair_len + 4];
-
-                            if (pair_len == QL_BLE_SHORT_UUID_PAIR_LEN)
-                            {
-                                ql_ble_gatt_characteristic[ql_ble_gatt_chara_count].uuid = (last_rsp->pay_load[i * pair_len + 7] << 8) | last_rsp->pay_load[i * pair_len + 6];
-                                QL_BLE_GATT_LOG("uuid = %x", ql_ble_gatt_characteristic[ql_ble_gatt_chara_count].uuid);
-                            }
-                            else if (pair_len == QL_BLE_LONG_UUID_PAIR_LEN)
-                            {
-                                memcpy(ql_ble_gatt_uuid_l, &last_rsp->pay_load[i * pair_len + 6], QL_BLE_LONG_UUID_SIZE);
-                            }
-                            QL_BLE_GATT_LOG("handle=0x%x,properties=0x%x,value_handle=0x%x", ql_ble_gatt_characteristic[ql_ble_gatt_chara_count].handle,
-                                            ql_ble_gatt_characteristic[ql_ble_gatt_chara_count].properties, ql_ble_gatt_characteristic[ql_ble_gatt_chara_count].value_handle);
-                            i++;
-
-                            if (ql_ble_gatt_chara_count < QL_BLE_CHARA_NUM_MAX - 1)
-                            {
-                                ql_ble_gatt_chara_count++;
-                            }
-                        }
-
-                        QL_BLE_GATT_LOG("ql_ble_gatt_chara_count=%x", ql_ble_gatt_chara_count);
-                    }
-                    else if (ql_ble_gatt_state == QL_BLE_GATT_READ_CHARA_VALUE)
-                    {
-                        QL_BLE_GATT_LOG("last_rsp.length=%d", (int)last_rsp->length);
-                        QL_BLE_GATT_LOG("last_rsp.pay_load=%x,%x,%x,%x", last_rsp->pay_load[0], last_rsp->pay_load[1], last_rsp->pay_load[2], last_rsp->pay_load[3]);
-                    }
-                    free(last_rsp->pay_load);
-                    free(last_rsp);
-                }
-            }
-            else
-            {
-                QL_BLE_GATT_LOG("get charactersictic failed");
-                goto QL_BLE_SCAN_DEMO_STOP;
-            }
-        }
-        break;
-        case QUEC_BLE_GATT_DISCOVER_CHARA_DESC_IND:
-        {
-            // discover characteristic descriptor
-            if (QL_BT_STATUS_SUCCESS == status)
-            {
-                QL_BLE_GATT_LOG("get chara desc sucess");
-
-                ql_att_general_rsp_s *last_rsp = (ql_att_general_rsp_s *)test_event.param2;
-                if (last_rsp && last_rsp->pay_load)
-                {
-
-                    unsigned char fmt = last_rsp->pay_load[0];
-                    unsigned char length = last_rsp->length;
-                    int i = 0;
-
-                    QL_BLE_GATT_LOG("fmt=%d,length=%d", fmt, length);
-                    // fmt:1 - 16 bit uuid
-                    if (fmt == 1)
-                    {
-                        while (i < (length - 1) / 4)
-                        {
-                            ql_ble_gatt_chara_desc[ql_ble_gatt_chara_cur_desc].handle = (last_rsp->pay_load[i * 4 + 2] << 8) | last_rsp->pay_load[i * 4 + 1];
-                            ql_ble_gatt_chara_desc[ql_ble_gatt_chara_cur_desc].uuid = (last_rsp->pay_load[i * 4 + 4] << 8) | last_rsp->pay_load[i * 4 + 3];
-                            QL_BLE_GATT_LOG("handle=%x,uuid=%x", ql_ble_gatt_chara_desc[ql_ble_gatt_chara_cur_desc].handle, ql_ble_gatt_chara_desc[ql_ble_gatt_chara_cur_desc].uuid);
-
-                            i++;
-                            if (ql_ble_gatt_chara_desc_count < QL_BLE_DESC_NUM_MAX)
-                            {
-                                ql_ble_gatt_chara_desc_count++;
-                            }
-                        }
-                    }
-                    QL_BLE_GATT_LOG("ql_ble_gatt_chara_desc_count=%x", ql_ble_gatt_chara_desc_count);
-                    free(last_rsp->pay_load);
-                    free(last_rsp);
-                }
-
-                if (ql_ble_gatt_chara_desc_index == ql_ble_gatt_chara_count)
-                {
-                    // ql_ble_gatt_state = QL_BLE_GATT_WRITE_CHARA_VALUE;
-                    // ret = ql_ble_gatt_demo_write_chara_value();
-                    // ret = ql_ble_gatt_demo_write_chara_value_no_rsp();
-
-                    // ql_ble_gatt_state = QL_BLE_GATT_READ_CHARA_VALUE;
-                    // ret = ql_ble_gatt_demo_read_chara_value_by_uuid();
-                    // ret = ql_ble_gatt_demo_read_chara_value_by_handle();
-                    // ret = ql_ble_gatt_demo_read_mul_chara_value();
-
-                    // ql_ble_gatt_state = QL_BLE_GATT_READ_CHARA_DESC;
-                    // ret = ql_ble_gatt_demo_read_chara_desc();
-
-                    ql_ble_gatt_state = QL_BLE_GATT_WRITE_CHARA_DESC;
-                    ret = ql_ble_gatt_demo_write_chara_desc();
-                }
-                else
-                {
-                    ret = ql_ble_gatt_demo_discover_chara_desc();
-                }
-
-                if (ret != QL_BT_SUCCESS)
-                {
-                    goto QL_BLE_SCAN_DEMO_STOP;
-                }
-            }
-            else
-            {
-                QL_BLE_GATT_LOG("get chara desc failed");
-                goto QL_BLE_SCAN_DEMO_STOP;
-            }
-        }
-        break;
-        case QUEC_BLE_GATT_CHARA_WRITE_WITH_RSP_IND:
-        case QUEC_BLE_GATT_DESC_WRITE_WITH_RSP_IND:
-        {
-            // write charactersictic value with response
-            // write charactersictic descricptor with response
-            QL_BLE_GATT_LOG("chara write sucess");
-            if (QL_BT_STATUS_SUCCESS == status)
-            {
-                if (ql_ble_gatt_state == QL_BLE_GATT_WRITE_CHARA_VALUE)
-                {
-                }
-                else if (ql_ble_gatt_state == QL_BLE_GATT_WRITE_CHARA_DESC)
-                {
-                }
-            }
-            else
-            {
-                QL_BLE_GATT_LOG("chara write failed");
-            }
-        }
-        break;
-        case QUEC_BLE_GATT_CHARA_WRITE_WITHOUT_RSP_IND:
-        {
-            // write characteristic value without response
-            if (QL_BT_STATUS_SUCCESS == status)
-            {
-                QL_BLE_GATT_LOG("no rsp chara write sucess");
-            }
-            else
-            {
-                QL_BLE_GATT_LOG("no rsp chara write failed");
-            }
-        }
-        break;
-        case QUEC_BLE_GATT_CHARA_READ_IND:
-        case QUEC_BLE_GATT_DESC_READ_IND:
-        {
-            // read characteristic value by handle
-            // read characteristic descriptor
-            if (QL_BT_STATUS_SUCCESS == status)
-            {
-                QL_BLE_GATT_LOG("chara read sucess");
-                ql_att_general_rsp_s *last_rsp = (ql_att_general_rsp_s *)test_event.param2;
-                if (last_rsp && last_rsp->pay_load)
-                {
-                    unsigned short length = last_rsp->length;
-                    QL_BLE_GATT_LOG("length=%d", length);
-                    if (ql_ble_gatt_state == QL_BLE_GATT_READ_CHARA_VALUE)
-                    {
-                        QL_BLE_GATT_LOG("last_rsp.pay_load=%x", last_rsp->pay_load[0]);
-                    }
-                    else if (ql_ble_gatt_state == QL_BLE_GATT_READ_CHARA_DESC)
-                    {
-                        QL_BLE_GATT_LOG("last_rsp.pay_load=%x,%x", last_rsp->pay_load[0], last_rsp->pay_load[1]);
-                    }
-                    free(last_rsp->pay_load);
-                    free(last_rsp);
-                }
-            }
-            else
-            {
-                QL_BLE_GATT_LOG("chara read failed");
-            }
-        }
-        break;
-        case QUEC_BLE_GATT_CHARA_READ_BY_UUID_IND:
-        {
-            // read characteristic value by uuid
-            if (QL_BT_STATUS_SUCCESS == status)
-            {
-                QL_BLE_GATT_LOG("chara read sucess");
-                ql_att_general_rsp_s *last_rsp = (ql_att_general_rsp_s *)test_event.param2;
-                if (last_rsp && last_rsp->pay_load)
-                {
-                    unsigned short length = last_rsp->length;
-                    QL_BLE_GATT_LOG("length=%d", length);
-                    unsigned short handle = (last_rsp->pay_load[2] << 8) | last_rsp->pay_load[1];
-                    QL_BLE_GATT_LOG("handle=%d", handle);
-                    free(last_rsp->pay_load);
-                    free(last_rsp);
-                }
-            }
-            else
-            {
-                QL_BLE_GATT_LOG("chara read failed");
-            }
-        }
-        break;
-        case QUEC_BLE_GATT_CHARA_MULTI_READ_IND:
-        {
-            // read miltiple characteristic value
-            if (QL_BT_STATUS_SUCCESS == status)
-            {
-                QL_BLE_GATT_LOG("chara multi read sucess");
-                ql_att_general_rsp_s *last_rsp = (ql_att_general_rsp_s *)test_event.param2;
-                if (last_rsp && last_rsp->pay_load)
-                {
-                    unsigned char length = last_rsp->length;
-                    QL_BLE_GATT_LOG("length=%d", length);
-                    QL_BLE_GATT_LOG("last_rsp.pay_load=%x", last_rsp->pay_load[0]);
-                    free(last_rsp->pay_load);
-                    free(last_rsp);
-                }
-            }
-            else
-            {
-                QL_BLE_GATT_LOG("chara multi read failed");
-            }
-        }
-        break;
-        case QUEC_BLE_GATT_ATT_ERROR_IND:
-        {
-            // attribute error
-            if (QL_BT_STATUS_SUCCESS == status)
-            {
-                UINT8 error_code = test_event.param2;
-                QL_BLE_GATT_LOG("get att error sucess error_code=%x", error_code);
-                if (ql_ble_gatt_state == QL_BLE_GATT_DISCOVER_INCLUDES)
-                {
-                    ql_ble_gatt_state = QL_BLE_GATT_DISCOVER_CHARACTERISTIC;
-                    ret = ql_ble_gatt_demo_discover_all_characteristic();
-                    if (ret != QL_BT_SUCCESS)
-                    {
-                        goto QL_BLE_SCAN_DEMO_STOP;
-                    }
-                }
-                else if (ql_ble_gatt_state == QL_BLE_GATT_DISCOVER_CHARACTERISTIC)
-                {
-                    ql_ble_gatt_state = QL_BLE_GATT_IDLE;
-                    ret = ql_ble_gatt_demo_discover_chara_desc();
-                    if (ret != QL_BT_SUCCESS)
-                    {
-                        goto QL_BLE_SCAN_DEMO_STOP;
-                    }
-                }
-            }
-            else
-            {
-                QL_BLE_GATT_LOG("get att error failed");
-                goto QL_BLE_SCAN_DEMO_STOP;
-            }
-        }
-        break;
-        case QUEC_BLE_GATT_RECV_NOTIFICATION_IND:
-        {
-            // recieve notification
-            if (QL_BT_STATUS_SUCCESS == status)
-            {
-                QL_BLE_GATT_LOG("recv notifi sucess");
-                ql_att_general_rsp_s *last_rsp = (ql_att_general_rsp_s *)test_event.param2;
-                if (last_rsp && last_rsp->pay_load)
-                {
-                    unsigned short handle = (last_rsp->pay_load[1] << 8) | last_rsp->pay_load[0];
-                    QL_BLE_GATT_LOG("length=%d,handle=%d,pay_load=%x,%x", last_rsp->length, handle, last_rsp->pay_load[2], last_rsp->pay_load[3]);
-                    free(last_rsp->pay_load);
-                    free(last_rsp);
-                }
-            }
-            else
-            {
-                QL_BLE_GATT_LOG("recv notifi failed");
-            }
-        }
-        break;
-        case QUEC_BLE_GATT_RECV_INDICATION_IND:
-        {
-
-            // recieve indication
-            if (QL_BT_STATUS_SUCCESS == status)
-            {
-                QL_BLE_GATT_LOG("recv notifi sucess");
-                ql_att_general_rsp_s *last_rsp = (ql_att_general_rsp_s *)test_event.param2;
-                if (last_rsp && last_rsp->pay_load)
-                {
-                    unsigned short length = last_rsp->length;
-
-                    QL_BLE_GATT_LOG("length=%d", length);
-                    QL_BLE_GATT_LOG("last_rsp.pay_load=%x,%x,%x,%x", last_rsp->pay_load[0], last_rsp->pay_load[1], last_rsp->pay_load[2], last_rsp->pay_load[3]);
-                    free(last_rsp->pay_load);
-                    free(last_rsp);
-                }
-            }
-            else
-            {
-                QL_BLE_GATT_LOG("recv notifi failed");
-            }
-        }
-        break;
-        default:
-            break;
-        }
-        return ret;
-    QL_BLE_SCAN_DEMO_STOP:
-#if QL_BLE_DEMO_LOW_POWER_USE
-        ql_lpm_wakelock_lock(bt_ble_power_lock);
-#endif
-        ret = ql_bt_demo_stop();
-    }
-
-    return ret;
-}
-
-void ql_ble_gatt_client_demo_task_pthread(void *ctx)
-{
-    QlOSStatus err = 0;
-    ql_errcode_bt_e ret = QL_BT_SUCCESS;
-
-#if QL_BLE_DEMO_LOW_POWER_USE
-    ql_dev_set_modem_fun(QL_DEV_CFUN_MIN, 0, 0);
-    ql_autosleep_enable(QL_ALLOW_SLEEP);
-    QL_BLE_GATT_LOG("i am in sleep mode");
-#endif
-
-GATT_CLIENT_RETRY:
-    ret = ql_ble_gatt_client_init(ql_ble_notify_cb);
-    if (ret != QL_BT_SUCCESS)
-    {
-        goto QL_BLE_GATT_CLINET_NOT_INIT_EXIT;
-    }
-
-#if QL_BLE_DEMO_LOW_POWER_USE
-    ql_lpm_wakelock_lock(bt_ble_power_lock);
-#endif
-    ret = ql_bt_demo_start();
-    if (ret != QL_BT_SUCCESS)
-    {
-#if QL_BLE_DEMO_LOW_POWER_USE
-        ql_lpm_wakelock_unlock(bt_ble_power_lock);
-#endif
-        goto QL_BLE_GATT_CLINET_INIT_EXIT;
-    }
-
-    while (1)
-    {
-        ret = ql_ble_gatt_client_handle_event();
-        if (ret != QL_BT_SUCCESS)
-        {
-            break;
-        }
-    }
-
-QL_BLE_GATT_CLINET_INIT_EXIT:
-    ql_ble_gatt_client_release();
-    goto GATT_CLIENT_RETRY;
-QL_BLE_GATT_CLINET_NOT_INIT_EXIT:
-#if QL_BLE_DEMO_LOW_POWER_USE
-    ql_lpm_wakelock_delete(bt_ble_power_lock);
-#endif
-    err = ql_rtos_task_delete(NULL);
-    if (err != QL_OSI_SUCCESS)
-    {
-        QL_BLE_GATT_LOG("task deleted failed");
-    }
-}
-
-QlOSStatus ql_ble_gatt_client_demo_init(void)
-{
-    QlOSStatus err = QL_OSI_SUCCESS;
-
-    QL_BLE_GATT_LOG("enter ql_ble_gatt_client_demo_init");
-#if QL_BLE_DEMO_LOW_POWER_USE
-    bt_ble_power_lock = ql_lpm_wakelock_create("bt_ble", strlen("bt_ble"));
-#endif
-    err = ql_rtos_task_create(&ble_demo_task, BT_BLE_DEMO_TASK_STACK_SIZE, BT_BLE_DEMO_TASK_PRIO, "gatt_client", ql_ble_gatt_client_demo_task_pthread, NULL, BT_BLE_DEMO_TASK_EVENT_CNT);
 
     return err;
 }
