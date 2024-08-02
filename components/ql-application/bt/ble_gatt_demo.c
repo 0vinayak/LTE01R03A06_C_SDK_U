@@ -603,7 +603,7 @@ ql_errcode_bt_e ql_bleadv_demo_set_scan_rsp_data()
     return ret;
 }
 
-ql_errcode_bt_e ql_ble_gatt_demo_add_service(int idx)
+ql_errcode_bt_e ql_ble_gatt_demo_add_service()
 {
     ql_errcode_bt_e ret = QL_BT_SUCCESS;
 
@@ -616,103 +616,76 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_service(int idx)
     ql_ble_gatt_uuid_s uuidKeyResponseMain;
     ql_ble_gatt_uuid_s uuidOTA;
 
-    switch (idx)
-    {
+    uuidLive = (ql_ble_gatt_uuid_s){
+        .uuid_type = 1, // short id with 16 bits
+        .uuid_l = {0x00},
+        .uuid_s = 0x00FA,
+    };
+    // ret = ql_ble_gatt_add_service(0x01, uuid, 1);
+    ret = ql_ble_gatt_add_service(0x01, uuidLive, 1);
 
-    case 0:
+    uuidPtd = (ql_ble_gatt_uuid_s){
+        .uuid_type = 1, // short id with 16 bits
+        .uuid_l = {0x00},
+        .uuid_s = 0x00FC,
+    };
+    // ret = ql_ble_gatt_add_service(0x01, uuid, 0);
+    ql_ble_gatt_add_service(0x02, uuidPtd, 1);
 
-        uuidLive = (ql_ble_gatt_uuid_s){
+    uuidVehicleInfo =
+        (ql_ble_gatt_uuid_s){
             .uuid_type = 1, // short id with 16 bits
             .uuid_l = {0x00},
-            .uuid_s = 0x00FA,
+            .uuid_s = 0x00FE,
         };
-        // ret = ql_ble_gatt_add_service(0x01, uuid, 1);
-        ret = ql_ble_gatt_add_service(0x01, uuidLive, 1);
-        break;
 
-    case 1:
-        uuidPtd = (ql_ble_gatt_uuid_s){
+    // ret = ql_ble_gatt_add_service(0x01, uuid, 0);
+    ql_ble_gatt_add_service(0x03, uuidVehicleInfo, 1);
+
+    uuidVehicleControl =
+        (ql_ble_gatt_uuid_s){
             .uuid_type = 1, // short id with 16 bits
             .uuid_l = {0x00},
-            .uuid_s = 0x00FC,
+            .uuid_s = 0x00FB,
         };
-        // ret = ql_ble_gatt_add_service(0x01, uuid, 0);
-        ql_ble_gatt_add_service(0x02, uuidPtd, 1);
 
-        break;
+    ret = ql_ble_gatt_add_service(0x04, uuidVehicleControl, 1);
 
-    case 2:
-        uuidVehicleInfo =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1, // short id with 16 bits
-                .uuid_l = {0x00},
-                .uuid_s = 0x00FE,
-            };
-
-        // ret = ql_ble_gatt_add_service(0x01, uuid, 0);
-        ql_ble_gatt_add_service(0x03, uuidVehicleInfo, 1);
-        break;
-
-    case 3:
-        uuidVehicleControl =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1, // short id with 16 bits
-                .uuid_l = {0x00},
-                .uuid_s = 0x00FB,
-            };
-
-        // ret = ql_ble_gatt_add_service(0x01, uuid, 0);
-        ql_ble_gatt_add_service(0x04, uuidVehicleControl, 1);
-        break;
-
-    case 4:
-        uuidSeedRequest =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1, // short id with 16 bits
-                .uuid_l = {0x00},
-                .uuid_s = 0x0520,
-            };
-
-        // ret = ql_ble_gatt_add_service(0x01, uuid, 0);
-        ql_ble_gatt_add_service(0x05, uuidSeedRequest, 1);
-        break;
-
-    case 5:
-        uuidKeyResponse =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1, // short id with 16 bits
-                .uuid_l = {0x00},
-                .uuid_s = 0x0620,
-            };
-        // ret = ql_ble_gatt_add_service(0x01, uuid, 0);
-        ql_ble_gatt_add_service(0x06, uuidKeyResponse, 1);
-        break;
-
-    case 6:
-        uuidKeyResponseMain =
-            (ql_ble_gatt_uuid_s){
-                .uuid_type = 1, // short id with 16 bits
-                .uuid_l = {0x00},
-                .uuid_s = 0x0720,
-            };
-        // ret = ql_ble_gatt_add_service(0x01, uuid, 0);
-        ql_ble_gatt_add_service(0x07, uuidKeyResponseMain, 1);
-        break;
-
-    case 7:
-
-        uuidOTA = (ql_ble_gatt_uuid_s){
+    uuidSeedRequest =
+        (ql_ble_gatt_uuid_s){
             .uuid_type = 1, // short id with 16 bits
             .uuid_l = {0x00},
-            .uuid_s = 0x0033,
+            .uuid_s = 0x0520,
         };
-        // ret = ql_ble_gatt_add_service(0x01, uuid, 1);
-        ret = ql_ble_gatt_add_service(0x08, uuidOTA, 1);
-        break;
 
-    default:
-        break;
-    }
+    // ret = ql_ble_gatt_add_service(0x01, uuid, 0);
+    ql_ble_gatt_add_service(0x05, uuidSeedRequest, 1);
+
+    uuidKeyResponse =
+        (ql_ble_gatt_uuid_s){
+            .uuid_type = 1, // short id with 16 bits
+            .uuid_l = {0x00},
+            .uuid_s = 0x0620,
+        };
+    // ret = ql_ble_gatt_add_service(0x01, uuid, 0);
+    ql_ble_gatt_add_service(0x06, uuidKeyResponse, 1);
+
+    uuidKeyResponseMain =
+        (ql_ble_gatt_uuid_s){
+            .uuid_type = 1, // short id with 16 bits
+            .uuid_l = {0x00},
+            .uuid_s = 0x0720,
+        };
+    // ret = ql_ble_gatt_add_service(0x01, uuid, 0);
+    ql_ble_gatt_add_service(0x07, uuidKeyResponseMain, 1);
+
+    uuidOTA = (ql_ble_gatt_uuid_s){
+        .uuid_type = 1, // short id with 16 bits
+        .uuid_l = {0x00},
+        .uuid_s = 0x0033,
+    };
+    // ret = ql_ble_gatt_add_service(0x01, uuid, 1);
+    ret = ql_ble_gatt_add_service(0x08, uuidOTA, 1);
 
     // ql_ble_gatt_uuid_s uuid =
     // {
