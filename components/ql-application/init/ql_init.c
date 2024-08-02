@@ -150,10 +150,6 @@ WHEN              WHO         WHAT, WHERE, WHY
 #include "app_img_at_demo.h"
 #endif
 
-#ifdef QL_APP_FEATURE_VOLTE
-#include "volte_demo.h"
-#endif
-
 #ifdef QL_APP_FEATURE_VSIM_ADAPT
 #include "vsim_adapt_demo.h"
 #endif
