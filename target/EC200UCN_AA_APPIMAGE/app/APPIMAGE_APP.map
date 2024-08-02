@@ -1983,10 +1983,6 @@ Discarded input sections
  .text          0x00000000        0x0 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
  .data          0x00000000        0x0 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
  .bss           0x00000000        0x0 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
- .text.ql_is_mipi_lcd_pin
-                0x00000000       0x22 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
- .rodata.ql_mipi_lcd_pin
-                0x00000000        0x6 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
  .text          0x00000000        0x0 lib/libql_app_peripheral.a(gpio_demo.c.obj)
  .data          0x00000000        0x0 lib/libql_app_peripheral.a(gpio_demo.c.obj)
  .bss           0x00000000        0x0 lib/libql_app_peripheral.a(gpio_demo.c.obj)
@@ -3228,498 +3224,498 @@ LOAD ../../prebuilts/win32/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/7.2.1/
  .vfp11_veneer  0x60250540        0x0 linker stubs
  .v4_bx         0x60250540        0x0 linker stubs
  .text.ql_init_demo_thread
-                0x60250540       0x48 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
+                0x60250540       0x40 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
  .text.ql_pin_cfg_init
-                0x60250588       0x6c components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
-                0x60250588                ql_pin_cfg_init
+                0x60250580       0x68 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
+                0x60250580                ql_pin_cfg_init
  .text.appimg_enter
-                0x602505f4       0x98 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
-                0x602505f4                appimg_enter
+                0x602505e8       0x98 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
+                0x602505e8                appimg_enter
  .text.appimg_exit
-                0x6025068c       0x1c components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
-                0x6025068c                appimg_exit
- .rodata.__FUNCTION__.17551
-                0x602506a8       0x10 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
- .rodata.__FUNCTION__.17558
-                0x602506b8       0x14 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
- .rodata.__FUNCTION__.17564
-                0x602506cc        0xd components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
- .rodata.__FUNCTION__.17568
-                0x602506d9        0xc components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
+                0x60250680       0x1c components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
+                0x60250680                appimg_exit
+ .rodata.__FUNCTION__.17415
+                0x6025069c       0x10 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
+ .rodata.__FUNCTION__.17422
+                0x602506ac       0x14 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
+ .rodata.__FUNCTION__.17428
+                0x602506c0        0xd components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
+ .rodata.__FUNCTION__.17432
+                0x602506cd        0xc components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
  .rodata.appimg_enter.str1.1
-                0x602506e5       0x5e components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
+                0x602506d9       0x5e components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
  .rodata.appimg_exit.str1.1
-                0x60250743       0x1d components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
+                0x60250737       0x1d components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
  .rodata.ql_init_demo_thread.str1.1
-                0x60250760       0x31 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
+                0x60250754       0x31 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
  .rodata.ql_pin_cfg_init.str1.1
-                0x60250791       0x1c components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
- *fill*         0x602507ad        0x1 
+                0x60250785       0x1c components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
+ *fill*         0x602507a1        0x1 
  .text._ql_gpio_demo_init
-                0x602507ae       0x3c lib/libql_app_peripheral.a(gpio_demo.c.obj)
-                0x602507ae                _ql_gpio_demo_init
- *fill*         0x602507ea        0x2 
+                0x602507a2       0x3c lib/libql_app_peripheral.a(gpio_demo.c.obj)
+                0x602507a2                _ql_gpio_demo_init
+ *fill*         0x602507de        0x2 
  .text.ql_gpio_demo_thread
-                0x602507ec      0x3dc lib/libql_app_peripheral.a(gpio_demo.c.obj)
+                0x602507e0      0x3dc lib/libql_app_peripheral.a(gpio_demo.c.obj)
  .text.ql_gpio_app_init
-                0x60250bc8       0x48 lib/libql_app_peripheral.a(gpio_demo.c.obj)
-                0x60250bc8                ql_gpio_app_init
+                0x60250bbc       0x48 lib/libql_app_peripheral.a(gpio_demo.c.obj)
+                0x60250bbc                ql_gpio_app_init
  .rodata.__FUNCTION__.8049
-                0x60250c10       0x14 lib/libql_app_peripheral.a(gpio_demo.c.obj)
+                0x60250c04       0x14 lib/libql_app_peripheral.a(gpio_demo.c.obj)
  .rodata.__FUNCTION__.8077
-                0x60250c24       0x11 lib/libql_app_peripheral.a(gpio_demo.c.obj)
+                0x60250c18       0x11 lib/libql_app_peripheral.a(gpio_demo.c.obj)
  .rodata._ql_gpio_cfg
-                0x60250c35        0xc lib/libql_app_peripheral.a(gpio_demo.c.obj)
+                0x60250c29        0xc lib/libql_app_peripheral.a(gpio_demo.c.obj)
  .rodata.ql_gpio_app_init.str1.1
-                0x60250c41       0x3c lib/libql_app_peripheral.a(gpio_demo.c.obj)
+                0x60250c35       0x3c lib/libql_app_peripheral.a(gpio_demo.c.obj)
  .rodata.ql_gpio_demo_thread.str1.1
-                0x60250c7d      0x236 lib/libql_app_peripheral.a(gpio_demo.c.obj)
- *fill*         0x60250eb3        0x1 
+                0x60250c71      0x236 lib/libql_app_peripheral.a(gpio_demo.c.obj)
+ *fill*         0x60250ea7        0x1 
  .text.ql_uart_notify_cb
-                0x60250eb4       0xbc lib/libql_app_peripheral.a(uart_demo.c.obj)
-                0x60250eb4                ql_uart_notify_cb
+                0x60250ea8       0xbc lib/libql_app_peripheral.a(uart_demo.c.obj)
+                0x60250ea8                ql_uart_notify_cb
  .text.ql_uart_demo_thread
-                0x60250f70      0x180 lib/libql_app_peripheral.a(uart_demo.c.obj)
+                0x60250f64      0x180 lib/libql_app_peripheral.a(uart_demo.c.obj)
  .text.ql_uart_app_init
-                0x602510f0       0x48 lib/libql_app_peripheral.a(uart_demo.c.obj)
-                0x602510f0                ql_uart_app_init
+                0x602510e4       0x48 lib/libql_app_peripheral.a(uart_demo.c.obj)
+                0x602510e4                ql_uart_app_init
  .rodata.__FUNCTION__.8891
-                0x60251138       0x12 lib/libql_app_peripheral.a(uart_demo.c.obj)
+                0x6025112c       0x12 lib/libql_app_peripheral.a(uart_demo.c.obj)
  .rodata.__FUNCTION__.8911
-                0x6025114a       0x14 lib/libql_app_peripheral.a(uart_demo.c.obj)
+                0x6025113e       0x14 lib/libql_app_peripheral.a(uart_demo.c.obj)
  .rodata.__FUNCTION__.8928
-                0x6025115e       0x11 lib/libql_app_peripheral.a(uart_demo.c.obj)
+                0x60251152       0x11 lib/libql_app_peripheral.a(uart_demo.c.obj)
  .rodata.ql_uart_app_init.str1.1
-                0x6025116f       0x36 lib/libql_app_peripheral.a(uart_demo.c.obj)
+                0x60251163       0x36 lib/libql_app_peripheral.a(uart_demo.c.obj)
  .rodata.ql_uart_demo_thread.str1.1
-                0x602511a5       0xf6 lib/libql_app_peripheral.a(uart_demo.c.obj)
+                0x60251199       0xf6 lib/libql_app_peripheral.a(uart_demo.c.obj)
  .rodata.ql_uart_notify_cb.str1.1
-                0x6025129b       0x9d lib/libql_app_peripheral.a(uart_demo.c.obj)
+                0x6025128f       0x9d lib/libql_app_peripheral.a(uart_demo.c.obj)
  .rodata.ql_pin_cfg_map
-                0x60251338      0x17a lib/libql_app_peripheral.a(ql_pin_cfg.c.obj)
-                0x60251338                ql_pin_cfg_map
- *fill*         0x602514b2        0x2 
+                0x6025132c      0x17a lib/libql_app_peripheral.a(ql_pin_cfg.c.obj)
+                0x6025132c                ql_pin_cfg_map
+ *fill*         0x602514a6        0x2 
  .text.mqtt_inpub_data_cb
-                0x602514b4       0x3c lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x602514a8       0x3c lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .text.mqtt_state_exception_cb
-                0x602514f0       0x28 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x602514e4       0x28 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .text.mqtt_requst_result_cb
-                0x60251518       0x30 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x6025150c       0x30 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .text.mqtt_connect_result_cb
-                0x60251548       0x3c lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x6025153c       0x3c lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .text.base64Encoder
-                0x60251584       0xbc lib/libql_app_mqtt.a(mqtt_demo.c.obj)
-                0x60251584                base64Encoder
+                0x60251578       0xbc lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x60251578                base64Encoder
  .text.mqtt_app_thread
-                0x60251640      0x68c lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x60251634      0x68c lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .text.ql_mqtt_app_init
-                0x60251ccc       0x4c lib/libql_app_mqtt.a(mqtt_demo.c.obj)
-                0x60251ccc                ql_mqtt_app_init
+                0x60251cc0       0x4c lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x60251cc0                ql_mqtt_app_init
  .rodata.__FUNCTION__.19518
-                0x60251d18       0x18 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x60251d0c       0x18 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.__FUNCTION__.19524
-                0x60251d30       0x17 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x60251d24       0x17 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.__FUNCTION__.19530
-                0x60251d47       0x16 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x60251d3b       0x16 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.__FUNCTION__.19539
-                0x60251d5d       0x13 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x60251d51       0x13 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.__FUNCTION__.19605
-                0x60251d70       0x10 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x60251d64       0x10 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.__FUNCTION__.19625
-                0x60251d80       0x11 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x60251d74       0x11 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.base64Encoder.str1.1
-                0x60251d91       0x41 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x60251d85       0x41 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.mqtt_app_thread.str1.1
-                0x60251dd2      0x5f3 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x60251dc6      0x5f3 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.mqtt_connect_result_cb.str1.1
-                0x602523c5       0x19 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x602523b9       0x19 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.mqtt_inpub_data_cb.str1.1
-                0x602523de       0x58 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x602523d2       0x58 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.mqtt_requst_result_cb.str1.1
-                0x60252436       0x16 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x6025242a       0x16 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.mqtt_state_exception_cb.str1.1
-                0x6025244c       0x2f lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x60252440       0x2f lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .rodata.ql_mqtt_app_init.str1.1
-                0x6025247b       0x2c lib/libql_app_mqtt.a(mqtt_demo.c.obj)
- *fill*         0x602524a7        0x1 
+                0x6025246f       0x2c lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+ *fill*         0x6025249b        0x5 
  .text.com_emotorad_backend_aggregation_flink_data_bike_init
-                0x602524a8       0xf4 lib/libql_app_mqtt.a(data.c.obj)
-                0x602524a8                com_emotorad_backend_aggregation_flink_data_bike_init
- *fill*         0x6025259c        0x4 
+                0x602524a0       0xf4 lib/libql_app_mqtt.a(data.c.obj)
+                0x602524a0                com_emotorad_backend_aggregation_flink_data_bike_init
+ *fill*         0x60252594        0x4 
  .text.com_emotorad_backend_aggregation_flink_data_trip1_init
-                0x602525a0       0x50 lib/libql_app_mqtt.a(data.c.obj)
-                0x602525a0                com_emotorad_backend_aggregation_flink_data_trip1_init
+                0x60252598       0x50 lib/libql_app_mqtt.a(data.c.obj)
+                0x60252598                com_emotorad_backend_aggregation_flink_data_trip1_init
  .text.com_emotorad_backend_aggregation_flink_data_trip2_init
-                0x602525f0       0x40 lib/libql_app_mqtt.a(data.c.obj)
-                0x602525f0                com_emotorad_backend_aggregation_flink_data_trip2_init
+                0x602525e8       0x40 lib/libql_app_mqtt.a(data.c.obj)
+                0x602525e8                com_emotorad_backend_aggregation_flink_data_trip2_init
  .text.com_emotorad_backend_aggregation_flink_data_end_init
-                0x60252630       0x28 lib/libql_app_mqtt.a(data.c.obj)
-                0x60252630                com_emotorad_backend_aggregation_flink_data_end_init
+                0x60252628       0x28 lib/libql_app_mqtt.a(data.c.obj)
+                0x60252628                com_emotorad_backend_aggregation_flink_data_end_init
  .text.com_emotorad_backend_aggregation_flink_data_end_encode_inner
-                0x60252658       0x28 lib/libql_app_mqtt.a(data.c.obj)
-                0x60252658                com_emotorad_backend_aggregation_flink_data_end_encode_inner
+                0x60252650       0x28 lib/libql_app_mqtt.a(data.c.obj)
+                0x60252650                com_emotorad_backend_aggregation_flink_data_end_encode_inner
  .text.com_emotorad_backend_aggregation_flink_data_trip1_encode_inner
-                0x60252680       0x78 lib/libql_app_mqtt.a(data.c.obj)
-                0x60252680                com_emotorad_backend_aggregation_flink_data_trip1_encode_inner
+                0x60252678       0x78 lib/libql_app_mqtt.a(data.c.obj)
+                0x60252678                com_emotorad_backend_aggregation_flink_data_trip1_encode_inner
  .text.com_emotorad_backend_aggregation_flink_data_trip2_encode_inner
-                0x602526f8       0x50 lib/libql_app_mqtt.a(data.c.obj)
-                0x602526f8                com_emotorad_backend_aggregation_flink_data_trip2_encode_inner
+                0x602526f0       0x50 lib/libql_app_mqtt.a(data.c.obj)
+                0x602526f0                com_emotorad_backend_aggregation_flink_data_trip2_encode_inner
  .text.com_emotorad_backend_aggregation_flink_data_bike_encode_inner
-                0x60252748      0x1d8 lib/libql_app_mqtt.a(data.c.obj)
-                0x60252748                com_emotorad_backend_aggregation_flink_data_bike_encode_inner
+                0x60252740      0x1d8 lib/libql_app_mqtt.a(data.c.obj)
+                0x60252740                com_emotorad_backend_aggregation_flink_data_bike_encode_inner
  .text.com_emotorad_backend_aggregation_flink_data_bike_new
-                0x60252920        0xc lib/libql_app_mqtt.a(data.c.obj)
-                0x60252920                com_emotorad_backend_aggregation_flink_data_bike_new
+                0x60252918        0xc lib/libql_app_mqtt.a(data.c.obj)
+                0x60252918                com_emotorad_backend_aggregation_flink_data_bike_new
  .text.com_emotorad_backend_aggregation_flink_data_bike_encode
-                0x6025292c        0xc lib/libql_app_mqtt.a(data.c.obj)
-                0x6025292c                com_emotorad_backend_aggregation_flink_data_bike_encode
+                0x60252924        0xc lib/libql_app_mqtt.a(data.c.obj)
+                0x60252924                com_emotorad_backend_aggregation_flink_data_bike_encode
  .text.com_emotorad_backend_aggregation_flink_data_trip1_new
-                0x60252938        0xc lib/libql_app_mqtt.a(data.c.obj)
-                0x60252938                com_emotorad_backend_aggregation_flink_data_trip1_new
+                0x60252930        0xc lib/libql_app_mqtt.a(data.c.obj)
+                0x60252930                com_emotorad_backend_aggregation_flink_data_trip1_new
  .text.com_emotorad_backend_aggregation_flink_data_trip1_encode
-                0x60252944        0xc lib/libql_app_mqtt.a(data.c.obj)
-                0x60252944                com_emotorad_backend_aggregation_flink_data_trip1_encode
+                0x6025293c        0xc lib/libql_app_mqtt.a(data.c.obj)
+                0x6025293c                com_emotorad_backend_aggregation_flink_data_trip1_encode
  .text.com_emotorad_backend_aggregation_flink_data_trip2_new
-                0x60252950        0xc lib/libql_app_mqtt.a(data.c.obj)
-                0x60252950                com_emotorad_backend_aggregation_flink_data_trip2_new
+                0x60252948        0xc lib/libql_app_mqtt.a(data.c.obj)
+                0x60252948                com_emotorad_backend_aggregation_flink_data_trip2_new
  .text.com_emotorad_backend_aggregation_flink_data_trip2_encode
-                0x6025295c        0xc lib/libql_app_mqtt.a(data.c.obj)
-                0x6025295c                com_emotorad_backend_aggregation_flink_data_trip2_encode
+                0x60252954        0xc lib/libql_app_mqtt.a(data.c.obj)
+                0x60252954                com_emotorad_backend_aggregation_flink_data_trip2_encode
  .text.com_emotorad_backend_aggregation_flink_data_end_new
-                0x60252968        0xc lib/libql_app_mqtt.a(data.c.obj)
-                0x60252968                com_emotorad_backend_aggregation_flink_data_end_new
+                0x60252960        0xc lib/libql_app_mqtt.a(data.c.obj)
+                0x60252960                com_emotorad_backend_aggregation_flink_data_end_new
  .text.com_emotorad_backend_aggregation_flink_data_end_encode
-                0x60252974        0xc lib/libql_app_mqtt.a(data.c.obj)
-                0x60252974                com_emotorad_backend_aggregation_flink_data_end_encode
+                0x6025296c        0xc lib/libql_app_mqtt.a(data.c.obj)
+                0x6025296c                com_emotorad_backend_aggregation_flink_data_end_encode
  .rodata.com_emotorad_backend_aggregation_flink_data_bike_init.str1.1
-                0x60252980       0x31 lib/libql_app_mqtt.a(data.c.obj)
- *fill*         0x602529b1        0x1 
+                0x60252978       0x31 lib/libql_app_mqtt.a(data.c.obj)
+ *fill*         0x602529a9        0x1 
  .text.heap_alloc
-                0x602529b2       0x2e lib/libql_app_mqtt.a(pbtools.c.obj)
+                0x602529aa       0x2e lib/libql_app_mqtt.a(pbtools.c.obj)
  .text.encoder_write
-                0x602529e0       0x2e lib/libql_app_mqtt.a(pbtools.c.obj)
+                0x602529d8       0x2e lib/libql_app_mqtt.a(pbtools.c.obj)
  .text.encoder_write_varint
-                0x60252a0e       0x3e lib/libql_app_mqtt.a(pbtools.c.obj)
+                0x60252a06       0x3e lib/libql_app_mqtt.a(pbtools.c.obj)
  .text.encoder_write_tag
-                0x60252a4c        0xa lib/libql_app_mqtt.a(pbtools.c.obj)
+                0x60252a44        0xa lib/libql_app_mqtt.a(pbtools.c.obj)
  .text.encoder_write_tagged_varint
-                0x60252a56       0x26 lib/libql_app_mqtt.a(pbtools.c.obj)
+                0x60252a4e       0x26 lib/libql_app_mqtt.a(pbtools.c.obj)
  .text.encoder_write_64_bit_value
-                0x60252a7c       0x4a lib/libql_app_mqtt.a(pbtools.c.obj)
+                0x60252a74       0x4a lib/libql_app_mqtt.a(pbtools.c.obj)
  .text.pbtools_encoder_write_int32
-                0x60252ac6       0x1a lib/libql_app_mqtt.a(pbtools.c.obj)
-                0x60252ac6                pbtools_encoder_write_int32
+                0x60252abe       0x1a lib/libql_app_mqtt.a(pbtools.c.obj)
+                0x60252abe                pbtools_encoder_write_int32
  .text.pbtools_encoder_write_uint64
-                0x60252ae0       0x12 lib/libql_app_mqtt.a(pbtools.c.obj)
-                0x60252ae0                pbtools_encoder_write_uint64
+                0x60252ad8       0x12 lib/libql_app_mqtt.a(pbtools.c.obj)
+                0x60252ad8                pbtools_encoder_write_uint64
  .text.pbtools_encoder_write_uint32
-                0x60252af2        0x6 lib/libql_app_mqtt.a(pbtools.c.obj)
-                0x60252af2                pbtools_encoder_write_uint32
+                0x60252aea        0x6 lib/libql_app_mqtt.a(pbtools.c.obj)
+                0x60252aea                pbtools_encoder_write_uint32
  .text.pbtools_encoder_write_fixed64
-                0x60252af8       0x20 lib/libql_app_mqtt.a(pbtools.c.obj)
-                0x60252af8                pbtools_encoder_write_fixed64
+                0x60252af0       0x20 lib/libql_app_mqtt.a(pbtools.c.obj)
+                0x60252af0                pbtools_encoder_write_fixed64
  .text.pbtools_encoder_write_double
-                0x60252b18        0x8 lib/libql_app_mqtt.a(pbtools.c.obj)
-                0x60252b18                pbtools_encoder_write_double
+                0x60252b10        0x8 lib/libql_app_mqtt.a(pbtools.c.obj)
+                0x60252b10                pbtools_encoder_write_double
  .text.pbtools_encoder_write_bool
-                0x60252b20        0xa lib/libql_app_mqtt.a(pbtools.c.obj)
-                0x60252b20                pbtools_encoder_write_bool
+                0x60252b18        0xa lib/libql_app_mqtt.a(pbtools.c.obj)
+                0x60252b18                pbtools_encoder_write_bool
  .text.pbtools_encoder_write_enum
-                0x60252b2a        0x4 lib/libql_app_mqtt.a(pbtools.c.obj)
-                0x60252b2a                pbtools_encoder_write_enum
+                0x60252b22        0x4 lib/libql_app_mqtt.a(pbtools.c.obj)
+                0x60252b22                pbtools_encoder_write_enum
  .text.pbtools_encoder_write_string
-                0x60252b2e       0x30 lib/libql_app_mqtt.a(pbtools.c.obj)
-                0x60252b2e                pbtools_encoder_write_string
+                0x60252b26       0x30 lib/libql_app_mqtt.a(pbtools.c.obj)
+                0x60252b26                pbtools_encoder_write_string
  .text.pbtools_message_new
-                0x60252b5e       0x2c lib/libql_app_mqtt.a(pbtools.c.obj)
-                0x60252b5e                pbtools_message_new
+                0x60252b56       0x2c lib/libql_app_mqtt.a(pbtools.c.obj)
+                0x60252b56                pbtools_message_new
  .text.pbtools_message_encode
-                0x60252b8a       0x30 lib/libql_app_mqtt.a(pbtools.c.obj)
-                0x60252b8a                pbtools_message_encode
- *fill*         0x60252bba        0x2 
+                0x60252b82       0x30 lib/libql_app_mqtt.a(pbtools.c.obj)
+                0x60252b82                pbtools_message_encode
+ *fill*         0x60252bb2        0x2 
  .text.ql_ble_demo_get_conection_state
-                0x60252bbc       0x64 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x60252bb4       0x64 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .text.ql_ble_notify_cb
-                0x60252c20      0x220 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x60252c18      0x220 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .text.ql_ble_demo_add_public_whitelist
-                0x60252e40       0x64 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
-                0x60252e40                ql_ble_demo_add_public_whitelist
+                0x60252e38       0x64 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x60252e38                ql_ble_demo_add_public_whitelist
  .text.ql_ble_demo_add_random_whitelist
-                0x60252ea4       0x64 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
-                0x60252ea4                ql_ble_demo_add_random_whitelist
+                0x60252e9c       0x64 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x60252e9c                ql_ble_demo_add_random_whitelist
  .text.ql_bleadv_demo_set_param
-                0x60252f08       0x48 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
-                0x60252f08                ql_bleadv_demo_set_param
+                0x60252f00       0x48 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x60252f00                ql_bleadv_demo_set_param
  .text.ql_bleadv_demo_set_data
-                0x60252f50       0xd0 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
-                0x60252f50                ql_bleadv_demo_set_data
+                0x60252f48       0xd0 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x60252f48                ql_bleadv_demo_set_data
  .text.ql_bleadv_demo_set_scan_rsp_data
-                0x60253020       0xd0 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
-                0x60253020                ql_bleadv_demo_set_scan_rsp_data
+                0x60253018       0xd0 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x60253018                ql_bleadv_demo_set_scan_rsp_data
  .text.ql_ble_gatt_demo_add_service
-                0x602530f0      0x172 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
-                0x602530f0                ql_ble_gatt_demo_add_service
- *fill*         0x60253262        0x2 
+                0x602530e8      0x172 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x602530e8                ql_ble_gatt_demo_add_service
+ *fill*         0x6025325a        0x2 
  .text.ql_ble_gatt_demo_add_chara
-                0x60253264      0x404 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
-                0x60253264                ql_ble_gatt_demo_add_chara
+                0x6025325c      0x404 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x6025325c                ql_ble_gatt_demo_add_chara
  .text.ql_ble_gatt_demo_add_chara_value
-                0x60253668      0x2ec lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
-                0x60253668                ql_ble_gatt_demo_add_chara_value
+                0x60253660      0x2ec lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x60253660                ql_ble_gatt_demo_add_chara_value
  .text.ql_ble_gatt_demo_change_chara_value
-                0x60253954       0x58 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
-                0x60253954                ql_ble_gatt_demo_change_chara_value
+                0x6025394c       0x58 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x6025394c                ql_ble_gatt_demo_change_chara_value
  .text.ql_ble_demo_update_conn_param
-                0x602539ac       0x78 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
-                0x602539ac                ql_ble_demo_update_conn_param
+                0x602539a4       0x78 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x602539a4                ql_ble_demo_update_conn_param
  .text.ql_ble_demo_send_data
-                0x60253a24       0x50 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
-                0x60253a24                ql_ble_demo_send_data
+                0x60253a1c       0x50 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x60253a1c                ql_ble_demo_send_data
  .text.ql_ble_demo_disconect_device
-                0x60253a74       0x48 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
-                0x60253a74                ql_ble_demo_disconect_device
+                0x60253a6c       0x48 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x60253a6c                ql_ble_demo_disconect_device
  .text.ql_ble_gatt_server_handle_event
-                0x60253abc      0xa10 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
-                0x60253abc                ql_ble_gatt_server_handle_event
+                0x60253ab4      0xa10 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x60253ab4                ql_ble_gatt_server_handle_event
  .text.ql_ble_gatt_server_demo_task_pthread
-                0x602544cc       0xb4 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
-                0x602544cc                ql_ble_gatt_server_demo_task_pthread
+                0x602544c4       0xb4 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x602544c4                ql_ble_gatt_server_demo_task_pthread
  .text.ql_ble_gatt_server_demo_init
-                0x60254580       0x48 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
-                0x60254580                ql_ble_gatt_server_demo_init
+                0x60254578       0x48 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x60254578                ql_ble_gatt_server_demo_init
  .rodata.__FUNCTION__.9307
-                0x602545c8       0x16 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x602545c0       0x16 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9313
-                0x602545de       0x1c lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x602545d6       0x1c lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9319
-                0x602545fa       0x18 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x602545f2       0x18 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9324
-                0x60254612       0x18 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x6025460a       0x18 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9330
-                0x6025462a       0x1c lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x60254622       0x1c lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9334
-                0x60254646       0x21 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x6025463e       0x21 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9338
-                0x60254667       0x21 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x6025465f       0x21 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9346
-                0x60254688       0x1f lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x60254680       0x1f lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9353
-                0x602546a7       0x1d lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x6025469f       0x1d lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9357
-                0x602546c4       0x1c lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x602546bc       0x1c lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9362
-                0x602546e0       0x15 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x602546d8       0x15 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9366
-                0x602546f5       0x15 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x602546ed       0x15 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9370
-                0x6025470a       0x19 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x60254702       0x19 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9380
-                0x60254723       0x18 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x6025471b       0x18 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9390
-                0x6025473b       0x21 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x60254733       0x21 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9439
-                0x6025475c       0x24 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x60254754       0x24 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9446
-                0x60254780       0x15 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x60254778       0x15 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9451
-                0x60254795       0x20 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x6025478d       0x20 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9455
-                0x602547b5       0x1e lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x602547ad       0x1e lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9463
-                0x602547d3       0x16 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x602547cb       0x16 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9467
-                0x602547e9       0x1d lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x602547e1       0x1d lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9473
-                0x60254806       0x20 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x602547fe       0x20 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9539
-                0x60254826       0x11 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x6025481e       0x11 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9575
-                0x60254837       0x25 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x6025482f       0x25 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.__FUNCTION__.9580
-                0x6025485c       0x1d lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x60254854       0x1d lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.ql_ble_demo_add_public_whitelist.str1.1
-                0x60254879       0x1d lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x60254871       0x1d lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.ql_ble_demo_get_conection_state.str1.1
-                0x60254896       0x3e lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x6025488e       0x3e lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.ql_ble_demo_send_data.str1.1
-                0x602548d4       0x22 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x602548cc       0x22 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.ql_ble_demo_update_conn_param.str1.1
-                0x602548f6       0x1e lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x602548ee       0x1e lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.ql_ble_gatt_server_demo_init.str1.1
-                0x60254914       0x45 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x6025490c       0x45 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.ql_ble_gatt_server_demo_task_pthread.str1.1
-                0x60254959       0x2a lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x60254951       0x2a lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.ql_ble_gatt_server_handle_event.str1.1
-                0x60254983      0x76b lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x6025497b      0x76b lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.ql_ble_notify_cb.str1.1
-                0x602550ee      0x138 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x602550e6      0x138 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.ql_bleadv_demo_set_data.str1.1
-                0x60255226       0x5e lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x6025521e       0x5e lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.ql_bleadv_demo_set_param.str1.1
-                0x60255284       0x51 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x6025527c       0x51 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .rodata.ql_bleadv_demo_set_scan_rsp_data.str1.1
-                0x602552d5       0x6a lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
- *fill*         0x6025533f        0x1 
+                0x602552cd       0x6a lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+ *fill*         0x60255337        0x1 
  .text.conv_num
-                0x60255340       0x5a lib/libql_app_gnss.a(gnss_demo.c.obj)
- *fill*         0x6025539a        0x2 
+                0x60255338       0x5a lib/libql_app_gnss.a(gnss_demo.c.obj)
+ *fill*         0x60255392        0x2 
  .text.ql_gnss_notify_cb
-                0x6025539c       0x58 lib/libql_app_gnss.a(gnss_demo.c.obj)
-                0x6025539c                ql_gnss_notify_cb
+                0x60255394       0x58 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60255394                ql_gnss_notify_cb
  .text._split_string_by_comma.constprop.2
-                0x602553f4       0x24 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x602553ec       0x24 lib/libql_app_gnss.a(gnss_demo.c.obj)
  .text.ql_gnss_app_init
-                0x60255418       0x50 lib/libql_app_gnss.a(gnss_demo.c.obj)
-                0x60255418                ql_gnss_app_init
+                0x60255410       0x50 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60255410                ql_gnss_app_init
  .text.ql_gnss_device_info_request
-                0x60255468       0xb0 lib/libql_app_gnss.a(gnss_demo.c.obj)
-                0x60255468                ql_gnss_device_info_request
+                0x60255460       0xb0 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60255460                ql_gnss_device_info_request
  .text.nmea_get_checksum
-                0x60255518       0x18 lib/libql_app_gnss.a(gnss_demo.c.obj)
-                0x60255518                nmea_get_checksum
+                0x60255510       0x18 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60255510                nmea_get_checksum
  .text.nmea_has_checksum
-                0x60255530       0x10 lib/libql_app_gnss.a(gnss_demo.c.obj)
-                0x60255530                nmea_has_checksum
+                0x60255528       0x10 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60255528                nmea_has_checksum
  .text.nmea_validate
-                0x60255540       0xac lib/libql_app_gnss.a(gnss_demo.c.obj)
-                0x60255540                nmea_validate
+                0x60255538       0xac lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60255538                nmea_validate
  .text.nmea_get_type
-                0x602555ec       0x6c lib/libql_app_gnss.a(gnss_demo.c.obj)
-                0x602555ec                nmea_get_type
+                0x602555e4       0x6c lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x602555e4                nmea_get_type
  .text.nmea_position_parse
-                0x60255658       0x42 lib/libql_app_gnss.a(gnss_demo.c.obj)
-                0x60255658                nmea_position_parse
- *fill*         0x6025569a        0x2 
+                0x60255650       0x42 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60255650                nmea_position_parse
+ *fill*         0x60255692        0x2 
  .text.nmea_cardinal_direction_parse
-                0x6025569c       0x1c lib/libql_app_gnss.a(gnss_demo.c.obj)
-                0x6025569c                nmea_cardinal_direction_parse
+                0x60255694       0x1c lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60255694                nmea_cardinal_direction_parse
  .text.nmea_validate_parse
-                0x602556b8        0xe lib/libql_app_gnss.a(gnss_demo.c.obj)
-                0x602556b8                nmea_validate_parse
- *fill*         0x602556c6        0x2 
+                0x602556b0        0xe lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x602556b0                nmea_validate_parse
+ *fill*         0x602556be        0x2 
  .text.nmea_parse_gsv
-                0x602556c8      0x134 lib/libql_app_gnss.a(gnss_demo.c.obj)
-                0x602556c8                nmea_parse_gsv
+                0x602556c0      0x134 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x602556c0                nmea_parse_gsv
  .text.nmea_parse_gga
-                0x602557fc       0xe0 lib/libql_app_gnss.a(gnss_demo.c.obj)
-                0x602557fc                nmea_parse_gga
+                0x602557f4       0xe0 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x602557f4                nmea_parse_gga
  .text.nmea_parse_gsa
-                0x602558dc       0xa8 lib/libql_app_gnss.a(gnss_demo.c.obj)
-                0x602558dc                nmea_parse_gsa
+                0x602558d4       0xa8 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x602558d4                nmea_parse_gsa
  .text.nmea_satellite_check
-                0x60255984       0x8c lib/libql_app_gnss.a(gnss_demo.c.obj)
-                0x60255984                nmea_satellite_check
+                0x6025597c       0x8c lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x6025597c                nmea_satellite_check
  .text.strptime
-                0x60255a10      0x3fc lib/libql_app_gnss.a(gnss_demo.c.obj)
-                0x60255a10                strptime
+                0x60255a08      0x3fc lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60255a08                strptime
  .text.nmea_time_parse
-                0x60255e0c       0x30 lib/libql_app_gnss.a(gnss_demo.c.obj)
-                0x60255e0c                nmea_time_parse
+                0x60255e04       0x30 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60255e04                nmea_time_parse
  .text.nmea_date_parse
-                0x60255e3c       0x30 lib/libql_app_gnss.a(gnss_demo.c.obj)
-                0x60255e3c                nmea_date_parse
+                0x60255e34       0x30 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60255e34                nmea_date_parse
  .text.nmea_parse_rmc
-                0x60255e6c      0x130 lib/libql_app_gnss.a(gnss_demo.c.obj)
-                0x60255e6c                nmea_parse_rmc
+                0x60255e64      0x130 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60255e64                nmea_parse_rmc
  .text.nmea_parse
-                0x60255f9c      0x178 lib/libql_app_gnss.a(gnss_demo.c.obj)
-                0x60255f9c                nmea_parse
- *fill*         0x60256114        0x4 
+                0x60255f94      0x178 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60255f94                nmea_parse
+ *fill*         0x6025610c        0x4 
  .text.nmea_value_update
-                0x60256118      0x260 lib/libql_app_gnss.a(gnss_demo.c.obj)
-                0x60256118                nmea_value_update
+                0x60256110      0x260 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60256110                nmea_value_update
  .text.ql_gnss_demo_thread
-                0x60256378      0x2bc lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60256370      0x2bc lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.CSWTCH.138
-                0x60256634       0x13 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x6025662c       0x13 lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.__FUNCTION__.15411
-                0x60256647       0x12 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x6025663f       0x12 lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.__FUNCTION__.15415
-                0x60256659       0x14 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60256651       0x14 lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.__FUNCTION__.15449
-                0x6025666d       0x11 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60256665       0x11 lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.__FUNCTION__.15472
-                0x6025667e       0x1c lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60256676       0x1c lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.__FUNCTION__.15495
-                0x6025669a        0xe lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60256692        0xe lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.__FUNCTION__.15555
-                0x602566a8        0xf lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x602566a0        0xf lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.__FUNCTION__.15581
-                0x602566b7        0xf lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x602566af        0xf lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.__FUNCTION__.15617
-                0x602566c6        0xf lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x602566be        0xf lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.__FUNCTION__.15643
-                0x602566d5        0xf lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x602566cd        0xf lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.__FUNCTION__.15668
-                0x602566e4        0xb lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x602566dc        0xb lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.__FUNCTION__.15769
-                0x602566ef       0x12 lib/libql_app_gnss.a(gnss_demo.c.obj)
- *fill*         0x60256701        0x3 
- .rodata.abday  0x60256704       0x1c lib/libql_app_gnss.a(gnss_demo.c.obj)
- .rodata.abmon  0x60256720       0x30 lib/libql_app_gnss.a(gnss_demo.c.obj)
- .rodata.day    0x60256750       0x1c lib/libql_app_gnss.a(gnss_demo.c.obj)
- .rodata.mon    0x6025676c       0x30 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x602566e7       0x12 lib/libql_app_gnss.a(gnss_demo.c.obj)
+ *fill*         0x602566f9        0x3 
+ .rodata.abday  0x602566fc       0x1c lib/libql_app_gnss.a(gnss_demo.c.obj)
+ .rodata.abmon  0x60256718       0x30 lib/libql_app_gnss.a(gnss_demo.c.obj)
+ .rodata.day    0x60256748       0x1c lib/libql_app_gnss.a(gnss_demo.c.obj)
+ .rodata.mon    0x60256764       0x30 lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.nmea_date_parse.str1.1
-                0x6025679c        0x7 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60256794        0x7 lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.nmea_get_type.str1.1
-                0x602567a3       0x14 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x6025679b       0x14 lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.nmea_parse.str1.1
-                0x602567b7      0x199 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x602567af      0x199 lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.nmea_parse_gga.str1.1
-                0x60256950       0x2e lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60256948       0x2e lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.nmea_parse_gsa.str1.1
-                0x6025697e       0x2e lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60256976       0x2e lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.nmea_parse_gsv.str1.1
-                0x602569ac       0x2a lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x602569a4       0x2a lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.nmea_parse_rmc.str1.1
-                0x602569d6       0xe4 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x602569ce       0xe4 lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.nmea_satellite_check.str1.1
-                0x60256aba       0x12 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60256ab2       0x12 lib/libql_app_gnss.a(gnss_demo.c.obj)
                                  0x15 (size before relaxing)
  .rodata.nmea_time_parse.str1.1
-                0x60256acc        0x7 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60256ac4        0x7 lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.nmea_validate.str1.1
-                0x60256ad3       0x12 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60256acb       0x12 lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.nmea_value_update.str1.1
-                0x60256ae5       0x4d lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60256add       0x4d lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.ql_gnss_app_init.str1.1
-                0x60256b32       0x3c lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60256b2a       0x3c lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.ql_gnss_assist_data_delete.str1.1
-                0x60256b6e       0x77 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60256b66       0x77 lib/libql_app_gnss.a(gnss_demo.c.obj)
                                  0x7a (size before relaxing)
  .rodata.ql_gnss_demo_thread.str1.1
-                0x60256be5      0x13a lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60256bdd      0x13a lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.ql_gnss_device_info_request.str1.1
-                0x60256d1f       0x69 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60256d17       0x69 lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.ql_gnss_notify_cb.str1.1
-                0x60256d88       0x64 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60256d80       0x64 lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.str1.1
-                0x60256dec       0xd7 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x60256de4       0xd7 lib/libql_app_gnss.a(gnss_demo.c.obj)
  .rodata.strptime.str1.1
-                0x60256ec3       0x30 lib/libql_app_gnss.a(gnss_demo.c.obj)
- *fill*         0x60256ef3        0x1 
- .text.atof     0x60256ef4        0x6 ..\..\components\newlib\armca5\libc.a(lib_a-atof.o)
-                0x60256ef4                atof
- .text.atoi     0x60256efa        0x8 ..\..\components\newlib\armca5\libc.a(lib_a-atoi.o)
-                0x60256efa                atoi
- *fill*         0x60256f02        0xe 
- .text          0x60256f10       0xe8 ..\..\components\newlib\armca5\libc.a(lib_a-memchr.o)
-                0x60256f10                memchr
- .text.memcpy   0x60256ff8       0xc8 ..\..\components\newlib\armca5\libc.a(lib_a-memcpy-stub.o)
-                0x60256ff8                memcpy
- .text.memmove  0x602570c0       0xd4 ..\..\components\newlib\armca5\libc.a(lib_a-memmove.o)
-                0x602570c0                memmove
- .text.memset   0x60257194       0xa8 ..\..\components\newlib\armca5\libc.a(lib_a-memset.o)
-                0x60257194                memset
+                0x60256ebb       0x30 lib/libql_app_gnss.a(gnss_demo.c.obj)
+ *fill*         0x60256eeb        0x1 
+ .text.atof     0x60256eec        0x6 ..\..\components\newlib\armca5\libc.a(lib_a-atof.o)
+                0x60256eec                atof
+ .text.atoi     0x60256ef2        0x8 ..\..\components\newlib\armca5\libc.a(lib_a-atoi.o)
+                0x60256ef2                atoi
+ *fill*         0x60256efa        0x6 
+ .text          0x60256f00       0xe8 ..\..\components\newlib\armca5\libc.a(lib_a-memchr.o)
+                0x60256f00                memchr
+ .text.memcpy   0x60256fe8       0xc8 ..\..\components\newlib\armca5\libc.a(lib_a-memcpy-stub.o)
+                0x60256fe8                memcpy
+ .text.memmove  0x602570b0       0xd4 ..\..\components\newlib\armca5\libc.a(lib_a-memmove.o)
+                0x602570b0                memmove
+ .text.memset   0x60257184       0xa8 ..\..\components\newlib\armca5\libc.a(lib_a-memset.o)
+                0x60257184                memset
  .text.snprintf
-                0x6025723c       0x66 ..\..\components\newlib\armca5\libc.a(lib_a-snprintf.o)
-                0x6025723c                snprintf
- *fill*         0x602572a2        0x2 
- .text.sprintf  0x602572a4       0x40 ..\..\components\newlib\armca5\libc.a(lib_a-sprintf.o)
-                0x602572a4                sprintf
- .text.strchr   0x602572e4       0xd0 ..\..\components\newlib\armca5\libc.a(lib_a-strchr.o)
-                0x602572e4                strchr
- *fill*         0x602573b4        0xc 
+                0x6025722c       0x66 ..\..\components\newlib\armca5\libc.a(lib_a-snprintf.o)
+                0x6025722c                snprintf
+ *fill*         0x60257292        0x2 
+ .text.sprintf  0x60257294       0x40 ..\..\components\newlib\armca5\libc.a(lib_a-sprintf.o)
+                0x60257294                sprintf
+ .text.strchr   0x602572d4       0xd0 ..\..\components\newlib\armca5\libc.a(lib_a-strchr.o)
+                0x602572d4                strchr
+ *fill*         0x602573a4       0x1c 
  .text          0x602573c0      0x2dc ..\..\components\newlib\armca5\libc.a(lib_a-strcmp.o)
                 0x602573c8                strcmp
  .text.strcpy   0x6025769c       0xc4 ..\..\components\newlib\armca5\libc.a(lib_a-strcpy.o)
@@ -4099,124 +4095,124 @@ LOAD ../../prebuilts/win32/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/7.2.1/
  *(.gnu*)
 OUTPUT(hex\examples\APPIMAGE_APP.elf elf32-littlearm)
 
-.debug_info     0x00000000    0x20e28
- .debug_info    0x00000000     0x299f components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
- .debug_info    0x0000299f     0x1a86 lib/libql_app_peripheral.a(gpio_demo.c.obj)
- .debug_info    0x00004425     0x2500 lib/libql_app_peripheral.a(uart_demo.c.obj)
- .debug_info    0x00006925      0xcdc lib/libql_app_peripheral.a(ql_pin_cfg.c.obj)
- .debug_info    0x00007601     0x3764 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
- .debug_info    0x0000ad65     0x2744 lib/libql_app_mqtt.a(data.c.obj)
- .debug_info    0x0000d4a9     0x72e3 lib/libql_app_mqtt.a(pbtools.c.obj)
- .debug_info    0x0001478c     0x642f lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
- .debug_info    0x0001abbb     0x4da1 lib/libql_app_gnss.a(gnss_demo.c.obj)
- .debug_info    0x0001f95c     0x14cc lib/libql_app_bt.a(bt_demo.c.obj)
+.debug_info     0x00000000    0x20b33
+ .debug_info    0x00000000     0x26aa components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
+ .debug_info    0x000026aa     0x1a86 lib/libql_app_peripheral.a(gpio_demo.c.obj)
+ .debug_info    0x00004130     0x2500 lib/libql_app_peripheral.a(uart_demo.c.obj)
+ .debug_info    0x00006630      0xcdc lib/libql_app_peripheral.a(ql_pin_cfg.c.obj)
+ .debug_info    0x0000730c     0x3764 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+ .debug_info    0x0000aa70     0x2744 lib/libql_app_mqtt.a(data.c.obj)
+ .debug_info    0x0000d1b4     0x72e3 lib/libql_app_mqtt.a(pbtools.c.obj)
+ .debug_info    0x00014497     0x642f lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+ .debug_info    0x0001a8c6     0x4da1 lib/libql_app_gnss.a(gnss_demo.c.obj)
+ .debug_info    0x0001f667     0x14cc lib/libql_app_bt.a(bt_demo.c.obj)
 
-.debug_abbrev   0x00000000     0x2437
- .debug_abbrev  0x00000000      0x3be components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
- .debug_abbrev  0x000003be      0x2ab lib/libql_app_peripheral.a(gpio_demo.c.obj)
- .debug_abbrev  0x00000669      0x350 lib/libql_app_peripheral.a(uart_demo.c.obj)
- .debug_abbrev  0x000009b9      0x1c0 lib/libql_app_peripheral.a(ql_pin_cfg.c.obj)
- .debug_abbrev  0x00000b79      0x422 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
- .debug_abbrev  0x00000f9b      0x298 lib/libql_app_mqtt.a(data.c.obj)
- .debug_abbrev  0x00001233      0x52a lib/libql_app_mqtt.a(pbtools.c.obj)
- .debug_abbrev  0x0000175d      0x515 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
- .debug_abbrev  0x00001c72      0x550 lib/libql_app_gnss.a(gnss_demo.c.obj)
- .debug_abbrev  0x000021c2      0x275 lib/libql_app_bt.a(bt_demo.c.obj)
+.debug_abbrev   0x00000000     0x2412
+ .debug_abbrev  0x00000000      0x399 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
+ .debug_abbrev  0x00000399      0x2ab lib/libql_app_peripheral.a(gpio_demo.c.obj)
+ .debug_abbrev  0x00000644      0x350 lib/libql_app_peripheral.a(uart_demo.c.obj)
+ .debug_abbrev  0x00000994      0x1c0 lib/libql_app_peripheral.a(ql_pin_cfg.c.obj)
+ .debug_abbrev  0x00000b54      0x422 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+ .debug_abbrev  0x00000f76      0x298 lib/libql_app_mqtt.a(data.c.obj)
+ .debug_abbrev  0x0000120e      0x52a lib/libql_app_mqtt.a(pbtools.c.obj)
+ .debug_abbrev  0x00001738      0x515 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+ .debug_abbrev  0x00001c4d      0x550 lib/libql_app_gnss.a(gnss_demo.c.obj)
+ .debug_abbrev  0x0000219d      0x275 lib/libql_app_bt.a(bt_demo.c.obj)
 
-.debug_loc      0x00000000     0x9fbf
- .debug_loc     0x00000000      0x25a components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
- .debug_loc     0x0000025a      0x105 lib/libql_app_peripheral.a(gpio_demo.c.obj)
- .debug_loc     0x0000035f      0x235 lib/libql_app_peripheral.a(uart_demo.c.obj)
- .debug_loc     0x00000594      0x6f8 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
- .debug_loc     0x00000c8c      0xa11 lib/libql_app_mqtt.a(data.c.obj)
- .debug_loc     0x0000169d     0x624c lib/libql_app_mqtt.a(pbtools.c.obj)
- .debug_loc     0x000078e9      0xca9 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
- .debug_loc     0x00008592     0x18e2 lib/libql_app_gnss.a(gnss_demo.c.obj)
- .debug_loc     0x00009e74      0x14b lib/libql_app_bt.a(bt_demo.c.obj)
+.debug_loc      0x00000000     0x9f35
+ .debug_loc     0x00000000      0x1d0 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
+ .debug_loc     0x000001d0      0x105 lib/libql_app_peripheral.a(gpio_demo.c.obj)
+ .debug_loc     0x000002d5      0x235 lib/libql_app_peripheral.a(uart_demo.c.obj)
+ .debug_loc     0x0000050a      0x6f8 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+ .debug_loc     0x00000c02      0xa11 lib/libql_app_mqtt.a(data.c.obj)
+ .debug_loc     0x00001613     0x624c lib/libql_app_mqtt.a(pbtools.c.obj)
+ .debug_loc     0x0000785f      0xca9 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+ .debug_loc     0x00008508     0x18e2 lib/libql_app_gnss.a(gnss_demo.c.obj)
+ .debug_loc     0x00009dea      0x14b lib/libql_app_bt.a(bt_demo.c.obj)
 
-.debug_aranges  0x00000000      0x9b0
+.debug_aranges  0x00000000      0x9a8
  .debug_aranges
-                0x00000000       0x40 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
+                0x00000000       0x38 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
  .debug_aranges
-                0x00000040       0x30 lib/libql_app_peripheral.a(gpio_demo.c.obj)
+                0x00000038       0x30 lib/libql_app_peripheral.a(gpio_demo.c.obj)
  .debug_aranges
-                0x00000070       0x30 lib/libql_app_peripheral.a(uart_demo.c.obj)
+                0x00000068       0x30 lib/libql_app_peripheral.a(uart_demo.c.obj)
  .debug_aranges
-                0x000000a0       0x18 lib/libql_app_peripheral.a(ql_pin_cfg.c.obj)
+                0x00000098       0x18 lib/libql_app_peripheral.a(ql_pin_cfg.c.obj)
  .debug_aranges
-                0x000000b8       0x50 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+                0x000000b0       0x50 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
  .debug_aranges
-                0x00000108      0x118 lib/libql_app_mqtt.a(data.c.obj)
+                0x00000100      0x118 lib/libql_app_mqtt.a(data.c.obj)
  .debug_aranges
-                0x00000220      0x590 lib/libql_app_mqtt.a(pbtools.c.obj)
+                0x00000218      0x590 lib/libql_app_mqtt.a(pbtools.c.obj)
  .debug_aranges
-                0x000007b0       0xd0 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+                0x000007a8       0xd0 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
  .debug_aranges
-                0x00000880       0xe0 lib/libql_app_gnss.a(gnss_demo.c.obj)
+                0x00000878       0xe0 lib/libql_app_gnss.a(gnss_demo.c.obj)
  .debug_aranges
-                0x00000960       0x50 lib/libql_app_bt.a(bt_demo.c.obj)
+                0x00000958       0x50 lib/libql_app_bt.a(bt_demo.c.obj)
 
-.debug_ranges   0x00000000      0xe10
- .debug_ranges  0x00000000       0x60 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
- .debug_ranges  0x00000060       0x20 lib/libql_app_peripheral.a(gpio_demo.c.obj)
- .debug_ranges  0x00000080       0x50 lib/libql_app_peripheral.a(uart_demo.c.obj)
- .debug_ranges  0x000000d0       0x58 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
- .debug_ranges  0x00000128      0x108 lib/libql_app_mqtt.a(data.c.obj)
- .debug_ranges  0x00000230      0x728 lib/libql_app_mqtt.a(pbtools.c.obj)
- .debug_ranges  0x00000958      0x370 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
- .debug_ranges  0x00000cc8      0x108 lib/libql_app_gnss.a(gnss_demo.c.obj)
- .debug_ranges  0x00000dd0       0x40 lib/libql_app_bt.a(bt_demo.c.obj)
+.debug_ranges   0x00000000      0xe08
+ .debug_ranges  0x00000000       0x58 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
+ .debug_ranges  0x00000058       0x20 lib/libql_app_peripheral.a(gpio_demo.c.obj)
+ .debug_ranges  0x00000078       0x50 lib/libql_app_peripheral.a(uart_demo.c.obj)
+ .debug_ranges  0x000000c8       0x58 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+ .debug_ranges  0x00000120      0x108 lib/libql_app_mqtt.a(data.c.obj)
+ .debug_ranges  0x00000228      0x728 lib/libql_app_mqtt.a(pbtools.c.obj)
+ .debug_ranges  0x00000950      0x370 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+ .debug_ranges  0x00000cc0      0x108 lib/libql_app_gnss.a(gnss_demo.c.obj)
+ .debug_ranges  0x00000dc8       0x40 lib/libql_app_bt.a(bt_demo.c.obj)
 
-.debug_line     0x00000000     0x4340
- .debug_line    0x00000000      0x5ae components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
- .debug_line    0x000005ae      0x350 lib/libql_app_peripheral.a(gpio_demo.c.obj)
- .debug_line    0x000008fe      0x36a lib/libql_app_peripheral.a(uart_demo.c.obj)
- .debug_line    0x00000c68      0x1eb lib/libql_app_peripheral.a(ql_pin_cfg.c.obj)
- .debug_line    0x00000e53      0x6a6 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
- .debug_line    0x000014f9      0x527 lib/libql_app_mqtt.a(data.c.obj)
- .debug_line    0x00001a20     0x1209 lib/libql_app_mqtt.a(pbtools.c.obj)
- .debug_line    0x00002c29      0x97a lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
- .debug_line    0x000035a3      0xaad lib/libql_app_gnss.a(gnss_demo.c.obj)
- .debug_line    0x00004050      0x2f0 lib/libql_app_bt.a(bt_demo.c.obj)
+.debug_line     0x00000000     0x4328
+ .debug_line    0x00000000      0x596 components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
+ .debug_line    0x00000596      0x350 lib/libql_app_peripheral.a(gpio_demo.c.obj)
+ .debug_line    0x000008e6      0x36a lib/libql_app_peripheral.a(uart_demo.c.obj)
+ .debug_line    0x00000c50      0x1eb lib/libql_app_peripheral.a(ql_pin_cfg.c.obj)
+ .debug_line    0x00000e3b      0x6a6 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+ .debug_line    0x000014e1      0x527 lib/libql_app_mqtt.a(data.c.obj)
+ .debug_line    0x00001a08     0x1209 lib/libql_app_mqtt.a(pbtools.c.obj)
+ .debug_line    0x00002c11      0x97a lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+ .debug_line    0x0000358b      0xaad lib/libql_app_gnss.a(gnss_demo.c.obj)
+ .debug_line    0x00004038      0x2f0 lib/libql_app_bt.a(bt_demo.c.obj)
 
-.debug_str      0x00000000     0xa5fd
- .debug_str     0x00000000     0x26bc components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
-                               0x284d (size before relaxing)
- .debug_str     0x000026bc      0x144 lib/libql_app_peripheral.a(gpio_demo.c.obj)
+.debug_str      0x00000000     0xa5da
+ .debug_str     0x00000000     0x1f5f components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
+                               0x20f0 (size before relaxing)
+ .debug_str     0x00001f5f      0x868 lib/libql_app_peripheral.a(gpio_demo.c.obj)
                                0x170b (size before relaxing)
- .debug_str     0x00002800     0x1b6d lib/libql_app_peripheral.a(uart_demo.c.obj)
+ .debug_str     0x000027c7     0x1b83 lib/libql_app_peripheral.a(uart_demo.c.obj)
                                0x3248 (size before relaxing)
- .debug_str     0x0000436d       0x38 lib/libql_app_peripheral.a(ql_pin_cfg.c.obj)
+ .debug_str     0x0000434a       0x38 lib/libql_app_peripheral.a(ql_pin_cfg.c.obj)
                                 0xefc (size before relaxing)
- .debug_str     0x000043a5     0x1789 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+ .debug_str     0x00004382     0x1789 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
                                0x3124 (size before relaxing)
- .debug_str     0x00005b2e      0x959 lib/libql_app_mqtt.a(data.c.obj)
+ .debug_str     0x00005b0b      0x959 lib/libql_app_mqtt.a(data.c.obj)
                                0x17c1 (size before relaxing)
- .debug_str     0x00006487     0x170a lib/libql_app_mqtt.a(pbtools.c.obj)
+ .debug_str     0x00006464     0x170a lib/libql_app_mqtt.a(pbtools.c.obj)
                                0x2273 (size before relaxing)
- .debug_str     0x00007b91     0x1d15 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+ .debug_str     0x00007b6e     0x1d15 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
                                0x48d1 (size before relaxing)
- .debug_str     0x000098a6      0xbeb lib/libql_app_gnss.a(gnss_demo.c.obj)
+ .debug_str     0x00009883      0xbeb lib/libql_app_gnss.a(gnss_demo.c.obj)
                                0x3ffa (size before relaxing)
- .debug_str     0x0000a491      0x16c lib/libql_app_bt.a(bt_demo.c.obj)
+ .debug_str     0x0000a46e      0x16c lib/libql_app_bt.a(bt_demo.c.obj)
                                0x18f4 (size before relaxing)
 
-.debug_frame    0x00000000     0x2104
- .debug_frame   0x00000000       0x9c components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
- .debug_frame   0x0000009c       0x6c lib/libql_app_peripheral.a(gpio_demo.c.obj)
- .debug_frame   0x00000108       0x84 lib/libql_app_peripheral.a(uart_demo.c.obj)
- .debug_frame   0x0000018c      0x108 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
- .debug_frame   0x00000294      0x2fc lib/libql_app_mqtt.a(data.c.obj)
- .debug_frame   0x00000590     0x11e0 lib/libql_app_mqtt.a(pbtools.c.obj)
- .debug_frame   0x00001770      0x328 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
- .debug_frame   0x00001a98      0x32c lib/libql_app_gnss.a(gnss_demo.c.obj)
- .debug_frame   0x00001dc4       0x34 ..\..\components\newlib\armca5\libc.a(lib_a-memchr.o)
- .debug_frame   0x00001df8       0x68 ..\..\components\newlib\armca5\libc.a(lib_a-strcmp.o)
- .debug_frame   0x00001e60       0x20 ..\..\prebuilts\win32\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.2.1\thumb\v7-ar\fpv3\hard\libgcc.a(_udivsi3.o)
- .debug_frame   0x00001e80       0x20 ..\..\prebuilts\win32\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.2.1\thumb\v7-ar\fpv3\hard\libgcc.a(_divsi3.o)
- .debug_frame   0x00001ea0       0xac ..\..\prebuilts\win32\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.2.1\thumb\v7-ar\fpv3\hard\libgcc.a(_arm_addsubdf3.o)
- .debug_frame   0x00001f4c       0x2c ..\..\prebuilts\win32\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.2.1\thumb\v7-ar\fpv3\hard\libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x00001f78       0x28 ..\..\prebuilts\win32\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.2.1\thumb\v7-ar\fpv3\hard\libgcc.a(_fixdfdi.o)
- .debug_frame   0x00001fa0       0x2c ..\..\prebuilts\win32\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.2.1\thumb\v7-ar\fpv3\hard\libgcc.a(_fixunsdfdi.o)
- .debug_frame   0x00001fcc       0x40 ..\..\prebuilts\win32\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.2.1\thumb\v7-ar\fpv3\hard\libgcc.a(_udivmoddi4.o)
- .debug_frame   0x0000200c       0xf8 lib/libql_app_bt.a(bt_demo.c.obj)
+.debug_frame    0x00000000     0x20f4
+ .debug_frame   0x00000000       0x8c components/ql-application/init/CMakeFiles/APPIMAGE_APP.dir/ql_init.c.obj
+ .debug_frame   0x0000008c       0x6c lib/libql_app_peripheral.a(gpio_demo.c.obj)
+ .debug_frame   0x000000f8       0x84 lib/libql_app_peripheral.a(uart_demo.c.obj)
+ .debug_frame   0x0000017c      0x108 lib/libql_app_mqtt.a(mqtt_demo.c.obj)
+ .debug_frame   0x00000284      0x2fc lib/libql_app_mqtt.a(data.c.obj)
+ .debug_frame   0x00000580     0x11e0 lib/libql_app_mqtt.a(pbtools.c.obj)
+ .debug_frame   0x00001760      0x328 lib/libql_app_ble_gatt.a(ble_gatt_demo.c.obj)
+ .debug_frame   0x00001a88      0x32c lib/libql_app_gnss.a(gnss_demo.c.obj)
+ .debug_frame   0x00001db4       0x34 ..\..\components\newlib\armca5\libc.a(lib_a-memchr.o)
+ .debug_frame   0x00001de8       0x68 ..\..\components\newlib\armca5\libc.a(lib_a-strcmp.o)
+ .debug_frame   0x00001e50       0x20 ..\..\prebuilts\win32\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.2.1\thumb\v7-ar\fpv3\hard\libgcc.a(_udivsi3.o)
+ .debug_frame   0x00001e70       0x20 ..\..\prebuilts\win32\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.2.1\thumb\v7-ar\fpv3\hard\libgcc.a(_divsi3.o)
+ .debug_frame   0x00001e90       0xac ..\..\prebuilts\win32\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.2.1\thumb\v7-ar\fpv3\hard\libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x00001f3c       0x2c ..\..\prebuilts\win32\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.2.1\thumb\v7-ar\fpv3\hard\libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x00001f68       0x28 ..\..\prebuilts\win32\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.2.1\thumb\v7-ar\fpv3\hard\libgcc.a(_fixdfdi.o)
+ .debug_frame   0x00001f90       0x2c ..\..\prebuilts\win32\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.2.1\thumb\v7-ar\fpv3\hard\libgcc.a(_fixunsdfdi.o)
+ .debug_frame   0x00001fbc       0x40 ..\..\prebuilts\win32\gcc-arm-none-eabi\lib\gcc\arm-none-eabi\7.2.1\thumb\v7-ar\fpv3\hard\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x00001ffc       0xf8 lib/libql_app_bt.a(bt_demo.c.obj)

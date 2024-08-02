@@ -142,22 +142,6 @@ WHEN              WHO         WHAT, WHERE, WHY
 #include "spi_nand_flash_demo.h"
 #endif
 
-#ifdef QL_APP_FEATURE_CAMERA
-#include "camera_demo.h"
-#endif
-
-#ifdef QL_APP_FEATURE_WIFISCAN
-#include "wifi_scan_demo.h"
-#endif
-
-#ifdef QL_APP_FEATURE_HTTP_FOTA
-#include "fota_http_demo.h"
-#endif
-
-#ifdef QL_APP_FEATURE_FTP_FOTA
-#include "fota_ftp_demo.h"
-#endif
-
 #ifdef QL_APP_FEATURE_DECODER
 #include "decoder_demo.h"
 #endif
@@ -234,85 +218,8 @@ WHEN              WHO         WHAT, WHERE, WHY
 #include "sftp_demo.h"
 #endif
 
-#ifdef QL_APP_FEATURE_MXML
-#include "mxml_demo.h"
-#endif
-
-#ifdef QL_APP_FEATURE_CLOUDOTA
-#include "cloudota_demo.h"
-#endif
-
-#ifdef QL_APP_FEATURE_EMBED_NOR_FLASH
-#include "embed_nor_flash_demo.h"
-#endif
-
-#ifdef QL_APP_FEATURE_HILINK
-#include "hilink.h"
-#endif
-
-#ifdef QL_APP_FEATURE_PSM
-#include "psm_demo.h"
-#endif
-
-#ifdef QL_APP_FEATURE_STK
-#include "stk_demo.h"
-#endif
-
 #ifdef QL_APP_FEATURE_GPRS_DATA_TRANSFER
 #include "gprs_data_transfer_demo.h"
-#endif
-
-#ifdef QL_APP_FEATURE_TP
-#include "tp_demo.h"
-#endif
-
-#ifdef QL_APP_FEATURE_ALIOTSMARTCARD
-#include "aliotsmartcard_demo.h"
-#endif
-#ifdef QL_APP_FEATURE_MIPI_LCD
-#include "mipi_lcd_demo.h"
-#endif
-
-#ifdef QL_APP_FEATURE_ALIPAY_IOT_SDK
-extern void ql_alipay_iot_sdk_app_init(void);
-#endif
-
-#ifdef QL_APP_FEATURE_NTRIP_RTK
-#include "ntrip_rtk_demo.h"
-#endif
-#ifdef QL_APP_FEATURE_LWM2M
-#include "lwm2m_client_demo.h"
-#endif
-
-#ifdef QL_APP_FEATURE_SS
-#include "ussd_demo.h"
-#endif
-
-#ifdef QL_APP_FEATURE_ETHERNET
-#include "ethernet_demo.h"
-#endif
-#ifdef QL_APP_FEATURE_WEBSOCKET
-#include "websocket_demo.h"
-#endif
-
-#ifdef QL_APP_FEATURE_WIFI
-#include "wifi_demo.h"
-#endif
-
-#ifdef QL_APP_FEATURE_L2TP
-#include "l2tp_demo.h"
-#endif
-
-#ifdef QL_APP_FEATURE_CNKTD
-#include "cnktd_demo.h"
-#include "cnktd_nw_demo.h"
-#include "cnktd_sms_demo.h"
-#include "cnktd_socket_demo.h"
-#include "cnktd_http_demo.h"
-#endif
-
-#ifdef QL_APP_FEATURE_XLAT
-#include "xlat_demo.h"
 #endif
 
 #define QL_INIT_LOG_LEVEL QL_LOG_LEVEL_INFO
@@ -327,28 +234,6 @@ static void prvInvokeGlobalCtors(void)
     size_t count = __init_array_end - __init_array_start;
     for (size_t i = 0; i < count; ++i)
         __init_array_start[i]();
-}
-
-const uint8_t ql_mipi_lcd_pin[] =
-    {
-        QUEC_PIN_MIPI_LCD_DSI_CKP,
-        QUEC_PIN_MIPI_LCD_DSI_CKN,
-        QUEC_PIN_MIPI_LCD_DSI_D0P,
-        QUEC_PIN_MIPI_LCD_DSI_D0N,
-        QUEC_PIN_MIPI_LCD_DSI_D1P,
-        QUEC_PIN_MIPI_LCD_DSI_D1N,
-};
-
-bool ql_is_mipi_lcd_pin(uint8_t pin_num)
-{
-    for (int i = 0; i < sizeof(ql_mipi_lcd_pin) / sizeof(ql_mipi_lcd_pin[0]); i++)
-    {
-        if (pin_num == ql_mipi_lcd_pin[i])
-        {
-            return true;
-        }
-    }
-    return false;
 }
 
 void ql_pin_cfg_init(void)
@@ -370,13 +255,6 @@ void ql_pin_cfg_init(void)
             QL_INIT_LOG("init exit %d!", index);
             break;
         }
-// 从boot到APP一直显示MIPI图像，不能将MIPI的引脚配置为其他功能
-#if 0
-        if (true == ql_is_mipi_lcd_pin(ql_pin_cfg_map[index].pin_num))
-        {
-            continue;
-        }
-#endif
 
         pin_num = ql_pin_cfg_map[index].pin_num;
         default_func = ql_pin_cfg_map[index].default_func;
@@ -422,12 +300,6 @@ static void ql_init_demo_thread(void *param)
     ql_gnss_app_init();
 #endif
 
-    ql_rtos_task_sleep_ms(1000); /*Chaos change: set to 1000 for the camera power on*/
-
-    /*To save logs to sdcard/nandflash, you must call this function after initializing sdcard/nandflash file system;*/
-    /*Logs before this point can be output via USB or debug port, which can be configured in prvTraceInit of app_start*/
-    // ql_fs_trace_init();
-
     ql_rtos_task_delete(NULL);
 }
 
@@ -444,23 +316,15 @@ int appimg_enter(void *param)
     if (0 == strcasecmp(QL_APP_BUILD_RELEASE_TYPE, "release"))
     {
         ql_dev_cfg_wdt(1);
-        // open the kernel log
-        // ql_quec_trace_enable(1);
     }
     else
     {
         ql_dev_cfg_wdt(0);
-        // close the kernel log
-        // ql_quec_trace_enable(0);
     }
 
-    /*Caution: GPIO pin must be initialized here, otherwise the pin status cannot be determined*/
     ql_pin_cfg_init();
 
     err = ql_rtos_task_create(&ql_init_task, 1024 * 4, APP_PRIORITY_NORMAL, "ql_init", ql_init_demo_thread, NULL, 5);
-    //
-
-    // blerr = ql_rtos_task_create(&ble_init_task, 1024*4, APP_PRIORITY_NORMAL, "ble_init", ql_ble_gatt_client_demo_init, NULL, 1);
 
     if (err != QL_OSI_SUCCESS)
     {
@@ -468,13 +332,6 @@ int appimg_enter(void *param)
     }
 
     return err;
-
-    // if(blerr != QL_OSI_SUCCESS)
-    // {
-    // 	QL_INIT_LOG("ble init failed");
-    // }
-
-    // return err;
 }
 
 void appimg_exit(void)
