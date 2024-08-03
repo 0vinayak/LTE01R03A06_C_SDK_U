@@ -1652,5 +1652,6 @@ int ql_get_gnss_info(ql_gnss_data_t *data)
 		return -1;
 	}
 	memcpy(data, &g_gps_data, sizeof(g_gps_data));
-	return 0;
+
+		return 0;
 }
