@@ -188,7 +188,8 @@ ql_ble_gatt_uuid_s uuidMcuOTA;
 ql_ble_gatt_uuid_s uuidOTAControl; /**SERVICE 8 CHARACTERISTICS */
 ql_ble_gatt_uuid_s uuidOTAData;
 
-unsigned char send_data[20] = {105, 2, 3, 4, 5, 6, 7, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+unsigned char send_data[20] = {57, 2, 3, 4, 5, 6, 7, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+unsigned char send_data_zero[20] = {0};
 
 unsigned char check_child_data[8] = {1, 2, 3, 4, 5, 6, 7, 8};
 
@@ -900,28 +901,28 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_chara_value(int idx)
     // ql_ble_gatt_uuid_s uuid;
     // ql_ble_gatt_uuid_s uuidlive;
 
-    ql_ble_gatt_add_chara_value(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidCore, sizeof(send_data), (unsigned char *)send_data);
-    ql_ble_gatt_add_chara_value(0x01, 0x02, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidError, sizeof(send_data), (unsigned char *)send_data);
-    ql_ble_gatt_add_chara_value(0x01, 0x03, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidDebug, sizeof(send_data), (unsigned char *)send_data);
-    ql_ble_gatt_add_chara_value(0x01, 0x04, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidMCUFeedback, sizeof(send_data), (unsigned char *)send_data);
-    ql_ble_gatt_add_chara_value(0x01, 0x05, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidBLEFeedback, sizeof(send_data), (unsigned char *)send_data);
+    ql_ble_gatt_add_chara_value(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidCore, sizeof(Live_Data.lds), (unsigned char *)Live_Data.lds);
+    ql_ble_gatt_add_chara_value(0x01, 0x02, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidError, sizeof(send_data_zero), (unsigned char *)send_data_zero);
+    ql_ble_gatt_add_chara_value(0x01, 0x03, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidDebug, sizeof(send_data_zero), (unsigned char *)send_data_zero);
+    ql_ble_gatt_add_chara_value(0x01, 0x04, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidMCUFeedback, sizeof(send_data_zero), (unsigned char *)send_data_zero);
+    ql_ble_gatt_add_chara_value(0x01, 0x05, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidBLEFeedback, sizeof(send_data_zero), (unsigned char *)send_data_zero);
 
-    ql_ble_gatt_add_chara_value(0x02, 0x06, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidTP1, sizeof(send_data), (unsigned char *)send_data);
-    ql_ble_gatt_add_chara_value(0x02, 0x07, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidTP2, sizeof(send_data), (unsigned char *)send_data);
+    ql_ble_gatt_add_chara_value(0x02, 0x06, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidTP1, sizeof(send_data_zero), (unsigned char *)send_data_zero);
+    ql_ble_gatt_add_chara_value(0x02, 0x07, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidTP2, sizeof(send_data_zero), (unsigned char *)send_data_zero);
 
-    ql_ble_gatt_add_chara_value(0x03, 0x08, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidVin, sizeof(send_data), (unsigned char *)send_data);
-    ql_ble_gatt_add_chara_value(0x03, 0x09, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidBatteryNumber, sizeof(send_data), (unsigned char *)send_data);
-    ql_ble_gatt_add_chara_value(0x03, 0x10, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, VehicleSWVersions, sizeof(send_data), (unsigned char *)send_data);
+    ql_ble_gatt_add_chara_value(0x03, 0x08, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidVin, sizeof(send_data_zero), (unsigned char *)send_data_zero);
+    ql_ble_gatt_add_chara_value(0x03, 0x09, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidBatteryNumber, sizeof(send_data_zero), (unsigned char *)send_data_zero);
+    ql_ble_gatt_add_chara_value(0x03, 0x10, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, VehicleSWVersions, sizeof(send_data_zero), (unsigned char *)send_data_zero);
 
-    ql_ble_gatt_add_chara_value(0x04, 0x11, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidODOWrite, sizeof(send_data), (unsigned char *)send_data);
-    ql_ble_gatt_add_chara_value(0x04, 0x12, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidHeadlamp, sizeof(send_data), (unsigned char *)send_data);
-    ql_ble_gatt_add_chara_value(0x04, 0x13, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidChildMode, sizeof(check_child_data), (unsigned char *)check_child_data);
-    ql_ble_gatt_add_chara_value(0x04, 0x14, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidControl, sizeof(send_data), (unsigned char *)send_data);
-    ql_ble_gatt_add_chara_value(0x04, 0x15, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidAltitude, sizeof(send_data), (unsigned char *)send_data);
-    ql_ble_gatt_add_chara_value(0x04, 0x16, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidMcuOTA, sizeof(send_data), (unsigned char *)send_data);
+    ql_ble_gatt_add_chara_value(0x04, 0x11, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidODOWrite, sizeof(send_data_zero), (unsigned char *)send_data_zero);
+    ql_ble_gatt_add_chara_value(0x04, 0x12, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidHeadlamp, sizeof(send_data_zero), (unsigned char *)send_data_zero);
+    ql_ble_gatt_add_chara_value(0x04, 0x13, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidChildMode, sizeof(send_data_zero), (unsigned char *)send_data_zero);
+    ql_ble_gatt_add_chara_value(0x04, 0x14, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidControl, sizeof(send_data_zero), (unsigned char *)send_data_zero);
+    ql_ble_gatt_add_chara_value(0x04, 0x15, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidAltitude, sizeof(send_data_zero), (unsigned char *)send_data_zero);
+    ql_ble_gatt_add_chara_value(0x04, 0x16, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidMcuOTA, sizeof(send_data_zero), (unsigned char *)send_data_zero);
 
-    ql_ble_gatt_add_chara_value(0x08, 0x17, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidOTAControl, sizeof(send_data), (unsigned char *)send_data);
-    ql_ble_gatt_add_chara_value(0x08, 0x18, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidOTAData, sizeof(send_data), (unsigned char *)send_data);
+    ql_ble_gatt_add_chara_value(0x08, 0x17, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidOTAControl, sizeof(send_data_zero), (unsigned char *)send_data_zero);
+    ql_ble_gatt_add_chara_value(0x08, 0x18, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidOTAData, sizeof(send_data_zero), (unsigned char *)send_data_zero);
 
     return ret;
 }
@@ -955,28 +956,28 @@ ql_errcode_bt_e ql_ble_gatt_demo_add_chara_desc()
     //         .uuid_s = 0x2902,
     //     };
 
-    ql_ble_gatt_add_chara_desc(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidCore, sizeof(send_data), (unsigned char *)&send_data);
-    ql_ble_gatt_add_chara_desc(0x01, 0x02, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidError, sizeof(send_data), (unsigned char *)&send_data);
-    ql_ble_gatt_add_chara_desc(0x01, 0x03, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidDebug, sizeof(send_data), (unsigned char *)&send_data);
-    ql_ble_gatt_add_chara_desc(0x01, 0x04, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidMCUFeedback, sizeof(send_data), (unsigned char *)&send_data);
-    ql_ble_gatt_add_chara_desc(0x01, 0x05, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidBLEFeedback, sizeof(send_data), (unsigned char *)&send_data);
+    ql_ble_gatt_add_chara_desc(0x01, 0x01, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidCore, sizeof(Live_Data.lds), (unsigned char *)&Live_Data.lds);
+    ql_ble_gatt_add_chara_desc(0x01, 0x02, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidError, sizeof(send_data_zero), (unsigned char *)&send_data_zero);
+    ql_ble_gatt_add_chara_desc(0x01, 0x03, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidDebug, sizeof(send_data_zero), (unsigned char *)&send_data_zero);
+    ql_ble_gatt_add_chara_desc(0x01, 0x04, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidMCUFeedback, sizeof(send_data_zero), (unsigned char *)&send_data_zero);
+    ql_ble_gatt_add_chara_desc(0x01, 0x05, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidBLEFeedback, sizeof(send_data_zero), (unsigned char *)&send_data_zero);
 
-    ql_ble_gatt_add_chara_desc(0x02, 0x06, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidTP1, sizeof(send_data), (unsigned char *)&send_data);
-    ql_ble_gatt_add_chara_desc(0x02, 0x07, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidTP2, sizeof(send_data), (unsigned char *)&send_data);
+    ql_ble_gatt_add_chara_desc(0x02, 0x06, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidTP1, sizeof(send_data_zero), (unsigned char *)&send_data_zero);
+    ql_ble_gatt_add_chara_desc(0x02, 0x07, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidTP2, sizeof(send_data_zero), (unsigned char *)&send_data_zero);
 
-    ql_ble_gatt_add_chara_desc(0x03, 0x08, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidVin, sizeof(send_data), (unsigned char *)&send_data);
-    ql_ble_gatt_add_chara_desc(0x03, 0x09, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidBatteryNumber, sizeof(send_data), (unsigned char *)&send_data);
-    ql_ble_gatt_add_chara_desc(0x03, 0x10, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, VehicleSWVersions, sizeof(send_data), (unsigned char *)&send_data);
+    ql_ble_gatt_add_chara_desc(0x03, 0x08, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidVin, sizeof(send_data_zero), (unsigned char *)&send_data_zero);
+    ql_ble_gatt_add_chara_desc(0x03, 0x09, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidBatteryNumber, sizeof(send_data_zero), (unsigned char *)&send_data_zero);
+    ql_ble_gatt_add_chara_desc(0x03, 0x10, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, VehicleSWVersions, sizeof(send_data_zero), (unsigned char *)&send_data_zero);
 
-    ql_ble_gatt_add_chara_desc(0x04, 0x11, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidODOWrite, sizeof(send_data), (unsigned char *)&send_data);
-    ql_ble_gatt_add_chara_desc(0x04, 0x12, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidHeadlamp, sizeof(send_data), (unsigned char *)&send_data);
-    ql_ble_gatt_add_chara_desc(0x04, 0x13, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidChildMode, sizeof(check_child_data), (unsigned char *)&check_child_data);
-    ql_ble_gatt_add_chara_desc(0x04, 0x14, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidControl, sizeof(send_data), (unsigned char *)&send_data);
-    ql_ble_gatt_add_chara_desc(0x04, 0x15, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidAltitude, sizeof(send_data), (unsigned char *)&send_data);
-    ql_ble_gatt_add_chara_desc(0x04, 0x16, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidMcuOTA, sizeof(send_data), (unsigned char *)&send_data);
+    ql_ble_gatt_add_chara_desc(0x04, 0x11, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidODOWrite, sizeof(send_data_zero), (unsigned char *)&send_data_zero);
+    ql_ble_gatt_add_chara_desc(0x04, 0x12, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidHeadlamp, sizeof(send_data_zero), (unsigned char *)&send_data_zero);
+    ql_ble_gatt_add_chara_desc(0x04, 0x13, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidChildMode, sizeof(send_data_zero), (unsigned char *)&send_data_zero);
+    ql_ble_gatt_add_chara_desc(0x04, 0x14, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidControl, sizeof(send_data_zero), (unsigned char *)&send_data_zero);
+    ql_ble_gatt_add_chara_desc(0x04, 0x15, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidAltitude, sizeof(send_data_zero), (unsigned char *)&send_data_zero);
+    ql_ble_gatt_add_chara_desc(0x04, 0x16, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidMcuOTA, sizeof(send_data_zero), (unsigned char *)&send_data_zero);
 
-    ql_ble_gatt_add_chara_desc(0x08, 0x17, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidOTAControl, sizeof(send_data), (unsigned char *)&send_data);
-    ret = ql_ble_gatt_add_chara_desc(0x08, 0x18, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidOTAData, sizeof(send_data), (unsigned char *)&send_data);
+    ql_ble_gatt_add_chara_desc(0x08, 0x17, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidOTAControl, sizeof(send_data_zero), (unsigned char *)&send_data_zero);
+    ret = ql_ble_gatt_add_chara_desc(0x08, 0x18, QL_ATT_PM_READABLE | QL_ATT_PM_WRITEABLE, uuidOTAData, sizeof(send_data_zero), (unsigned char *)&send_data_zero);
 
     // if (ret == QL_BT_SUCCESS)
     // {
