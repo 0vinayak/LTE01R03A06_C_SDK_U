@@ -30,6 +30,7 @@
 
 #include <limits.h>
 #include "data.h"
+#include "ble_defs.h"
 // #include "nwy_test_cli_adpt.h"
 
 #if CHAR_BIT != 8
@@ -47,26 +48,26 @@ void com_emotorad_backend_aggregation_flink_data_bike_init(
     struct pbtools_heap_t *heap_p)
 {
     self_p->base.heap_p = heap_p;
-    self_p->vehicle_speed = 1;
-    self_p->motor_speed = 20; // not in sample
-    self_p->battery_voltage = 24063;
-    self_p->soc = 36;
-    self_p->throttle = 1861;
-    self_p->throttle_cut_off = 1;
-    self_p->pas = 2;
-    self_p->eng_mode = 2;
-    self_p->distance_to_empty = 12;
-    self_p->calories = 257;
-    self_p->current_trip_distance = 261.9656193149855;
-    self_p->current_trip_max_speed = 20;
-    self_p->child_mode_speed_limit = 20;
-    self_p->side_stand = 1;
-    self_p->headlamp = 1;
-    self_p->brake = 1;
-    self_p->cruise_control = 1;
-    self_p->walk_mode = 1;
-    self_p->vehicle_odo_reading = 10;
-    self_p->motor_hall_failure = 1;
+    self_p->vehicle_speed = Live_Data.lds_data.vehicle_speed_value; // 1;
+    self_p->motor_speed = Live_Data.lds_data.motor_speed_value;     // 20; // not in sample
+    self_p->battery_voltage = Live_Data.lds_data.battery_voltage_value;
+    self_p->soc = Live_Data.lds_data.battery_soc_value;
+    self_p->throttle = Live_Data.lds_data.throttle_value;
+    self_p->throttle_cut_off = 0;
+    self_p->pas = Live_Data.lds_data.pas_mode_value;
+    self_p->eng_mode = Live_Data.lds_data.walk_mode_status;
+    self_p->distance_to_empty = Live_Data.lds_data.dte_value;
+    self_p->calories = 250; // Live_Data.lds_data.;// to be sent from ASW thru uart to mcu,schema ?
+    self_p->current_trip_distance = Live_Data.lds_data.current_trip_distance_value;
+    self_p->current_trip_max_speed = Live_Data.lds_data.current_trip_max_speed_value;
+    self_p->child_mode_speed_limit = 20; // will come from display that we need to send here also
+    self_p->side_stand = Live_Data.lds_data.side_stand_value;
+    self_p->headlamp = Live_Data.lds_data.headlamp_value;
+    self_p->brake = Live_Data.lds_data.brake_value;
+    self_p->cruise_control = Live_Data.lds_data.cruise_control_status;
+    self_p->walk_mode = Live_Data.lds_data.walk_mode_status;
+    self_p->vehicle_odo_reading = Live_Data.lds_data.vehicle_odo_reading;
+    self_p->motor_hall_failure = 1; // Live_Data.lds_data.;
     self_p->motor_line_short_circuit_fault = 1;
     self_p->brake_failure = 1;
     self_p->handle_bar_failure = 1;
