@@ -68,7 +68,6 @@ void ql_uart_notify_cb(uint32 ind_type, ql_uart_port_number_e port, uint32 size)
     unsigned int real_size = 0;
     int read_len = 0;
 
-    QL_UART_DEMO_LOG("UART port %d receive ind type:0x%x, receive data size:%d", port, ind_type, size);
     switch (ind_type)
     {
     case QUEC_UART_RX_OVERFLOW_IND: // rx buffer overflow
@@ -80,6 +79,15 @@ void ql_uart_notify_cb(uint32 ind_type, ql_uart_port_number_e port, uint32 size)
             real_size = MIN(size, QL_UART_RX_BUFF_SIZE);
 
             read_len = ql_uart_read(port, recv_buff, real_size);
+            if (read_len != 0)
+            {
+                for (size_t i = 0; i < LDS_NUMBER_OF_DATA; i++)
+                {
+                    Live_Data.lds[i] = recv_buff[i];
+                    QL_UART_DEMO_LOG("Buffer updated data[%u]=%u", i, Live_Data.lds[i]);
+                    QL_UART_DEMO_LOG("UART port %d receive ind type:0x%x, receive data size:%d", port, ind_type, read_len);
+                }
+            }
             QL_UART_DEMO_LOG("read_len=%d, recv_data=%s", read_len, recv_buff);
             if ((read_len > 0) && (size >= read_len))
             {
@@ -91,11 +99,16 @@ void ql_uart_notify_cb(uint32 ind_type, ql_uart_port_number_e port, uint32 size)
                 break;
             }
         }
-        for (size_t i = 0; i < LDS_NUMBER_OF_DATA; i++)
-        {
-            Live_Data.lds[i] = recv_buff[i];
-            QL_UART_DEMO_LOG("Buffer updated data=%u", Live_Data.lds[i]);
-        }
+        QL_UART_DEMO_LOG("basis fill buffer=%d", size);
+        // if (size != 0)
+        // {
+        //     for (size_t i = 0; i < LDS_NUMBER_OF_DATA; i++)
+        //     {
+        //         Live_Data.lds[i] = recv_buff[i];
+        //         QL_UART_DEMO_LOG("Buffer updated data[%u]=%u", i, Live_Data.lds[i]);
+        //     }
+        // }
+
         // if()
         break;
         //&Live_Data.lds[0] = *recv_buff;
