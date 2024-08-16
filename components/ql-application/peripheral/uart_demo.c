@@ -87,17 +87,24 @@ void ql_uart_notify_cb(uint32 ind_type, ql_uart_port_number_e port, uint32 size)
             }
             else
             {
+
                 break;
             }
         }
-        break;
-        //&Live_Data.lds[0] = *recv_buff;
-
         for (size_t i = 0; i < LDS_NUMBER_OF_DATA; i++)
         {
             Live_Data.lds[i] = recv_buff[i];
             QL_UART_DEMO_LOG("Buffer updated data=%u", Live_Data.lds[i]);
         }
+        // if()
+        break;
+        //&Live_Data.lds[0] = *recv_buff;
+
+        // for (size_t i = 0; i < LDS_NUMBER_OF_DATA; i++)
+        // {
+        //     Live_Data.lds[i] = recv_buff[i];
+        //     QL_UART_DEMO_LOG("Buffer updated data=%u", Live_Data.lds[i]);
+        // }
         // QL_UART_DEMO_LOG("Buffer updated data=%u", Live_Data.lds);
     }
     case QUEC_UART_TX_FIFO_COMPLETE_IND:
