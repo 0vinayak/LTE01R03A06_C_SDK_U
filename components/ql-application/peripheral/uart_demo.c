@@ -81,9 +81,14 @@ void ql_uart_notify_cb(uint32 ind_type, ql_uart_port_number_e port, uint32 size)
             read_len = ql_uart_read(port, recv_buff, real_size);
             if (read_len != 0)
             {
-                for (size_t i = 0; i < LDS_NUMBER_OF_DATA; i++)
+                for (size_t i = 1; i < LDS_NUMBER_OF_DATA; i++)
                 {
+                    Live_Data.lds[0] = i;
+                    // recv_buff[i];
                     Live_Data.lds[i] = recv_buff[i];
+                    ql_rtos_task_sleep_ms(1000);
+
+                    QL_UART_DEMO_LOG("Buffer updated speed data=%u", Live_Data.lds[0]);
                     QL_UART_DEMO_LOG("Buffer updated data[%u]=%u", i, Live_Data.lds[i]);
                     QL_UART_DEMO_LOG("UART port %d receive ind type:0x%x, receive data size:%d", port, ind_type, read_len);
                 }
@@ -99,6 +104,7 @@ void ql_uart_notify_cb(uint32 ind_type, ql_uart_port_number_e port, uint32 size)
                 break;
             }
         }
+
         QL_UART_DEMO_LOG("basis fill buffer=%d", size);
         // if (size != 0)
         // {
