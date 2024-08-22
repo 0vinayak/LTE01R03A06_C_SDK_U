@@ -1129,14 +1129,14 @@ ql_errcode_bt_e ql_ble_demo_send_data()
 
     SeqNumber++;
 
-    QL_BLE_GATT_LOG("Check static var%u", SeqNumber);
+    // QL_BLE_GATT_LOG("Check static var%u", SeqNumber);
 
     if (SeqNumber > 1)
     {
         SeqNumber = 0;
     }
 
-    // QL_BLE_GATT_LOG("Check static var%u", SeqNumber);
+    QL_BLE_GATT_LOG("Check static var%u", SeqNumber);
 
     // memcpy(send_data.data,"12345678",8);
     // send_data.len = 8;
@@ -1461,7 +1461,7 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                 if (ret == QL_BT_SUCCESS)
                 {
                     ql_rtos_task_sleep_s(2);
-                    ret = ql_ble_demo_send_data();
+                    // ret = ql_ble_demo_send_data();
                     ret = ql_ble_demo_update_conn_param();
                     if (ret != QL_BT_SUCCESS)
                     {
