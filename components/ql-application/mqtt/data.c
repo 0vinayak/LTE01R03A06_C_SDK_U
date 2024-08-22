@@ -48,8 +48,8 @@ void com_emotorad_backend_aggregation_flink_data_bike_init(
     struct pbtools_heap_t *heap_p)
 {
     self_p->base.heap_p = heap_p;
-    self_p->vehicle_speed = Live_Data.lds_data.vehicle_speed_value; // 1;
-    self_p->motor_speed = Live_Data.lds_data.motor_speed_value;     // 20; // not in sample
+    self_p->vehicle_speed = Live_Data.lds[0];                   // 1;
+    self_p->motor_speed = Live_Data.lds_data.motor_speed_value; // 20; // not in sample
     self_p->battery_voltage = Live_Data.lds_data.battery_voltage_value;
     self_p->soc = Live_Data.lds_data.battery_soc_value;
     self_p->throttle = Live_Data.lds_data.throttle_value;
