@@ -1080,6 +1080,30 @@ ql_errcode_bt_e ql_ble_demo_send_data()
     // {
     //     send_data[i] = '3';
     // }
+    static uint8_t count = 0;
+    for (size_t i = 1; i < LDS_NUMBER_OF_DATA; i++)
+    {
+        if (count % 2 == 0)
+        {
+            Live_Data.lds[0] = 10;
+        }
+        else
+        {
+            Live_Data.lds[0] = 25;
+        }
+        // Live_Data.lds[0] = i;
+        // recv_buff[i];
+        Live_Data.lds[i] = 2;
+        // recv_buff[i];
+        ql_rtos_task_sleep_ms(100);
+
+        QL_BLE_GATT_LOG("Buffer updated speed data=%u", Live_Data.lds[0]);
+        QL_BLE_GATT_LOG("Buffer updated data[%u]=%u", i, Live_Data.lds[i]);
+
+        count++;
+
+        // QL_UART_DEMO_LOG("UART port %d receive ind type:0x%x, receive data size:%d", port, ind_type, read_len);
+    }
 
     // memcpy(send_data.data,"12345678",8);
     // send_data.len = 8;
@@ -1403,7 +1427,7 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                 ret = ql_ble_demo_get_conection_state();
                 if (ret == QL_BT_SUCCESS)
                 {
-                    ql_rtos_task_sleep_s(3);
+                    ql_rtos_task_sleep_s(2);
                     ret = ql_ble_demo_send_data();
                     ret = ql_ble_demo_update_conn_param();
                     if (ret != QL_BT_SUCCESS)
