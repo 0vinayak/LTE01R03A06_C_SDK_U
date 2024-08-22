@@ -199,8 +199,8 @@ unsigned char childLockFlag[1] = {'1'};
 AppReceive characteristicInd = CHILDMODE;
 struct AppReceiveInfo AppReceiveInfo;
 
-static uint8_t SeqNumber = 0;
-// = {
+// static uint8_t SeqNumber = 0;
+//  = {
 
 //     .odo_data = 100;
 // }
@@ -1108,35 +1108,35 @@ ql_errcode_bt_e ql_ble_demo_send_data()
     //     // QL_UART_DEMO_LOG("UART port %d receive ind type:0x%x, receive data size:%d", port, ind_type, read_len);
     // }
 
-    switch (SeqNumber)
-    {
-    case 0:
+    // switch (SeqNumber)
+    // {
+    // case 0:
 
-        Live_Data.lds[0] = 100;
+    //     Live_Data.lds[0] = 100;
 
-        break;
-    case 1:
-        Live_Data.lds[0] = 25;
-        break;
+    //     break;
+    // case 1:
+    //     Live_Data.lds[0] = 25;
+    //     break;
 
-    case 2:
+    // case 2:
 
-        break;
+    //     break;
 
-    default:
-        break;
-    }
+    // default:
+    //     break;
+    // }
 
-    SeqNumber++;
+    // SeqNumber++;
 
     // QL_BLE_GATT_LOG("Check static var%u", SeqNumber);
 
-    if (SeqNumber > 1)
-    {
-        SeqNumber = 0;
-    }
+    // if (SeqNumber > 1)
+    // {
+    //     SeqNumber = 0;
+    // }
 
-    QL_BLE_GATT_LOG("Check static var%u", SeqNumber);
+    // QL_BLE_GATT_LOG("Check static var%u", SeqNumber);
 
     // memcpy(send_data.data,"12345678",8);
     // send_data.len = 8;
@@ -1461,7 +1461,7 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                 if (ret == QL_BT_SUCCESS)
                 {
                     ql_rtos_task_sleep_s(2);
-                    // ret = ql_ble_demo_send_data();
+                    ret = ql_ble_demo_send_data();
                     ret = ql_ble_demo_update_conn_param();
                     if (ret != QL_BT_SUCCESS)
                     {
