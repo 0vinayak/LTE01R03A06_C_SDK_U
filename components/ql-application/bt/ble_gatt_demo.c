@@ -198,6 +198,8 @@ unsigned char childLockFlag[1] = {'1'};
 
 AppReceive characteristicInd = CHILDMODE;
 struct AppReceiveInfo AppReceiveInfo;
+
+static uint8_t SeqNumber = 0;
 // = {
 
 //     .odo_data = 100;
@@ -1073,6 +1075,7 @@ ql_errcode_bt_e ql_ble_demo_exchange_mtu()
 ql_errcode_bt_e ql_ble_demo_send_data()
 {
     ql_errcode_bt_e ret = 0;
+
     // unsigned char send_data[128] = {0};
     // int i;
 
@@ -1080,30 +1083,60 @@ ql_errcode_bt_e ql_ble_demo_send_data()
     // {
     //     send_data[i] = '3';
     // }
-    static uint8_t count = 0;
-    for (size_t i = 1; i < LDS_NUMBER_OF_DATA; i++)
+    // static uint8_t count = 0;
+    // for (size_t i = 1; i < LDS_NUMBER_OF_DATA; i++)
+    // {
+    //     if (count % 2 == 0)
+    //     {
+    //         Live_Data.lds[0] = 10;
+    //     }
+    //     else
+    //     {
+    //         Live_Data.lds[0] = 25;
+    //     }
+    //     // Live_Data.lds[0] = i;
+    //     // recv_buff[i];
+    //     Live_Data.lds[i] = 2;
+    //     // recv_buff[i];
+    //     ql_rtos_task_sleep_ms(100);
+
+    //     QL_BLE_GATT_LOG("Buffer updated speed data=%u", Live_Data.lds[0]);
+    //     QL_BLE_GATT_LOG("Buffer updated data[%u]=%u", i, Live_Data.lds[i]);
+
+    //     count++;
+
+    //     // QL_UART_DEMO_LOG("UART port %d receive ind type:0x%x, receive data size:%d", port, ind_type, read_len);
+    // }
+
+    switch (SeqNumber)
     {
-        if (count % 2 == 0)
-        {
-            Live_Data.lds[0] = 10;
-        }
-        else
-        {
-            Live_Data.lds[0] = 25;
-        }
-        // Live_Data.lds[0] = i;
-        // recv_buff[i];
-        Live_Data.lds[i] = 2;
-        // recv_buff[i];
-        ql_rtos_task_sleep_ms(100);
+    case 0:
 
-        QL_BLE_GATT_LOG("Buffer updated speed data=%u", Live_Data.lds[0]);
-        QL_BLE_GATT_LOG("Buffer updated data[%u]=%u", i, Live_Data.lds[i]);
+        Live_Data.lds[0] = 100;
 
-        count++;
+        break;
+    case 1:
+        Live_Data.lds[0] = 25;
+        break;
 
-        // QL_UART_DEMO_LOG("UART port %d receive ind type:0x%x, receive data size:%d", port, ind_type, read_len);
+    case 2:
+
+        break;
+
+    default:
+        break;
     }
+
+    SeqNumber++;
+
+    QL_BLE_GATT_LOG("Check static var%u", SeqNumber);
+
+    if (SeqNumber > 1)
+    {
+        SeqNumber = 0;
+    }
+
+    // QL_BLE_GATT_LOG("Check static var%u", SeqNumber);
 
     // memcpy(send_data.data,"12345678",8);
     // send_data.len = 8;
@@ -1765,6 +1798,7 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                 QL_BLE_GATT_LOG("ble recv failed");
                 goto QL_BLE_ADV_DEMO_STOP;
             }
+            ql_ble_demo_send_data();
         }
         break;
             /*****************************SUCCESSFUL RECEIVE CONDITION**************************/
