@@ -47,6 +47,37 @@ extern ql_errcode_dev_e ql_cfun_comm_set(uint8_t at_dst_cfun, uint8_t nSim);
 union ErrorUnion error_data;
 union LDSUnion Live_Data;
 
+union AppUnion AppRxData;
+
+//  uint16_t msgHeader;
+//     uint8_t msgId;
+//     uint32_t odo_data;
+//     bool headLamp;
+//     uint8_t childMode;
+//     uint8_t controlVars[7];
+//     uint16_t Altitude;
+//     uint8_t McuOta[20];
+//     uint8_t checksum;
+
+// AppUnion AppRxData = {
+//     .AppReceiveInfo.msgHeader=0x9a9a,
+//     .AppReceiveInfo.msgId=1,
+//     .AppReceiveInfo.od.o_data=0,
+//     .AppReceiveInfo.headLamp=0,
+//     .AppReceiveInfo.childMode=0,
+//     .AppReceiveInfo.controlVars={0},
+//     .AppReceiveInfo.Altitude=0,
+//     .AppReceiveInfo.McuOta={0},
+//     .AppReceiveInfo.checksum = 0
+// };
+
+
+// AppRxData = {
+//     .AppReceiveInfo.msgId = 1,
+//     .AppReceiveInfo.msgHeader = 0x9a9a
+
+// };
+
 ql_task_t ble_demo_task = NULL;
 
 ql_bt_ble_local_name_s ble_name =
@@ -197,7 +228,7 @@ unsigned char childMode[1] = {1};
 unsigned char childLockFlag[1] = {'1'};
 
 AppReceive characteristicInd = CHILDMODE;
-struct AppReceiveInfo AppReceiveInfo;
+//struct AppReceiveInfo AppReceiveInfo;
 
 // static uint8_t SeqNumber = 0;
 //  = {
@@ -1652,20 +1683,20 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                         {
                         case 64256:
                             characteristicInd = ODOWRITE;
-                            AppReceiveInfo.odo_data = *(uint32_t *)data;
+                            AppRxData.AppReceiveInfo.odo_data = *(uint32_t *)data;
                             // AppReceiveInfo.odo_data = hexToDecimal((const char *)&AppReceiveInfo.odo_data);
                             break;
 
                         case 64257:
                             characteristicInd = HEADLAMP;
-                            AppReceiveInfo.headLamp = *(bool *)data;
+                            AppRxData.AppReceiveInfo.headLamp = *(bool *)data;
                             // AppReceiveInfo.headLamp = hexToDecimal((const char *)&AppReceiveInfo.headLamp);
                             break;
 
                         case 64258:
 
                             characteristicInd = CHILDMODE;
-                            AppReceiveInfo.childMode = *(uint8_t *)data;
+                            AppRxData.AppReceiveInfo.childMode = *(uint8_t *)data;
                             // AppReceiveInfo.childMode = hexToDecimal((const char *)&AppReceiveInfo.childMode);
                             break;
 
@@ -1679,7 +1710,7 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                             //(AppReceiveInfo.controlVars) = *(uint64_t *)data;
                             for (size_t i = 0; i < sizeof(data); i++)
                             {
-                                AppReceiveInfo.controlVars[i] = *((uint8_t *)data + i);
+                                AppRxData.AppReceiveInfo.controlVars[i] = *((uint8_t *)data + i);
                                 // AppReceiveInfo.controlVars[i] = hexToDecimal((const char *)&AppReceiveInfo.controlVars[i]);
                             }
 
@@ -1687,7 +1718,7 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
 
                         case 64260:
                             characteristicInd = ALTITUDE;
-                            AppReceiveInfo.Altitude = *(uint16_t *)data;
+                            AppRxData.AppReceiveInfo.Altitude = *(uint16_t *)data;
                             // AppReceiveInfo.Altitude = hexToDecimal((const char *)&AppReceiveInfo.Altitude);
                             break;
 
@@ -1695,7 +1726,7 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                             characteristicInd = MCU_OTA_RX;
                             for (size_t i = 0; i < sizeof(data); i++)
                             {
-                                AppReceiveInfo.McuOta[i] = *(uint8_t *)data + i;
+                                AppRxData.AppReceiveInfo.McuOta[i] = *(uint8_t *)data + i;
                                 // AppReceiveInfo.McuOta[i] = hexToDecimal((const char *)&AppReceiveInfo.McuOta[i]);
                             }
                             break;
@@ -1704,9 +1735,9 @@ ql_errcode_bt_e ql_ble_gatt_server_handle_event()
                             break;
                         }
 
-                        QL_BLE_GATT_LOG("write_len:%d, odo data check:%u", sizeof(AppReceiveInfo.odo_data), AppReceiveInfo.odo_data);
-                        QL_BLE_GATT_LOG("write_len:%d, child mode data check:%u", sizeof(AppReceiveInfo.childMode), AppReceiveInfo.childMode);
-                        QL_BLE_GATT_LOG("write_len:%d, control variables data check:%u", sizeof(AppReceiveInfo.controlVars), *(AppReceiveInfo.controlVars));
+                        QL_BLE_GATT_LOG("write_len:%d, odo data check:%u", sizeof(AppRxData.AppReceiveInfo.odo_data), AppRxData.AppReceiveInfo.odo_data);
+                        QL_BLE_GATT_LOG("write_len:%d, child mode data check:%u", sizeof(AppRxData.AppReceiveInfo.childMode), AppRxData.AppReceiveInfo.childMode);
+                        QL_BLE_GATT_LOG("write_len:%d, control variables data check:%u", sizeof(AppRxData.AppReceiveInfo.controlVars), *(AppRxData.AppReceiveInfo.controlVars));
 
                         // for (size_t i = 0; i < sizeof(data); i++)
                         // {

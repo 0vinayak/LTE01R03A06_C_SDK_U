@@ -21,6 +21,7 @@
 #define OTA_TAG "ESP_OTA"
 
 #define LDS_NUMBER_OF_DATA 20
+#define APP_RX_DATA_LEN 17
 #define TDS_NUMBER_OF_DATA 30
 #define TDS_P1_NUMBER_OF_DATA 12
 #define TDS_P2_NUMBER_OF_DATA 16
@@ -40,22 +41,35 @@ typedef enum AppReceive
     CHILDMODE,
     CONTROL,
     ALTITUDE,
+    SOS_FLAG,
+    RIDE_MODE,
     MCU_OTA_RX
 } AppReceive;
 
 extern AppReceive characteristicInd;
 
-struct AppReceiveInfo
+typedef struct AppReceiveInfo_t
 {
+    uint16_t msgHeader;
+    uint8_t msgId;
     uint32_t odo_data;
     bool headLamp;
     uint8_t childMode;
     uint8_t controlVars[7];
     uint16_t Altitude;
     uint8_t McuOta[20];
-} AppReceiveInfo;
+    uint8_t checksum;
+} AppReceiveInfo_t;
 
-extern struct AppReceiveInfo AppReceiveInfo;
+//extern struct AppReceiveInfo AppReceiveInfo;
+
+union AppUnion
+{
+    AppReceiveInfo_t AppReceiveInfo;
+    uint8_t appInfo[APP_RX_DATA_LEN];
+};
+
+//extern union AppUnion AppRxData;
 
 typedef struct Live_data_st
 {

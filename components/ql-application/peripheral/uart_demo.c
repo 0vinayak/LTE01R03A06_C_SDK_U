@@ -53,6 +53,7 @@ WHEN			  WHO		  WHAT, WHERE, WHY
 
 // unsigned short ble_server_hanle = QL_GATT_START_HANDLE_WITHOUT_SYS;
 unsigned char check_data[20] = {105, 2, 3, 4, 5, 6, 7, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+extern union AppUnion AppRxData;
 
 /*===========================================================================
  * Variate
@@ -61,6 +62,18 @@ unsigned char check_data[20] = {105, 2, 3, 4, 5, 6, 7, 8, 9, 0, 0, 0, 0, 0, 0, 0
 /*===========================================================================
  * Functions
  ===========================================================================*/
+
+
+uint8_t UARTComRxChecksum(uint8_t *buffer, uint8_t Length)
+{
+    uint8_t checksum_loc = 0;
+    uint8_t i = 0;
+    for (i = 0; i < Length; i++)
+    {
+        checksum_loc = checksum_loc ^ buffer[i];
+    }
+    return checksum_loc;
+}
 
 void ql_uart_notify_cb(uint32 ind_type, ql_uart_port_number_e port, uint32 size)
 {
@@ -167,24 +180,6 @@ static void ql_uart_demo_thread(void *param)
         goto exit;
     }
 
-    /***********************************************************
-    Note start:
-        1. If QL_UART_PORT_1 is selected for use, there is no need to set TX and RX pin and function
-        2. According to the QuecOpen GPIO table, user should select the correct PIN to set function
-        3. CTS and RTS pins (UART2 and UART3) also need to be initialized if hardware flow control function is required
-    ************************************************************/
-    // ret = ql_pin_set_func(QL_UART2_TX_PIN, QL_UART2_TX_FUNC);
-    // if (QL_GPIO_SUCCESS != ret)
-    // {
-    //     goto exit;
-    // }
-    // ret = ql_pin_set_func(QL_UART2_RX_PIN, QL_UART2_RX_FUNC);
-    // if (QL_GPIO_SUCCESS != ret)
-    // {
-    //     goto exit;
-    // }
-    /*Note end*/
-
     ret = ql_uart_open(QL_UART_PORT_1);
     QL_UART_DEMO_LOG("ret: 0x%x", ret);
 
@@ -202,35 +197,44 @@ static void ql_uart_demo_thread(void *param)
         {
             static int count = 0;
             // childLock = childLockFlag[0];
-            switch (characteristicInd)
-            {
-            case ODOWRITE:
-                ql_uart_write(QL_UART_PORT_1, (unsigned char *)&AppReceiveInfo.odo_data, sizeof(AppReceiveInfo.odo_data)); // 0x80FA021D,   strlen((unsigned char *)childLockFlag)
-                break;
+            // switch (characteristicInd)
+            // {
+            // case ODOWRITE:
+            //     ql_uart_write(QL_UART_PORT_1, (unsigned char *)&AppReceiveInfo.odo_data, sizeof(AppReceiveInfo.odo_data)); // 0x80FA021D,   strlen((unsigned char *)childLockFlag)
+            //     break;
 
-            case HEADLAMP:
-                ql_uart_write(QL_UART_PORT_1, (unsigned char *)&AppReceiveInfo.headLamp, sizeof(AppReceiveInfo.headLamp));
-                break;
+            // case HEADLAMP:
+            //     ql_uart_write(QL_UART_PORT_1, (unsigned char *)&AppReceiveInfo.headLamp, sizeof(AppReceiveInfo.headLamp));
+            //     break;
 
-            case CHILDMODE:
-                ql_uart_write(QL_UART_PORT_1, (unsigned char *)&AppReceiveInfo.childMode, sizeof(AppReceiveInfo.childMode));
-                break;
+            // case CHILDMODE:
+            //     ql_uart_write(QL_UART_PORT_1, (unsigned char *)&AppReceiveInfo.childMode, sizeof(AppReceiveInfo.childMode));
+            //     break;
 
-            case CONTROL:
-                ql_uart_write(QL_UART_PORT_1, (unsigned char *)&AppReceiveInfo.controlVars, sizeof(AppReceiveInfo.controlVars));
-                break;
+            // case CONTROL:
+            //     ql_uart_write(QL_UART_PORT_1, (unsigned char *)&AppReceiveInfo.controlVars, sizeof(AppReceiveInfo.controlVars));
+            //     break;
 
-            case ALTITUDE:
-                ql_uart_write(QL_UART_PORT_1, (unsigned char *)&AppReceiveInfo.Altitude, sizeof(AppReceiveInfo.Altitude));
-                break;
+            // case ALTITUDE:
+            //     ql_uart_write(QL_UART_PORT_1, (unsigned char *)&AppReceiveInfo.Altitude, sizeof(AppReceiveInfo.Altitude));
+            //     break;
 
-            case MCU_OTA_RX:
-                ql_uart_write(QL_UART_PORT_1, (unsigned char *)AppReceiveInfo.McuOta, sizeof(AppReceiveInfo.McuOta));
-                break;
+            // case MCU_OTA_RX:
+            //     ql_uart_write(QL_UART_PORT_1, (unsigned char *)AppReceiveInfo.McuOta, sizeof(AppReceiveInfo.McuOta));
+            //     break;
 
-            default:
-                break;
-            }
+            // default:
+            //     break;
+            // }
+
+            AppRxData.appInfo[0] = 0x9A;
+            AppRxData.appInfo[1] = 0x9A;
+            AppRxData.appInfo[2] = 1;
+            AppRxData.appInfo[16] = UARTComRxChecksum(AppRxData.appInfo, (uint8_t)(APP_RX_DATA_LEN - 1));
+
+            
+            ql_uart_write(QL_UART_PORT_1, (unsigned char *)&AppRxData.appInfo, sizeof(AppRxData.appInfo)); // 0x80FA021D,   strlen((unsigned char *)childLockFlag)
+
             // ql_uart_write(QL_UART_PORT_1, (unsigned char *)0x80FA021D, 1); // 0x80FA021D,   strlen((unsigned char *)childLockFlag)
             QL_UART_DEMO_LOG("times uart write is called:%d", count);
 
